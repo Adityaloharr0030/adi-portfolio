@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { FiMail, FiUser, FiMessageSquare, FiSend, FiGithub, FiLinkedin } from 'react-icons/fi';
+import emailjs from '@emailjs/browser';
 import './Contact.css';
 
 const Contact = () => {
@@ -15,12 +16,33 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSending(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsSending(false);
-    setSubmitted(true);
-    setFormState({ name: '', email: '', message: '' });
-    setTimeout(() => setSubmitted(false), 3000);
+
+    try {
+      const templateParams = {
+        name: formState.name,
+        email: formState.email,
+        subject: 'New Portfolio Inquiry',
+        message: formState.message,
+        time: new Date().toLocaleString(),
+      };
+
+      await emailjs.send(
+        'service_nm1ac7a',
+        'template_i7p22qv',
+        templateParams,
+        'xdRUJRQjnXIv7W1t0'
+      );
+
+      setSubmitted(true);
+      setFormState({ name: '', email: '', message: '' });
+      setTimeout(() => setSubmitted(false), 3000);
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      // Optional: Add some user feedback for failure here (like a toast notification)
+      alert(`Uh oh! Failed to send message. Reason: ${error.text || error.message || 'Unknown EmailJS Error'}. Please email directly at workuseonly4u@gmail.com.`);
+    } finally {
+      setIsSending(false);
+    }
   };
 
 
@@ -53,7 +75,7 @@ const Contact = () => {
               <FiMail className="info-icon" />
               <div>
                 <h4>Email</h4>
-                <a href="mailto:adityalohar00030@gmail.com">adityalohar00030@gmail.com</a>
+                <a href="mailto:workuseonly4u@gmail.com">workuseonly4u@gmail.com</a>
               </div>
             </div>
 

@@ -21,19 +21,36 @@ const Projects = () => {
         { name: 'Anilist API', icon: null },
       ],
       stats: { features: 'SSR', state: 'Watchlist', perf: 'Optimized' },
+      github: 'https://github.com/Adityaloharr0030/CrazyXani',
+      demo: 'https://crazyxani.vercel.app/', // Assuming common URL pattern or leave as is if unknown
       featured: true,
     },
     {
-      icon: '📦',
-      title: 'Inventory Management',
-      description: 'Robust RESTful backend solution with JWT authentication and MySQL for structured inventory data management.',
+      icon: '🏦',
+      title: 'Bank Management System',
+      description: 'A comprehensive Java-based system for managing bank accounts, transactions, and user data with object-oriented principles.',
       tech: [
-        { name: 'Node.js', icon: null },
-        { name: 'Express.js', icon: null },
-        { name: 'MySQL', icon: SiPostgresql },
-        { name: 'JWT', icon: null },
+        { name: 'Java', icon: null },
+        { name: 'OOP', icon: null },
+        { name: 'Data Structures', icon: null },
       ],
-      stats: { auth: 'JWT', crud: 'Full', test: 'Postman' },
+      stats: { logic: 'Core Java', system: 'CLI', secure: 'Auth' },
+      github: 'https://github.com/Adityaloharr0030/Bank-management-system',
+      demo: 'https://github.com/Adityaloharr0030/Bank-management-system',
+      featured: true,
+    },
+    {
+      icon: '🗳️',
+      title: 'Voting System',
+      description: 'An interactive web-based voting application built with HTML, CSS, and Javascript for conducting secure online polls.',
+      tech: [
+        { name: 'HTML5', icon: null },
+        { name: 'CSS3', icon: null },
+        { name: 'JavaScript', icon: null },
+      ],
+      stats: { ui: 'Responsive', state: 'Dynamic', build: 'Vercel' },
+      github: 'https://github.com/Adityaloharr0030/voting-system',
+      demo: 'https://voting-system-self-tau.vercel.app',
       featured: true,
     },
   ];
@@ -87,7 +104,9 @@ const Projects = () => {
 
               <div className="project-links">
                 <motion.a
-                  href="#"
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="link-btn"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -95,7 +114,9 @@ const Projects = () => {
                   <FiGithub /> View Code
                 </motion.a>
                 <motion.a
-                  href="#"
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="link-btn primary"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

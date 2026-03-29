@@ -41,3 +41,15 @@ html {
   outline: 2px solid #6366f1;
   outline-offset: 2px;
 }
+
+/* Global Animated Scroll Progress Bar */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
+  transform-origin: 0%;
+  z-index: 99999;
+}

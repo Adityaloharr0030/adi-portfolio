@@ -35,8 +35,8 @@ const Experience = () => {
     },
     {
       title: 'HSC / Higher Secondary School',
-      company: 'Science (PCMB)',
-      location: 'School',
+      company: 'Science (PCM)',
+      location: 'M.J. College',
       duration: '2021 - 2023',
       description: [
         'Completed higher secondary education with a strong focus on Mathematics and Science.',

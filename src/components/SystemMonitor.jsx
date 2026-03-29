@@ -129,6 +129,8 @@ const SystemMonitor = () => {
                   <p>[0.124512] Loading modules: React, Spring, Kafka</p>
                   <p>[0.457812] System check: Optimal</p>
                   <p>[0.895123] User connection detected...</p>
+                  <p className="log-success">[1.204512] GitHub API: Connection established (Adityaloharr0030)</p>
+                  <p className="log-success">[1.205812] Fetched 7 repositories from source</p>
                   <motion.p
                     animate={{ opacity: [1, 0] }}
                     transition={{ repeat: Infinity, duration: 0.8 }}
@@ -140,6 +142,7 @@ const SystemMonitor = () => {
 
               <div className="card-footer">
                 <span className="footer-tag">PROD-ENV-01</span>
+                <span className="footer-tag">GH-SYNC: OK</span>
                 <span className="footer-tag">v2.4.0-stable</span>
               </div>
             </motion.div>
