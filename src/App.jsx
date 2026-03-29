@@ -9,8 +9,10 @@ import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import SystemMonitor from './components/SystemMonitor';
+import CustomCursor from './components/CustomCursor';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import './App.css';
+import './components/CustomCursor.css';
 
 function App() {
   const { scrollYProgress } = useScroll();
@@ -27,6 +29,7 @@ function App() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
+      <CustomCursor />
       <motion.div className="progress-bar" style={{ scaleX }} />
       
       <Navbar />

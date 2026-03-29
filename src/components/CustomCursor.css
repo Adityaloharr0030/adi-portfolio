@@ -1,0 +1,44 @@
+.cursor-dot,
+.cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: #6366f1;
+  border-radius: 50%;
+  z-index: 100000;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  display: block;
+  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+}
+
+.cursor-outline {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: 1px solid rgba(99, 102, 241, 0.5);
+  transition: all 0.3s ease;
+}
+
+.cursor-dot.hovering {
+  width: 4px;
+  height: 4px;
+  background-color: #fff;
+}
+
+.cursor-outline.hovering {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(99, 102, 241, 0.1);
+  border-color: #8b5cf6;
+}
+
+/* Hide on mobile/touch */
+@media (hover: none) and (pointer: coarse) {
+  .cursor-dot,
+  .cursor-outline {
+    display: none;
+  }
+}

@@ -78,8 +78,8 @@ const Skills = () => {
               key={category.title}
               className="skill-category"
               initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: catIndex * 0.1 }}
+               animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: catIndex * 0.15, ease: 'easeOut' }}
             >
               <div className="category-header">
                 <span className="category-icon">{category.icon}</span>

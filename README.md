@@ -1,16 +1,38 @@
-# React + Vite
+# Aditya Lohar | Full-Stack Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-performance, visually stunning portfolio website built with modern web technologies, showcasing professional projects, technical skills, and verified certifications.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
+**[Aditya Lohar Portfolio](https://voting-system-self-tau.vercel.app)** (Update this link to your latest Vercel URL)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Key Features
+- **Dynamic Projects Section**: Fetched directly from GitHub, featuring full-stack applications with live demos.
+- **Verified Certifications**: Interactive display of earned credentials from Simplilearn, Google, and more.
+- **Premium Animations**: 
+  - **Custom Interactive Cursor**: Circle-based cursor with spring physics and hover states.
+  - **Global Fade-in**: Smooth entry animation for the entire application.
+  - **Scroll Progress Bar**: Real-time gradient indicator of page progress.
+  - **Entrance Stills**: Staggered motion reveals for sections and cards.
+- **EmailJS Integration**: Fully functional contact form for direct inquiries.
+- **Glassmorphic Design**: Modern dark theme with layered elements and vibrant gradients.
 
-## React Compiler
+## 🛠️ Tech Stack
+- **Frontend**: React 19, Vite, Framer Motion, Vanilla CSS
+- **Icons**: React-Icons (Fi, Fa, Si)
+- **Form Handling**: EmailJS (@emailjs/browser)
+- **Deployment**: Vercel
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📦 Getting Started
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Run locally: `npm run dev`
+4. Build for production: `npm run build`
 
-## Expanding the ESLint configuration
+## 🔒 Environment Variables
+Ensure you protect your local `.env` keys (already ignored in `.gitignore`):
+- `VITE_EMAILJS_SERVICE_ID`
+- `VITE_EMAILJS_TEMPLATE_ID`
+- `VITE_EMAILJS_PUBLIC_KEY`
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+*Created with passion by Aditya Lohar.*

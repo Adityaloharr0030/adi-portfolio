@@ -74,11 +74,10 @@ const Projects = () => {
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
-              className={`project-card ${project.featured ? 'featured' : ''}`}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -10, scale: 1.02 }}
+               animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: index * 0.15, ease: 'easeOut' }}
+              whileHover={{ y: -12, scale: 1.03 }}
+              className={`project-card interactive ${project.featured ? 'featured' : ''}`}
             >
               <div className="project-icon">{project.icon}</div>
               <h3 className="project-title">{project.title}</h3>
