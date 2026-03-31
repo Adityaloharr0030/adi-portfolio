@@ -1,9 +1,10 @@
-import { lazy, Suspense } from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { useState, useEffect, lazy, Suspense } from 'react';
+import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import CustomCursor from './components/CustomCursor';
 import ThemeToggle from './components/ThemeToggle';
+import Preloader from './components/Preloader';
 import './App.css';
 import './components/CustomCursor.css';
 
@@ -27,6 +28,7 @@ const LoadingFallback = () => (
 );
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -34,36 +36,67 @@ function App() {
     restDelta: 0.001
   });
 
-  return (
-    <motion.div
-      className="app"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      <ThemeToggle />
-      <CustomCursor />
-      <motion.div className="progress-bar" style={{ scaleX }} />
+  useEffect(() => {
+    // Synchronize the technical boot sequence with actual page readiness
+    const handleLoad = () => {
+      // Ensure the 'wow' animation plays for at least 1.8s even on fast connections
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1800);
+    };
 
-      <Navbar />
-      <main>
-        <Hero />
+    if (document.readyState === 'complete') {
+      handleLoad();
+    } else {
+      window.addEventListener('load', handleLoad);
+      // Safety timeout for slower connections to ensure the preloader doesn't hang
+      const safetyTimer = setTimeout(() => {
+        setIsLoading(false);
+      }, 4500);
+      
+      return () => {
+        window.removeEventListener('load', handleLoad);
+        clearTimeout(safetyTimer);
+      };
+    }
+  }, []);
+
+  return (
+    <>
+      <AnimatePresence mode="wait">
+        {isLoading && <Preloader key="preloader" />}
+      </AnimatePresence>
+
+      <motion.div
+        className="app"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <ThemeToggle />
+        <CustomCursor />
+        <motion.div className="progress-bar" style={{ scaleX }} />
+
+        <Navbar />
+        <main>
+          <Hero />
+          <Suspense fallback={<LoadingFallback />}>
+            <About />
+            <Skills />
+            <Projects />
+            <GitHubStats />
+            <CloudCodeExplorer />
+            <Certifications />
+            <Experience />
+            <Contact />
+          </Suspense>
+        </main>
         <Suspense fallback={<LoadingFallback />}>
-          <About />
-          <Skills />
-          <Projects />
-          <GitHubStats />
-          <CloudCodeExplorer />
-          <Certifications />
-          <Experience />
-          <Contact />
+          <Footer />
+          <SystemMonitor />
         </Suspense>
-      </main>
-      <Suspense fallback={<LoadingFallback />}>
-        <Footer />
-        <SystemMonitor />
-      </Suspense>
-    </motion.div>
+      </motion.div>
+    </>
   );
 }
 
