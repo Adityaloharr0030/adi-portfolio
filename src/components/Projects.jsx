@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { FiExternalLink, FiGithub } from 'react-icons/fi';
-import { SiSpringboot, SiReact, SiPostgresql, SiApachekafka, SiRedis, SiDocker, SiMongodb } from 'react-icons/si';
+import { SiSpringboot, SiReact, SiPostgresql, SiApachekafka, SiRedis, SiDocker, SiMongodb, SiMysql } from 'react-icons/si';
 import './Projects.css';
 
 const Projects = () => {
@@ -13,44 +13,46 @@ const Projects = () => {
     {
       icon: '🎞️',
       title: 'CrazyXani',
-      description: 'Full-stack anime streaming aggregator integrating external APIs (Anilist) for real-time data, search, and user watchlists.',
+      description: 'Full-stack SSR anime platform aggregating data from Anilist API. Features real-time search, streaming, and user watchlists.',
       tech: [
         { name: 'Next.js', icon: SiReact },
         { name: 'Node.js', icon: null },
         { name: 'MongoDB', icon: SiMongodb },
         { name: 'Anilist API', icon: null },
       ],
-      stats: { features: 'SSR', state: 'Watchlist', perf: 'Optimized' },
+      stats: { features: 'SSR', state: 'Watchlist', perf: 'SEO' },
       github: 'https://github.com/Adityaloharr0030/CrazyXani',
-      demo: 'https://crazyxani.vercel.app/', // Assuming common URL pattern or leave as is if unknown
+      demo: 'https://crazyxani.vercel.app/',
       featured: true,
     },
     {
-      icon: '🏦',
-      title: 'Bank Management System',
-      description: 'A comprehensive Java-based system for managing bank accounts, transactions, and user data with object-oriented principles.',
+      icon: '📊',
+      title: 'Inventory Management API',
+      description: 'Secure REST API with full CRUD operations and JWT-based role authentication. Built with a normalized MySQL schema.',
+      tech: [
+        { name: 'Node.js', icon: null },
+        { name: 'Express', icon: null },
+        { name: 'MySQL', icon: null },
+        { name: 'JWT', icon: null },
+      ],
+      stats: { auth: 'JWT', db: 'MySQL', api: 'REST' },
+      github: 'https://github.com/Adityaloharr0030/Inventory-management-system',
+      demo: 'https://github.com/Adityaloharr0030/Inventory-management-system',
+      featured: true,
+    },
+    {
+      icon: '☕',
+      title: 'Java OOP Console App',
+      description: 'Core OOP implementation featuring encapsulation, inheritance, and polymorphism for reliable system logic.',
       tech: [
         { name: 'Java', icon: null },
         { name: 'OOP', icon: null },
-        { name: 'Data Structures', icon: null },
+        { name: 'Collections', icon: null },
+        { name: 'Exception Handling', icon: null },
       ],
-      stats: { logic: 'Core Java', system: 'CLI', secure: 'Auth' },
+      stats: { logic: 'OOP', core: 'Java', data: 'Collections' },
       github: 'https://github.com/Adityaloharr0030/Bank-management-system',
       demo: 'https://github.com/Adityaloharr0030/Bank-management-system',
-      featured: true,
-    },
-    {
-      icon: '🗳️',
-      title: 'Voting System',
-      description: 'An interactive web-based voting application built with HTML, CSS, and Javascript for conducting secure online polls.',
-      tech: [
-        { name: 'HTML5', icon: null },
-        { name: 'CSS3', icon: null },
-        { name: 'JavaScript', icon: null },
-      ],
-      stats: { ui: 'Responsive', state: 'Dynamic', build: 'Vercel' },
-      github: 'https://github.com/Adityaloharr0030/voting-system',
-      demo: 'https://voting-system-self-tau.vercel.app',
       featured: true,
     },
   ];
@@ -109,6 +111,7 @@ const Projects = () => {
                   className="link-btn"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  aria-label={`View ${project.title} source code on GitHub`}
                 >
                   <FiGithub /> View Code
                 </motion.a>
@@ -119,6 +122,7 @@ const Projects = () => {
                   className="link-btn primary"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  aria-label={`View live demo of ${project.title}`}
                 >
                   <FiExternalLink /> Live Demo
                 </motion.a>

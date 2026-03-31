@@ -37,18 +37,18 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <p>
-              I&apos;m an ambitious <strong>B.Tech Computer Engineering student (2023-2027)</strong> at 
-              College of Engineering and Technology, Jalgaon. Focused on <strong>Full-Stack Web Development</strong>, 
-              I specialize in creating end-to-end applications using modern JavaScript frameworks.
+              I am a <strong>B.Tech Computer Engineering student (2023-2027)</strong> delivering 
+              production-grade applications across three domains: <strong>Full-Stack Web Development</strong>, 
+              <strong>Java Engineering</strong>, and <strong>Salesforce CRM Administration</strong>.
             </p>
             <p>
-              My expertise includes <strong>React, Next.js, and Node.js</strong>, along with database systems like 
-              <strong>MongoDB and MySQL</strong>. I have a strong foundation in data structures, algorithms, 
-              and system architecture, which I apply to solve complex problems with clean, efficient code.
+              I have a proven ability to architect, build, and ship end-to-end systems independently—from 
+              <strong> RESTful APIs and SSR platforms</strong> to relational database design. My focus is on 
+              delivering scalable, efficient, and maintainable solutions.
             </p>
             <p>
-              Beyond coding, I&apos;m an active <strong>GitHub contributor</strong> and a continuous learner 
-              dedicated to staying updated with the latest industry best practices and emerging technologies.
+              Currently expanding my technical expertise in <strong>Data Structures, Algorithms, and System Architecture</strong>, 
+              I am eager to contribute my real-world skills in a challenging internship environment.
             </p>
           </motion.div>
 

@@ -11,38 +11,27 @@ const Experience = () => {
   const experiences = [
     {
       title: 'B.Tech in Computer Engineering',
-      company: 'College of Engineering and Technology, NMKC',
-      location: 'NMKC',
-      duration: '2023 - 2027',
+      company: 'CET, NMKC, Jalgaon, MH',
+      location: 'Jalgaon, MH',
+      duration: '2023 - 2027 (Expected)',
       description: [
-        'Pursuing Bachelor of Technology with a focus on core computer science principles.',
-        'Relevant Coursework: Data Structures & Algorithms, Database Systems, Operating Systems, Web Development.',
-        'Actively participating in technical workshops and coding competitions.',
+        'Pursuing Bachelor of Technology with a focus on system engineering and architecture.',
+        'Core Coursework: DSA, DBMS, Operating Systems, Computer Networks, OOP, Web Development.',
+        'Developing production-grade applications across Web, Java, and Salesforce domains.',
       ],
       current: true,
     },
     {
       title: 'Full-Stack Development Journey',
-      company: 'Self-Directed Learning',
-      location: 'Online',
+      company: 'Self-Directed Specialization',
+      location: 'Remote',
       duration: '2023 - Present',
       description: [
-        'Mastered JavaScript, React, and Node.js through hands-on project building.',
-        'Developed complex applications like an Anime Aggregator and Inventory Systems.',
-        'Consistently contributing to open-source projects on GitHub.',
+        'Mastering end-to-end system design using React, Next.js, and Node.js.',
+        'Architecting secure REST APIs and performing relational database design (MySQL, MongoDB).',
+        'Consistently shipping projects to GitHub and optimizing for performance and SEO.',
       ],
       current: true,
-    },
-    {
-      title: 'HSC / Higher Secondary School',
-      company: 'Science (PCM)',
-      location: 'M.J. College',
-      duration: '2021 - 2023',
-      description: [
-        'Completed higher secondary education with a strong focus on Mathematics and Science.',
-        'Developed a keen interest in logical reasoning and software engineering.',
-      ],
-      current: false,
     },
   ];
 

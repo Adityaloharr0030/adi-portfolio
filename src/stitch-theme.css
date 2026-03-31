@@ -286,7 +286,7 @@ input:focus, textarea:focus, select:focus {
   border-radius: var(--radius-full) !important;
 }
 
-.skill-category, .stats-card-wrapper, .info-card, .contact-form {
+.skill-category, .stats-card-wrapper, .info-card, .contact-form, .timeline-content, .stat-card {
   background-color: var(--bg-card) !important;
   border: 1px solid var(--border) !important;
   border-radius: var(--radius-md) !important;
@@ -296,10 +296,22 @@ input:focus, textarea:focus, select:focus {
   transition: all var(--transition-normal) !important;
 }
 
-.skill-category:hover, .stats-card-wrapper:hover, .info-card:hover {
+.skill-category:hover, .stats-card-wrapper:hover, .info-card:hover, .timeline-content:hover, .stat-card:hover {
   transform: translateY(-4px) !important;
   border-color: var(--border-light) !important;
   box-shadow: var(--shadow-md) !important;
+}
+
+/* Timeline specific active badges */
+.current-badge {
+  background: rgba(168, 85, 247, 0.15) !important;
+  color: var(--accent) !important;
+  border: 1px solid rgba(168, 85, 247, 0.3) !important;
+  border-radius: var(--radius-full) !important;
+  padding: 4px 12px !important;
+  font-size: var(--text-xs) !important;
+  font-weight: 600 !important;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.2) !important;
 }
 
 /* ==========================================================================
@@ -342,7 +354,7 @@ input:focus, textarea:focus, select:focus {
 
 @media (max-width: 768px) {
   /* Fluidly scale down typography & shadows for smaller viewports */
-  .card, [class*="card"], article, aside, .surface, .skill-category, .stats-card-wrapper, .info-card, .contact-form {
+  .card, [class*="card"], article, aside, .surface, .skill-category, .stats-card-wrapper, .info-card, .contact-form, .timeline-content, .stat-card {
     border-radius: var(--radius-sm) !important;
     padding: var(--space-2) !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
@@ -358,7 +370,7 @@ input:focus, textarea:focus, select:focus {
   }
   
   /* Restrict hover lift height so taps on mobile don't unexpectedly jump out of bounds */
-  .card:hover, [class*="card"]:hover, .skill-category:hover, .stats-card-wrapper:hover, .info-card:hover {
+  .card:hover, [class*="card"]:hover, .skill-category:hover, .stats-card-wrapper:hover, .info-card:hover, .timeline-content:hover, .stat-card:hover {
     transform: translateY(-2px) !important;
   }
   
@@ -366,4 +378,84 @@ input:focus, textarea:focus, select:focus {
     transform: translateY(-4px) !important; 
     box-shadow: 0 8px 20px rgba(129, 140, 248, 0.15) !important;
   }
+}
+
+/* ==========================================================================
+   12. SYSTEM MONITOR & DASHBOARDS
+   ========================================================================== */
+
+.system-monitor-card {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: var(--radius-lg) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.system-monitor-toggle {
+  background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
+  box-shadow: 0 8px 25px rgba(129, 140, 248, 0.4) !important;
+  border: 2px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.system-monitor-toggle.active {
+  background: #ef4444 !important;
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4) !important;
+}
+
+.metric-item {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid var(--border) !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.metric-item:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: var(--border-light) !important;
+}
+
+.metric-fill {
+  background: var(--primary) !important;
+  box-shadow: 0 0 10px var(--primary) !important;
+}
+
+.system-logs {
+  background: rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid var(--border) !important;
+  border-left: 3px solid var(--primary) !important;
+}
+
+/* ==========================================================================
+   13. TOASTS & NOTIFICATIONS
+   ========================================================================== */
+
+.toast {
+  background: var(--bg-card) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.toast-success { border-left: 4px solid #22c55e !important; }
+.toast-error { border-left: 4px solid #ef4444 !important; }
+.toast-info { border-left: 4px solid var(--primary) !important; }
+
+/* ==========================================================================
+   14. THEME TOGGLE
+   ========================================================================== */
+
+.theme-toggle {
+  background: var(--bg-card) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-primary) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+.theme-toggle:hover {
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+  box-shadow: var(--shadow-md) !important;
 }

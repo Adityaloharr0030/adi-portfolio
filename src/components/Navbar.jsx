@@ -35,6 +35,7 @@ const Navbar = () => {
           className="logo"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          aria-label="Aditya Lohar - Home"
         >
           <span className="logo-bracket">&lt;</span>
           Aditya

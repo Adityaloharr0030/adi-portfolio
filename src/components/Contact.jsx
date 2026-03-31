@@ -3,6 +3,7 @@ import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { FiMail, FiUser, FiMessageSquare, FiSend, FiGithub, FiLinkedin } from 'react-icons/fi';
 import emailjs from '@emailjs/browser';
+import Toast from './Toast';
 import './Contact.css';
 
 const Contact = () => {
@@ -10,8 +11,17 @@ const Contact = () => {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
-
+  const [toast, setToast] = useState({ message: '', type: '' });
   const [isSending, setIsSending] = useState(false);
+
+  const showToast = (message, type) => {
+    setToast({ message, type });
+    setTimeout(() => setToast({ message: '', type: '' }), 5000);
+  };
+
+  const closeToast = () => {
+    setToast({ message: '', type: '' });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,19 +37,22 @@ const Contact = () => {
       };
 
       await emailjs.send(
-        'service_nm1ac7a',
-        'template_i7p22qv',
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         templateParams,
-        'xdRUJRQjnXIv7W1t0'
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
       setSubmitted(true);
       setFormState({ name: '', email: '', message: '' });
+      showToast('Message sent successfully! I\'ll get back to you soon.', 'success');
       setTimeout(() => setSubmitted(false), 3000);
     } catch (error) {
       console.error('Failed to send email:', error);
-      // Optional: Add some user feedback for failure here (like a toast notification)
-      alert(`Uh oh! Failed to send message. Reason: ${error.text || error.message || 'Unknown EmailJS Error'}. Please email directly at workuseonly4u@gmail.com.`);
+      showToast(
+        'Failed to send message. Please email directly at adityalohar00030@gmail.com',
+        'error'
+      );
     } finally {
       setIsSending(false);
     }
@@ -48,6 +61,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="contact" ref={ref}>
+      <Toast message={toast.message} type={toast.type} onClose={closeToast} />
       <div className="container">
         <motion.div
           className="section-header"
@@ -75,7 +89,7 @@ const Contact = () => {
               <FiMail className="info-icon" />
               <div>
                 <h4>Email</h4>
-                <a href="mailto:workuseonly4u@gmail.com">workuseonly4u@gmail.com</a>
+                <a href="mailto:adityalohar00030@gmail.com">adityalohar00030@gmail.com</a>
               </div>
             </div>
 
@@ -86,6 +100,7 @@ const Contact = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1, y: -5 }}
               whileTap={{ scale: 0.9 }}
+              aria-label="Visit my GitHub profile"
             >
               <FiGithub />
             </motion.a>
@@ -95,6 +110,7 @@ const Contact = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1, y: -5 }}
               whileTap={{ scale: 0.9 }}
+              aria-label="Visit my LinkedIn profile"
             >
               <FiLinkedin />
             </motion.a>

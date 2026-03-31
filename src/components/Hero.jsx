@@ -7,6 +7,13 @@ const Hero = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
+    // Check for touch devices and reduced motion preference
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Skip animation on touch devices or if reduced motion is preferred
+    if (isTouch || prefersReducedMotion) return;
+
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     let animationFrameId;
@@ -21,14 +28,14 @@ const Hero = () => {
 
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<>/{}[];:+-*=&%';
     const fontSize = 16;
-    const columns = canvas.width / fontSize;
-    const drops = Array(Math.floor(columns)).fill(1);
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops = Array(columns).fill(1);
 
     const draw = () => {
       ctx.fillStyle = 'rgba(10, 10, 20, 0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = '#6366f1'; // Primary color
+      ctx.fillStyle = '#6366f1';
       ctx.font = `${fontSize}px monospace`;
 
       for (let i = 0; i < drops.length; i++) {
@@ -68,7 +75,7 @@ const Hero = () => {
             transition={{ delay: 0.3 }}
           >
             <FiCode />
-            <span>Full-Stack Developer</span>
+            <span>Full-Stack | Java | Salesforce</span>
           </motion.div>
 
           <motion.h1
@@ -85,10 +92,9 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
           >
-            Ambitious B.Tech Computer Engineering student skilled in 
-            building full-stack web applications with React, Next.js, 
-            and Node.js. Passionate about API integration and 
-            creating seamless user experiences.
+            B.Tech Computer Engineering student (2027) delivering 
+            production-grade applications across three domains: 
+            Full-Stack Web, Java Engineering, and Salesforce CRM.
           </motion.p>
 
           <motion.div
@@ -106,12 +112,14 @@ const Hero = () => {
               View Projects
             </motion.a>
             <motion.a
-              href="#contact"
+              href="./resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn btn-secondary"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Contact Me
+              Download Resume
             </motion.a>
           </motion.div>
 
@@ -155,13 +163,13 @@ const Hero = () => {
                   {'    '}name: <span className="string">&quot;Aditya Lohar&quot;</span>,
                 </span>
                 <span className="line">
-                  {'    '}role: <span className="string">&quot;Full-Stack Dev&quot;</span>,
+                  {'    '}focus: [<span className="string">&quot;FullStack&quot;</span>, <span className="string">&quot;Java-Core&quot;</span>, <span className="string">&quot;Salesforce&quot;</span>],
                 </span>
                 <span className="line">
-                  {'    '}tech: [<span className="string">&quot;Next.js&quot;</span>, <span className="string">&quot;Node.js&quot;</span>, <span className="string">&quot;MongoDB&quot;</span>],
+                  {'    '}stack: [<span className="string">&quot;React/Next&quot;</span>, <span className="string">&quot;Node.js&quot;</span>, <span className="string">&quot;Relational-DB&quot;</span>],
                 </span>
                 <span className="line">
-                  {'    '}passion: <span className="string">&quot;Clean Code&quot;</span>
+                  {'    '}passion: <span className="string">&quot;Production-Grade Apps&quot;</span>
                 </span>
                 <span className="line">{'}'};</span>
               </code>

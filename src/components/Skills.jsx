@@ -8,7 +8,7 @@ import {
 import {
   SiSpringboot, SiHibernate, SiMysql, SiPostgresql,
   SiMongodb, SiRedis, SiApachekafka, SiJunit5,
-  SiKubernetes, SiJenkins, SiIntellijidea
+  SiKubernetes, SiJenkins, SiIntellijidea, SiSalesforce
 } from 'react-icons/si';
 import './Skills.css';
 
@@ -18,41 +18,49 @@ const Skills = () => {
 
   const skillCategories = [
     {
-      title: 'Programming Languages',
-      icon: '📝',
+      title: 'Web Development',
+      icon: '🌐',
       skills: [
-        { name: 'JavaScript (ES6+)', icon: FaJs, level: 90 },
-        { name: 'Python', icon: FaPython, level: 80 },
-        { name: 'Java', icon: FaJava, level: 75 },
+        { name: 'React & Next.js', icon: FaJs, level: 90 },
+        { name: 'Node.js & Express', icon: FaNodeJs, level: 85 },
+        { name: 'JavaScript ES6+', icon: FaJs, level: 92 },
+        { name: 'REST APIs & JWT', icon: FaDatabase, level: 88 },
+        { name: 'MongoDB & MySQL', icon: SiMysql, level: 85 },
+        { name: 'SSR & SEO', icon: FaJs, level: 80 },
       ],
     },
     {
-      title: 'Frontend Development',
-      icon: '🔧',
+      title: 'Java Engineering',
+      icon: '☕',
       skills: [
-        { name: 'React', icon: FaJs, level: 88 },
-        { name: 'Next.js', icon: FaJs, level: 85 },
-        { name: 'HTML5/CSS3', icon: FaJs, level: 90 },
+        { name: 'OOP Principles', icon: FaJava, level: 90 },
+        { name: 'Collections Framework', icon: FaJava, level: 88 },
+        { name: 'Data Structures', icon: FaJava, level: 85 },
+        { name: 'Exception Handling', icon: FaJava, level: 82 },
+        { name: 'Modular Design', icon: FaJava, level: 80 },
+        { name: 'Clean Code', icon: FaJava, level: 85 },
       ],
     },
     {
-      title: 'Backend & Databases',
-      icon: '💾',
+      title: 'Salesforce CRM',
+      icon: '☁️',
       skills: [
-        { name: 'Node.js/Express', icon: FaNodeJs, level: 82 },
-        { name: 'MongoDB', icon: SiMongodb, level: 85 },
-        { name: 'MySQL', icon: SiMysql, level: 80 },
-        { name: 'RESTful APIs', icon: FaDatabase, level: 88 },
+        { name: 'Admin Fundamentals', icon: SiSalesforce, level: 85 },
+        { name: 'Objects & Fields', icon: SiSalesforce, level: 82 },
+        { name: 'Validation Rules', icon: SiSalesforce, level: 80 },
+        { name: 'Reports & Dashboards', icon: SiSalesforce, level: 75 },
+        { name: 'User & Profile Mgmt', icon: SiSalesforce, level: 78 },
+        { name: 'SOQL Basics', icon: SiSalesforce, level: 70 },
       ],
     },
     {
-      title: 'Tools & Platforms',
-      icon: '🚀',
+      title: 'Tools & Platform',
+      icon: '🛠️',
       skills: [
-        { name: 'Git/GitHub', icon: FaGitAlt, level: 90 },
+        { name: 'Git & GitHub', icon: FaGitAlt, level: 92 },
         { name: 'Docker', icon: FaDocker, level: 75 },
-        { name: 'Postman', icon: SiIntellijidea, level: 85 },
-        { name: 'VS Code', icon: SiIntellijidea, level: 92 },
+        { name: 'Postman', icon: SiIntellijidea, level: 88 },
+        { name: 'VS Code', icon: SiIntellijidea, level: 95 },
       ],
     },
   ];

@@ -10,6 +10,17 @@
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
+  --primary: #6366f1;
+  --primary-light: #818cf8;
+  --secondary: #8b5cf6;
+  --accent: #a855f7;
+
+  --gradient: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7);
+}
+
+/* Dark Theme (Default) */
+:root,
+.light-theme {
   --bg-primary: #0a0a14;
   --bg-secondary: #0f0f1a;
   --bg-card: rgba(30, 30, 46, 0.5);
@@ -18,15 +29,22 @@
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
 
-  --primary: #6366f1;
-  --primary-light: #818cf8;
-  --secondary: #8b5cf6;
-  --accent: #a855f7;
-
   --border: #1e293b;
   --border-light: #334155;
+}
 
-  --gradient: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7);
+/* Light Theme */
+.light-theme {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --bg-card: rgba(255, 255, 255, 0.8);
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+
+  --border: #e2e8f0;
+  --border-light: #cbd5e1;
 }
 
 html {
@@ -113,5 +131,17 @@ img {
 
   .container {
     padding: 0 1.5rem;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
