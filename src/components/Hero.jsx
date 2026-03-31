@@ -152,6 +152,10 @@ const Hero = () => {
                 <span className="dot green"></span>
               </div>
               <span className="code-title">Developer.js</span>
+              <div className="deploy-tag">
+                <span className="status-pip pulsing"></span>
+                Vercel Live
+              </div>
             </div>
             <pre>
               <code>

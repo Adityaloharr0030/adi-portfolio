@@ -4,6 +4,14 @@
   <img src="https://img.shields.io/badge/FRAMER%20MOTION-0055FF?style=for-the-badge&logo=framer&logoColor=white" />
   <br />
   <br />
+  <a href="https://vercel.com/new/clone?repository-url=https://github.com/Adityaloharr0030/Adi-Portfolio">
+    <img src="https://vercel.com/button" alt="Deploy with Vercel"/>
+  </a>
+  <br />
+  <br />
+  <img src="https://github-readme-stats.vercel.app/api?username=Adityaloharr0030&show_icons=true&theme=nord&hide_border=true&bg_color=0D1117" alt="GitHub Stats" />
+  <br />
+  <br />
   <h1>&lt; Aditya /&gt; </h1>
   <p><b>A high-performance, visually stunning portfolio showcasing professional projects, technical skills, and a state-of-the-art glassmorphic design system.</b></p>
 </div>

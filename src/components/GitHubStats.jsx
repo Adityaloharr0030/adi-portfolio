@@ -36,12 +36,17 @@ const GitHubStats = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
+          <div className="system-status-bar">
+            <span className="status-dot pulsing"></span>
+            <span className="status-label">OPEN-SOURCE CORE MONITOR ACTIVE</span>
+            <span className="status-uptime">Uptime: 99.9%</span>
+          </div>
           <span className="section-tag">Open Source activity</span>
           <h2 className="section-title">
-            GitHub <span className="gradient-text">Stats</span> & Activity
+            GitHub <span className="gradient-text">Telemetry</span>
           </h2>
           <p className="section-subtitle">
-            Tracking my contributions, language proficiency, and coding consistency across projects.
+            Real-time synchronization with GitHub API. Tracking global impact and system proficiency.
           </p>
         </motion.div>
 
