@@ -152,10 +152,16 @@ const Hero = () => {
                 <span className="dot green"></span>
               </div>
               <span className="code-title">Developer.js</span>
-              <div className="deploy-tag">
+              <a 
+                href="https://adi-portfolio-beta-coral.vercel.app/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="deploy-tag"
+                title="View Live Production Deployment"
+              >
                 <span className="status-pip pulsing"></span>
                 Vercel Live
-              </div>
+              </a>
             </div>
             <pre>
               <code>
