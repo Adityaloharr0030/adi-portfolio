@@ -1,38 +1,54 @@
-# Aditya Lohar | Full-Stack Developer Portfolio
-
-A high-performance, visually stunning portfolio website built with modern web technologies, showcasing professional projects, technical skills, and verified certifications.
-
-## 🚀 Live Demo
-**[Aditya Lohar Portfolio](https://voting-system-self-tau.vercel.app)** (Update this link to your latest Vercel URL)
-
-## ✨ Key Features
-- **Dynamic Projects Section**: Fetched directly from GitHub, featuring full-stack applications with live demos.
-- **Verified Certifications**: Interactive display of earned credentials from Simplilearn, Google, and more.
-- **Premium Animations**: 
-  - **Custom Interactive Cursor**: Circle-based cursor with spring physics and hover states.
-  - **Global Fade-in**: Smooth entry animation for the entire application.
-  - **Scroll Progress Bar**: Real-time gradient indicator of page progress.
-  - **Entrance Stills**: Staggered motion reveals for sections and cards.
-- **EmailJS Integration**: Fully functional contact form for direct inquiries.
-- **Glassmorphic Design**: Modern dark theme with layered elements and vibrant gradients.
-
-## 🛠️ Tech Stack
-- **Frontend**: React 19, Vite, Framer Motion, Vanilla CSS
-- **Icons**: React-Icons (Fi, Fa, Si)
-- **Form Handling**: EmailJS (@emailjs/browser)
-- **Deployment**: Vercel
-
-## 📦 Getting Started
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Run locally: `npm run dev`
-4. Build for production: `npm run build`
-
-## 🔒 Environment Variables
-Ensure you protect your local `.env` keys (already ignored in `.gitignore`):
-- `VITE_EMAILJS_SERVICE_ID`
-- `VITE_EMAILJS_TEMPLATE_ID`
-- `VITE_EMAILJS_PUBLIC_KEY`
+<div align="center">
+  <img src="https://img.shields.io/badge/REACT%2019-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/VITE-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" />
+  <img src="https://img.shields.io/badge/FRAMER%20MOTION-0055FF?style=for-the-badge&logo=framer&logoColor=white" />
+  <br />
+  <br />
+  <h1>&lt; Aditya /&gt; </h1>
+  <p><b>A high-performance, visually stunning portfolio showcasing professional projects, technical skills, and a state-of-the-art glassmorphic design system.</b></p>
+</div>
 
 ---
-*Created with passion by Aditya Lohar.*
+
+## 🚀 Live Environment
+<div align="center">
+  <h3><a href="https://voting-system-self-tau.vercel.app">View Professional Portfolio</a></h3>
+</div>
+
+## ✨ Key Technical Achievements
+
+- 🎨 **Stitch-Inspired Glassmorphic Aesthetic**: A comprehensive, scalable custom CSS design token system (`stitch-theme.css`) bridging robust React structural code with deep matrix background gradients, layered backdrop blurs, and organic `framer-motion` scale transitions.
+- ⚡ **Dynamic Projects Engine**: Automatically mapped and structured data featuring full-stack applications with modular `<project-card>` interactions boasting hover-state glowing edge illumination.
+- 🎓 **Verified Certifications Tracker**: Fully interactive structural component built to accurately process validation metrics natively from Simplilearn and Google.
+- 🛠 **System Monitor Component**: An authentic, localized mini-kernel simulated interface running raw system checks, heartbeat logs, and memory diagnostics purely for developer "wow" factor.
+- ✉️ **EmailJS Cloud Integration**: Edge-serverless direct delivery pipeline linked seamlessly through React components.
+
+## 🏗️ Local Deployment
+
+To spin up the UI environment natively:
+
+```bash
+# Clone the repository
+git clone <your-repo-link>
+
+# Initialize Node modules
+npm install
+
+# Start the Vite Hot-Reloading server
+npm run dev
+```
+
+## 🔒 Configuration
+
+For full production functionality securely hook the application using an uncommitted `.env` payload:
+```env
+VITE_EMAILJS_SERVICE_ID=your_id
+VITE_EMAILJS_TEMPLATE_ID=your_id
+VITE_EMAILJS_PUBLIC_KEY=your_key
+```
+
+<br />
+
+<div align="center">
+  <p><i>Engineered and architected with raw passion by Aditya Lohar.</i></p>
+</div>

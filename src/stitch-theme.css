@@ -1,0 +1,369 @@
+/* ==========================================================================
+   STITCH-STYLE DESIGN TOKENS & OVERRIDES
+   ========================================================================== */
+
+/* 1. TYPOGRAPHY - Importing premium display (Syne) and body (Plus Jakarta Sans) fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Syne:wght@500;600;700;800&display=swap');
+
+:root {
+  /* 2. COLOR SYSTEM - Material 3 / Stitch Style Tonal Palette Overrides */
+  --bg-primary: #0d0f12 !important;    /* Deep tinted neutral */
+  --bg-secondary: #14171c !important;       /* Elevated surface tone */
+  --bg-card: rgba(20, 23, 28, 0.7) !important; /* Higher elevation surface */
+
+  --text-primary: #f8fafc !important; /* Crisp text */
+  --text-secondary: #e2e8f0 !important;    /* Slightly softened text for surfaces */
+  --text-muted: #94a3b8 !important;         /* Subdued text */
+
+  --primary: #818cf8 !important;       /* Stitch-style vibrant indigo */
+  --primary-light: #6366f1 !important; 
+  --secondary: #c084fc !important;        /* Warm accent for emphasis */
+  --accent: #a855f7 !important;
+
+  --border: rgba(255, 255, 255, 0.08) !important; /* Subtle border */
+  --border-light: rgba(255, 255, 255, 0.16) !important;
+  
+  /* 5. SPACING & POLISH - 8pt Grid */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  
+  /* 5. SPACING & POLISH - Border Radii */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* 1. TYPOGRAPHY - Scaling and assignment */
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  
+  /* Fluid typographic scale using clamp() */
+  --text-xs: clamp(0.75rem, 0.7vw + 0.6rem, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8vw + 0.65rem, 1rem);
+  --text-base: clamp(1rem, 1vw + 0.75rem, 1.125rem);
+  --text-lg: clamp(1.125rem, 1.2vw + 0.85rem, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.5vw + 1rem, 1.5rem);
+  --text-2xl: clamp(1.5rem, 2vw + 1.2rem, 2rem);
+  --text-3xl: clamp(2rem, 3vw + 1.5rem, 2.5rem);
+  --text-4xl: clamp(2.5rem, 4vw + 1.75rem, 3.5rem);
+  
+  /* 3. DEPTH & ELEVATION - Layered shadows for physical depth */
+  --shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.3), 0 1px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 8px 24px -4px rgba(0, 0, 0, 0.4), 0 4px 10px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 16px 40px -6px rgba(0, 0, 0, 0.5), 0 8px 20px -4px rgba(0, 0, 0, 0.4);
+  
+  /* 4. MOTION & MICRO-INTERACTIONS */
+  --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   GLOBAL STRUCTURE & BACKGROUND
+   ========================================================================== */
+
+body, html {
+  font-family: var(--font-body) !important;
+  letter-spacing: -0.01em;
+  
+  /* Subtle mesh gradient / texture base */
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(129, 140, 248, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(192, 132, 252, 0.06) 0px, transparent 50%) !important;
+  background-attachment: fixed !important;
+  background-size: cover;
+}
+
+/* 1. TYPOGRAPHY POLISH */
+h1, h2, h3, h4, h5, h6, 
+.display-font, .heading, .section-title {
+  font-family: var(--font-display) !important;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+/* ==========================================================================
+   SURFACES, DEPTH & ELEVATION
+   ========================================================================== */
+
+/* Universal Card & Surface treatment */
+.card, [class*="card"], article, aside, .surface {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-sm) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  /* Exclude transform from CSS transition to prevent breaking Javascript framer-motion animations! */
+  transition: box-shadow var(--transition-normal), 
+              border-color var(--transition-normal),
+              background-color var(--transition-normal) !important;
+}
+
+/* 4. MOTION - Hover states for cards */
+.card:hover, [class*="card"]:hover, a.surface:hover {
+  box-shadow: var(--shadow-md) !important;
+  border-color: var(--border-light) !important;
+}
+
+/* 4b. SPECIFIC HIGHLIGHT - Glowing Project Cards */
+.project-card:hover {
+  border-color: var(--primary) !important;
+  box-shadow: 0 16px 40px rgba(129, 140, 248, 0.15), 0 0 15px rgba(129, 140, 248, 0.1) !important;
+  background-color: rgba(20, 23, 28, 0.85) !important;
+}
+
+/* Navbars / Floating Headers with glassmorphism */
+header, nav, .navbar, [class*="nav"] {
+  background: rgba(20, 23, 28, 0.7) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+/* ==========================================================================
+   6. BUTTONS & INPUTS
+   ========================================================================== */
+
+/* Base Button Utility */
+button, .btn, a.btn, [class*="button"], [class*="Btn"] {
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+  transition: all var(--transition-fast) !important;
+}
+
+/* Scale effect on click (Micro-interaction) */
+button:active, .btn:active, [class*="button"]:active {
+  transform: scale(0.96) !important;
+}
+
+/* Forms & Inputs */
+input, textarea, select {
+  background-color: rgba(29, 33, 40, 0.8) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-primary) !important;
+  border-radius: var(--radius-sm) !important;
+  font-family: var(--font-body) !important;
+  transition: all var(--transition-fast) !important;
+  outline: none;
+}
+
+/* Input Focus Rings */
+input:focus, textarea:focus, select:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.2) !important;
+  background-color: var(--bg-secondary) !important;
+}
+
+/* Global Focus Visible for Accessibility */
+*:focus-visible {
+  outline: 2px solid var(--accent) !important;
+  outline-offset: 2px !important;
+}
+
+/* ==========================================================================
+   7. SPECIFIC COMPONENT REFINEMENTS (Tags, Timelines, & Accents)
+   ========================================================================== */
+
+/* Tags & Badges */
+.section-tag, .tech-tag, .skill-tag, [class*="badge"] {
+  background: rgba(129, 140, 248, 0.1) !important;
+  border: 1px solid rgba(129, 140, 248, 0.2) !important;
+  color: var(--primary) !important;
+  border-radius: var(--radius-full) !important;
+  font-family: var(--font-body) !important;
+  font-weight: 500 !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  transition: all var(--transition-fast) !important;
+  box-shadow: 0 0 10px rgba(129, 140, 248, 0.0) !important;
+}
+
+.section-tag:hover, .tech-tag:hover, .skill-tag:hover {
+  background: rgba(129, 140, 248, 0.15) !important;
+  border-color: rgba(129, 140, 248, 0.4) !important;
+  box-shadow: 0 0 15px rgba(129, 140, 248, 0.2) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Gradient Texts & Accents */
+.gradient-text, .text-gradient {
+  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* Custom Cursor Stitch Glow (if used) */
+.cursor-dot, .cursor-outline {
+  border-color: var(--primary) !important;
+  mix-blend-mode: screen !important;
+}
+
+.cursor-dot {
+  background-color: var(--primary) !important;
+  box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary) !important;
+}
+
+/* Timeline & Progress lines */
+.timeline-marker, .progress-bar {
+  background: linear-gradient(180deg, var(--primary), var(--secondary)) !important;
+  box-shadow: 0 0 10px var(--primary) !important;
+}
+
+/* Scrollbar Integration */
+::-webkit-scrollbar-track {
+  background: var(--bg-primary) !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary), var(--secondary)) !important;
+  border-radius: var(--radius-lg) !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--secondary), var(--accent)) !important;
+}
+
+/* ==========================================================================
+   8. SPECIFIC BRANDING (Logo & Navbar Tweaks)
+   ========================================================================== */
+
+.logo {
+  font-family: var(--font-display) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.05em !important;
+  color: var(--text-primary) !important;
+}
+
+.logo-bracket {
+  color: var(--primary) !important;
+  opacity: 0.8 !important;
+  font-weight: 500 !important;
+  transition: all var(--transition-fast) !important;
+}
+
+/* Hover dynamic state for Logo brackets */
+.logo:hover .logo-bracket, .footer-logo:hover .logo-bracket {
+  color: var(--accent) !important;
+  opacity: 1 !important;
+  text-shadow: 0 0 15px var(--accent) !important;
+}
+
+/* ==========================================================================
+   9. HERO & SKILLS (Code Window & Progress)
+   ========================================================================== */
+
+/* Terminal / Code Window */
+.code-window {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-md), 0 0 30px rgba(129, 140, 248, 0.05) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  transition: all var(--transition-normal) !important;
+}
+
+.code-window:hover {
+  border-color: var(--border-light) !important;
+  box-shadow: var(--shadow-lg), 0 0 40px rgba(129, 140, 248, 0.1) !important;
+}
+
+.code-title {
+  color: var(--text-muted) !important;
+  font-family: var(--font-mono) !important;
+}
+
+/* Skills Progress Bar & Grid */
+.skill-progress {
+  background: linear-gradient(90deg, var(--primary), var(--secondary)) !important;
+  box-shadow: 0 0 10px rgba(129, 140, 248, 0.3) !important;
+  border-radius: var(--radius-full) !important;
+}
+
+.skill-category, .stats-card-wrapper, .info-card, .contact-form {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-sm) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  transition: all var(--transition-normal) !important;
+}
+
+.skill-category:hover, .stats-card-wrapper:hover, .info-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: var(--border-light) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+/* ==========================================================================
+   10. MODALS & SUB-COMPONENTS (Contact, Certifications)
+   ========================================================================== */
+
+/* Certification Viewer Overlay */
+.cert-modal-overlay {
+  background: rgba(10, 10, 15, 0.8) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+}
+
+/* Action Links inside cards */
+.cert-link {
+  color: var(--primary) !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.cert-link:hover {
+  color: var(--accent) !important;
+  text-shadow: 0 0 10px rgba(192, 132, 252, 0.4) !important;
+}
+
+/* Contact Module Specifics */
+.submit-btn {
+  background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(129, 140, 248, 0.2) !important;
+}
+
+.submit-btn:hover {
+  box-shadow: 0 6px 25px rgba(129, 140, 248, 0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ==========================================================================
+   11. MOBILE & RESPONSIVE POLISH (Viewport Constraints)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Fluidly scale down typography & shadows for smaller viewports */
+  .card, [class*="card"], article, aside, .surface, .skill-category, .stats-card-wrapper, .info-card, .contact-form {
+    border-radius: var(--radius-sm) !important;
+    padding: var(--space-2) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+  }
+  
+  .code-window {
+    border-radius: var(--radius-sm) !important;
+    padding: var(--space-1) !important;
+  }
+  
+  .section-title {
+    font-size: var(--text-2xl) !important;
+  }
+  
+  /* Restrict hover lift height so taps on mobile don't unexpectedly jump out of bounds */
+  .card:hover, [class*="card"]:hover, .skill-category:hover, .stats-card-wrapper:hover, .info-card:hover {
+    transform: translateY(-2px) !important;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-4px) !important; 
+    box-shadow: 0 8px 20px rgba(129, 140, 248, 0.15) !important;
+  }
+}
