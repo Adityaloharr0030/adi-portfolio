@@ -6,46 +6,8 @@
   box-sizing: border-box;
 }
 
-:root {
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+/* Theme variables are managed in stitch-theme.css */
 
-  --primary: #6366f1;
-  --primary-light: #818cf8;
-  --secondary: #8b5cf6;
-  --accent: #a855f7;
-
-  --gradient: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7);
-}
-
-/* Dark Theme (Default) */
-:root,
-.light-theme {
-  --bg-primary: #0a0a14;
-  --bg-secondary: #0f0f1a;
-  --bg-card: rgba(30, 30, 46, 0.5);
-
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-
-  --border: #1e293b;
-  --border-light: #334155;
-}
-
-/* Light Theme */
-.light-theme {
-  --bg-primary: #f8fafc;
-  --bg-secondary: #f1f5f9;
-  --bg-card: rgba(255, 255, 255, 0.8);
-
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
-
-  --border: #e2e8f0;
-  --border-light: #cbd5e1;
-}
 
 html {
   scroll-behavior: smooth;

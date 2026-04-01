@@ -1,6 +1,7 @@
 .app {
-  background: #0a0a14;
+  background: var(--bg-primary);
   min-height: 100vh;
+  transition: background-color var(--transition-normal);
 }
 
 main {
