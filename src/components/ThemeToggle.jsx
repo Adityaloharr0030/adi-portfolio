@@ -15,6 +15,7 @@ const ThemeToggle = () => {
 
   useEffect(() => {
     const root = document.documentElement;
+    console.log('Current Theme Set To:', theme);
     if (theme === 'dark') {
       root.classList.remove('light-theme');
     } else {
@@ -23,7 +24,9 @@ const ThemeToggle = () => {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  const toggleTheme = () => {
+  const toggleTheme = (e) => {
+    e.preventDefault();
+    console.log('Toggle Clicked at', new Date().toLocaleTimeString());
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
   };
 
