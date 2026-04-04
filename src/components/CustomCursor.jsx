@@ -26,6 +26,9 @@ const CustomCursor = () => {
       if (!isVisible) setIsVisible(true);
     };
 
+    const handleMouseLeave = () => setIsVisible(false);
+    const handleMouseEnter = () => setIsVisible(true);
+
     const handleMouseOver = (e) => {
       if (
         e.target.tagName === 'A' ||
@@ -42,10 +45,14 @@ const CustomCursor = () => {
 
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseover', handleMouseOver);
+    window.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('mouseenter', handleMouseEnter);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseover', handleMouseOver);
+      window.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('mouseenter', handleMouseEnter);
     };
   }, [mouseX, mouseY, isVisible]);
 

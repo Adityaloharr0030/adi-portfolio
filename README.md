@@ -2,6 +2,7 @@
   <img src="https://img.shields.io/badge/REACT%2019-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
   <img src="https://img.shields.io/badge/VITE-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" />
   <img src="https://img.shields.io/badge/FRAMER%20MOTION-0055FF?style=for-the-badge&logo=framer&logoColor=white" />
+  <img src="https://img.shields.io/badge/AI--ENHANCED-000000?style=for-the-badge&logo=openai&logoColor=white" />
   <br />
   <br />
   <a href="https://vercel.com/new/clone?repository-url=https://github.com/Adityaloharr0030/Adi-Portfolio">

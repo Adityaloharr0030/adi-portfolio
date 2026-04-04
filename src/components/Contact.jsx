@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { FiMail, FiUser, FiMessageSquare, FiSend, FiGithub, FiLinkedin } from 'react-icons/fi';
+import { FiMail, FiUser, FiMessageSquare, FiSend, FiGithub, FiLinkedin, FiArrowRight } from 'react-icons/fi';
 import emailjs from '@emailjs/browser';
 import Toast from './Toast';
+import ContactOrb from './ContactOrb';
 import './Contact.css';
 
 const Contact = () => {
@@ -45,23 +46,29 @@ const Contact = () => {
 
       setSubmitted(true);
       setFormState({ name: '', email: '', message: '' });
-      showToast('Message sent successfully! I\'ll get back to you soon.', 'success');
-      setTimeout(() => setSubmitted(false), 3000);
+      showToast('Message sent successfully!', 'success');
+      setTimeout(() => setSubmitted(false), 4000);
     } catch (error) {
       console.error('Failed to send email:', error);
-      showToast(
-        'Failed to send message. Please email directly at adityalohar00030@gmail.com',
-        'error'
-      );
+      showToast('Connection failed. Please email directly.', 'error');
     } finally {
       setIsSending(false);
     }
   };
 
+  const socialLinks = [
+    { icon: <FiGithub />, label: 'GitHub', href: 'https://github.com/Adityaloharr0030', color: '#818cf8' },
+    { icon: <FiLinkedin />, label: 'LinkedIn', href: 'https://linkedin.com/in/aditya-lohar-3037b32b9', color: '#0ea5e9' },
+  ];
 
   return (
     <section id="contact" className="contact" ref={ref}>
+      {/* Background elements */}
+      <ContactOrb />
+      <div className="contact-grid-pattern" />
+      
       <Toast message={toast.message} type={toast.type} onClose={closeToast} />
+      
       <div className="container">
         <motion.div
           className="section-header"
@@ -69,128 +76,129 @@ const Contact = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="section-tag">Get In Touch</span>
+          <span className="section-tag glow">Neural Uplink</span>
           <h2 className="section-title">
-            Let&apos;s work <span className="gradient-text">together</span>
+            Establish <span className="gradient-text shine">Connection</span>
           </h2>
           <p className="section-subtitle">
-            Have a project in mind or want to discuss opportunities? I&apos;d love to hear from you!
+            Ready to architect something remarkable? Send me a transmission or reach out via secure channels below.
           </p>
         </motion.div>
 
         <div className="contact-content">
           <motion.div
-            className="contact-info"
+            className="contact-info-panel"
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="info-card">
-              <FiMail className="info-icon" />
-              <div>
-                <h4>Email</h4>
-                <a href="mailto:adityalohar00030@gmail.com">adityalohar00030@gmail.com</a>
+            <div className="info-card-primary">
+              <div className="card-top">
+                <FiMail className="card-icon pulse" />
+                <span>Primary Interface</span>
               </div>
+              <h4>Direct Email</h4>
+              <a href="mailto:adityalohar00030@gmail.com" className="email-link">
+                adityalohar00030@gmail.com
+              </a>
             </div>
 
-            <div className="social-links">
-            <motion.a
-              href="https://github.com/Adityaloharr0030"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1, y: -5 }}
-              whileTap={{ scale: 0.9 }}
-              aria-label="Visit my GitHub profile"
-            >
-              <FiGithub />
-            </motion.a>
-            <motion.a
-              href="https://linkedin.com/in/aditya-lohar-3037b32b9"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1, y: -5 }}
-              whileTap={{ scale: 0.9 }}
-              aria-label="Visit my LinkedIn profile"
-            >
-              <FiLinkedin />
-            </motion.a>
-          </div>
+            <div className="social-cyber-grid">
+              {socialLinks.map((link, i) => (
+                <motion.a
+                  key={i}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cyber-card"
+                  whileHover={{ y: -8, scale: 1.05 }}
+                  style={{ '--hover-color': link.color }}
+                >
+                  <div className="cyber-card-content">
+                    {link.icon}
+                    <span>{link.label}</span>
+                  </div>
+                  <FiArrowRight className="cyber-arrow" />
+                </motion.a>
+              ))}
+            </div>
 
-            <div className="availability">
-              <span className="status-dot"></span>
-              <span>Open to new opportunities</span>
+            <div className="hologram-indicator">
+              <span className="status-dot green"></span>
+              <span>SYSTEM ONLINE: READY FOR TRANSFERS</span>
             </div>
           </motion.div>
 
           <motion.form
-            className="contact-form"
+            className="contact-glass-form"
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
             onSubmit={handleSubmit}
           >
-            <div className="form-group">
-              <label htmlFor="name">
-                <FiUser /> Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                value={formState.name}
-                onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                placeholder="John Doe"
-                required
-              />
+            <div className="form-row">
+              <div className="form-group-cyber">
+                <label><FiUser /> Name</label>
+                <div className="input-wrapper">
+                   <input
+                    type="text"
+                    value={formState.name}
+                    onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                    placeholder="Enter full name"
+                    required
+                  />
+                  <div className="input-highlight"></div>
+                </div>
+              </div>
+
+              <div className="form-group-cyber">
+                <label><FiMail /> Email</label>
+                <div className="input-wrapper">
+                  <input
+                    type="email"
+                    value={formState.email}
+                    onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                    placeholder="name@company.com"
+                    required
+                  />
+                  <div className="input-highlight"></div>
+                </div>
+              </div>
             </div>
 
-            <div className="form-group">
-              <label htmlFor="email">
-                <FiMail /> Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                value={formState.email}
-                onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                placeholder="john@example.com"
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="message">
-                <FiMessageSquare /> Message
-              </label>
-              <textarea
-                id="message"
-                rows={5}
-                value={formState.message}
-                onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                placeholder="Tell me about your project..."
-                required
-              />
+            <div className="form-group-cyber">
+              <label><FiMessageSquare /> Message</label>
+              <div className="input-wrapper">
+                <textarea
+                  rows={4}
+                  value={formState.message}
+                  onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                  placeholder="Transmission details..."
+                  required
+                />
+                <div className="input-highlight"></div>
+              </div>
             </div>
 
             <motion.button
               type="submit"
-              className={`submit-btn ${submitted ? 'sent' : ''}`}
+              className={`cyber-submit ${submitted ? 'success' : ''}`}
               disabled={submitted || isSending}
-              whileHover={{ scale: (submitted || isSending) ? 1 : 1.02 }}
-              whileTap={{ scale: (submitted || isSending) ? 1 : 0.98 }}
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.99 }}
             >
-              {submitted ? (
-                <>
-                  <span>✓</span> Message Sent!
-                </>
-              ) : isSending ? (
-                <>
-                  <span className="loader"></span> Sending...
-                </>
-              ) : (
-                <>
-                  <FiSend /> Send Message
-                </>
-              )}
+              <div className="submit-content">
+                {submitted ? (
+                  <>✓ Transmission Received</>
+                ) : isSending ? (
+                  <span className="sending-loader">Establishing link...</span>
+                ) : (
+                  <>
+                    <span><FiSend /> Send Transmission</span>
+                  </>
+                )}
+              </div>
+              <div className="submit-shimmer"></div>
             </motion.button>
           </motion.form>
         </div>

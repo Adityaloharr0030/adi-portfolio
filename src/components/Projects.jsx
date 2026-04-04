@@ -1,135 +1,145 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { FiExternalLink, FiGithub } from 'react-icons/fi';
-import { SiSpringboot, SiReact, SiPostgresql, SiApachekafka, SiRedis, SiDocker, SiMongodb, SiMysql } from 'react-icons/si';
+import { useState, useRef } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { SiSpringboot, SiReact, SiPostgresql, SiApachekafka, SiRedis, SiDocker, SiMongodb, SiMysql, SiJavascript } from 'react-icons/si';
+import { FaJava } from 'react-icons/fa';
+import ProjectCard from './ProjectCard';
 import './Projects.css';
 
 const Projects = () => {
+  const [activeCategory, setActiveCategory] = useState('All');
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+
+  const categories = ['All', 'Fullstack', 'Backend', 'Core Java'];
 
   const projects = [
     {
       icon: '🎞️',
+      category: 'Fullstack',
       title: 'CrazyXani',
-      description: 'Full-stack SSR anime platform aggregating data from Anilist API. Features real-time search, streaming, and user watchlists.',
+      description: 'High-performance SSR anime platform with real-time streaming and global search. Integrated with AniList API for dynamic metadata.',
       tech: [
         { name: 'Next.js', icon: SiReact },
-        { name: 'Node.js', icon: null },
         { name: 'MongoDB', icon: SiMongodb },
-        { name: 'Anilist API', icon: null },
+        { name: 'Node.js', icon: null },
       ],
-      stats: { features: 'SSR', state: 'Watchlist', perf: 'SEO' },
+      stats: { load: '2ms', auth: 'JWT', mode: 'Dark' },
       github: 'https://github.com/Adityaloharr0030/CrazyXani',
       demo: 'https://crazyxani.vercel.app/',
       featured: true,
     },
     {
-      icon: '📊',
-      title: 'Inventory Management API',
-      description: 'Secure REST API with full CRUD operations and JWT-based role authentication. Built with a normalized MySQL schema.',
+      icon: '🏛️',
+      category: 'Backend',
+      title: 'Voting System API',
+      description: 'Distributed voting architecture with transactional integrity and anti-fraud logic. Designed for high concurrency.',
       tech: [
-        { name: 'Node.js', icon: null },
-        { name: 'Express', icon: null },
-        { name: 'MySQL', icon: null },
-        { name: 'JWT', icon: null },
+        { name: 'SpringBoot', icon: SiSpringboot },
+        { name: 'PostgreSQL', icon: SiPostgresql },
+        { name: 'Docker', icon: SiDocker },
       ],
-      stats: { auth: 'JWT', db: 'MySQL', api: 'REST' },
-      github: 'https://github.com/Adityaloharr0030/Inventory-management-system',
-      demo: 'https://github.com/Adityaloharr0030/Inventory-management-system',
+      stats: { scale: 'High', tx: 'ACID', ops: 'REST' },
+      github: 'https://github.com/Adityaloharr0030/Voting-system',
+      demo: '#',
       featured: true,
     },
     {
-      icon: '☕',
-      title: 'Java OOP Console App',
-      description: 'Core OOP implementation featuring encapsulation, inheritance, and polymorphism for reliable system logic.',
+      icon: '📊',
+      category: 'Backend',
+      title: 'Inventory Engine',
+      description: 'Professional inventory control system featuring role-based access and automated reporting pipelines.',
       tech: [
-        { name: 'Java', icon: null },
-        { name: 'OOP', icon: null },
-        { name: 'Collections', icon: null },
-        { name: 'Exception Handling', icon: null },
+        { name: 'Node.js', icon: null },
+        { name: 'MySQL', icon: SiMysql },
+        { name: 'Express', icon: null },
       ],
-      stats: { logic: 'OOP', core: 'Java', data: 'Collections' },
+      stats: { schema: '3NF', secure: 'JWT', build: 'Vite' },
+      github: 'https://github.com/Adityaloharr0030/Inventory-management-system',
+      demo: '#',
+      featured: false,
+    },
+    {
+      icon: '🏦',
+      category: 'Core Java',
+      title: 'Bank Management',
+      description: 'Enterprise-grade banking simulator implementing advanced OOP concepts, custom exceptions, and secure IO streams.',
+      tech: [
+        { name: 'Java', icon: FaJava },
+        { name: 'OOP', icon: null },
+        { name: 'IO Streams', icon: null },
+      ],
+      stats: { logic: 'Solid', core: 'J2E', data: 'Map' },
       github: 'https://github.com/Adityaloharr0030/Bank-management-system',
-      demo: 'https://github.com/Adityaloharr0030/Bank-management-system',
+      demo: '#',
       featured: true,
+    },
+     {
+      icon: '🛡️',
+      category: 'Fullstack',
+      title: 'System Intelligence Dashboard',
+      description: 'A dedicated technical hub for monitoring system health, cloud instances, and neural network telemetry datasets.',
+      tech: [
+        { name: 'React', icon: SiReact },
+        { name: 'Framer Motion', icon: null },
+        { name: 'Canvas API', icon: null },
+      ],
+      stats: { animate: '60fps', ui: 'Cyber', perf: 'A+' },
+      github: 'https://github.com/Adityaloharr0030/',
+      demo: '#',
+      featured: false,
     },
   ];
 
+  const filteredProjects = activeCategory === 'All' 
+    ? projects 
+    : projects.filter(p => p.category === activeCategory);
+
   return (
     <section id="projects" className="projects" ref={ref}>
+      <div className="projects-bg-blur"></div>
       <div className="container">
         <motion.div
-          className="section-header"
+          className="section-header center"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="section-tag">Featured Projects</span>
+          <span className="section-tag glow">Selected Works</span>
           <h2 className="section-title">
-            Things I&apos;ve <span className="gradient-text">built</span>
+            Engineering <span className="gradient-text shine">Solutions</span>
           </h2>
+          <p className="section-subtitle">
+            A showcase of distributed systems, full-stack wonders, and architectural excellence.
+          </p>
+
+          <div className="filter-wrapper">
+            {categories.map((cat) => (
+              <motion.button
+                key={cat}
+                className={`filter-btn ${activeCategory === cat ? 'active' : ''}`}
+                onClick={() => setActiveCategory(cat)}
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {cat}
+                {activeCategory === cat && (
+                  <motion.div layoutId="active-pill" className="active-pill" />
+                )}
+              </motion.button>
+            ))}
+          </div>
         </motion.div>
 
-        <div className="projects-grid">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.15, ease: 'easeOut' }}
-              whileHover={{ y: -12, scale: 1.03 }}
-              className={`project-card interactive ${project.featured ? 'featured' : ''}`}
-            >
-              <div className="project-icon">{project.icon}</div>
-              <h3 className="project-title">{project.title}</h3>
-              <p className="project-description">{project.description}</p>
-
-              <div className="project-tech">
-                {project.tech.map((t) => (
-                  <span key={t.name} className="tech-tag">
-                    {t.icon && <t.icon />}
-                    {t.name}
-                  </span>
-                ))}
-              </div>
-
-              <div className="project-stats">
-                {Object.entries(project.stats).map(([key, value]) => (
-                  <div key={key} className="stat">
-                    <span className="stat-value">{value}</span>
-                    <span className="stat-label">{key}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="project-links">
-                <motion.a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-btn"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  aria-label={`View ${project.title} source code on GitHub`}
-                >
-                  <FiGithub /> View Code
-                </motion.a>
-                <motion.a
-                  href={project.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-btn primary"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  aria-label={`View live demo of ${project.title}`}
-                >
-                  <FiExternalLink /> Live Demo
-                </motion.a>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        <motion.div 
+          className="projects-grid-v2"
+          layout
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project) => (
+              <ProjectCard key={project.title} project={project} />
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   );

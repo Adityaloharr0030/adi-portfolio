@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FiMenu, FiX } from 'react-icons/fi';
+import Logo from './Logo';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -32,14 +33,13 @@ const Navbar = () => {
       <div className="container">
         <motion.a
           href="#"
-          className="logo"
+          className="logo-container"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           aria-label="Aditya Lohar - Home"
         >
-          <span className="logo-bracket">&lt;</span>
-          Aditya
-          <span className="logo-bracket">/&gt;</span>
+          <Logo size={28} className="nav-logo-svg" animate={true} />
+          <span className="logo-text">ADITYA</span>
         </motion.a>
 
         <div className={`nav-links ${isOpen ? 'active' : ''}`}>

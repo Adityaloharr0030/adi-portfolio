@@ -1,10 +1,12 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import Logo from './Logo';
 import './Preloader.css';
 
 const logs = [
   "INITIALIZING KERNEL...",
   "LOADING CLOUD MODULES...",
+  "NEURAL LINK ESTABLISHED...",
   "SYNCING GITHUB TELEMETRY...",
   "ESTABLISHING SECURE PROTOCOLS...",
   "MOUNTING REACT INTERFACE...",
@@ -33,8 +35,8 @@ const Preloader = () => {
   return (
     <motion.div 
       className="preloader"
-      exit={{ opacity: 0, scale: 1.1 }}
-      transition={{ duration: 0.8, ease: "easeInOut" }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <div className="preloader-content">
         <div className="preloader-matrix"></div>
@@ -42,11 +44,12 @@ const Preloader = () => {
         
         <div className="preloader-header">
           <motion.div 
-            className="system-logo"
+            className="system-logo-container"
             animate={{ scale: [1, 1.05, 1], opacity: [0.8, 1, 0.8] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            &lt;Adi /&gt;
+            <Logo size={60} className="preloader-logo-svg" animate={true} />
+            <div className="logo-text">ADITYA</div>
           </motion.div>
           <div className="system-title">SYSTEM INITIALIZATION</div>
         </div>

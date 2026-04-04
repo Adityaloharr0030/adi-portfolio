@@ -1,129 +1,163 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { FiAward, FiExternalLink, FiImage, FiX } from 'react-icons/fi';
+import { FiAward, FiExternalLink, FiImage, FiX, FiCheckCircle } from 'react-icons/fi';
 import './Certifications.css';
 
 const Certifications = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [selectedImage, setSelectedImage] = useState(null);
+  const [activeFilter, setActiveFilter] = useState('All');
+
+  const categories = ['All', 'AI & Claude', 'Cyber Security', 'Salesforce & CRM', 'DevOps & Systems'];
 
   const certifications = [
+    {
+      title: 'Free Salesforce Training and Certification',
+      issuer: 'IntelliPaat',
+      date: 'April 4, 2026',
+      category: 'Salesforce & CRM',
+      link: 'https://intellipaat.com/academy/certificate-link/?Yz0yMjg3JnU9MzM1NjM5JmV4dD0x',
+      color: '#00a1e0',
+    },
     {
       title: 'Introduction to Cyber Security',
       issuer: 'Simplilearn SkillUp',
       date: 'March 13, 2026',
-      link: 'https://www.linkedin.com/posts/aditya-lohar-3037b32b9_excited-to-share-that-ive-successfully-completed-share-7438245657305325568-cf5-?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEx4dPMBHfL__TBUVMsouxb68u_tt5cuy6E',
+      category: 'Cyber Security',
+      link: 'https://www.linkedin.com/posts/aditya-lohar-3037b32b9_excited-to-share-that-ive-successfully-completed-share-7438245657305325568-cf5-',
+      color: '#818cf8',
     },
     {
       title: 'Claude Code in Action',
       issuer: 'Anthropic',
       date: 'March 23, 2026',
+      category: 'AI & Claude',
       link: 'https://verify.skilljar.com/c/dg5r8pnsfng7',
+      color: '#c084fc',
     },
     {
       title: 'Claude 101',
       issuer: 'Anthropic',
       date: 'March 2026',
+      category: 'AI & Claude',
       link: 'http://verify.skilljar.com/c/3gc8kxck8h74',
+      color: '#c084fc',
     },
     {
-      title: 'Introduction to Claude Cowork',
+      title: 'AI Fluency: Foundations',
       issuer: 'Anthropic',
       date: 'March 2026',
-      link: 'http://verify.skilljar.com/c/6eswzhtmfk7y', 
-    },
-    {
-      title: 'AI Fluency: Framework & Foundations',
-      issuer: 'Anthropic',
-      date: 'March 2026',
+      category: 'AI & Claude',
       link: 'http://verify.skilljar.com/c/5n9y9eoh5atx',
+      color: '#c084fc',
     },
     {
-      title: 'AI-Buildathon Participant (TECH-CARVAAN 2026)',
-      issuer: 'Government College of Engineering, Jalgaon',
-      date: 'April 2026',
-      link: 'https://www.linkedin.com/posts/aditya-lohar-3037b32b9_techcarvaan2026-aibuildathon-nationallevelfest-ugcPost-7443630684948234240-QEXq?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEx4dPMBHfL__TBUVMsouxb68u_tt5cuy6E',
-    },
-    {
-      title: 'Free DevOps Course Certification',
+      title: 'DevOps Course Certification',
       issuer: 'IntelliPaat',
       date: 'March 22, 2026',
+      category: 'DevOps & Systems',
       link: 'https://intellipaat.com/academy/certificate-link/?Yz0xNjU1JnU9MzM1NjM5JmV4dD0x',
+      color: '#38bdf8',
     },
     {
-      title: 'Free Online Artificial Intelligence (AI) Course',
+      title: 'Artificial Intelligence (AI)',
       issuer: 'IntelliPaat',
       date: 'March 23, 2026',
+      category: 'AI & Claude',
       link: 'https://intellipaat.com/academy/certificate-link/?Yz0xODI3JnU9MzM1NjM5JmV4dD0x',
+      color: '#38bdf8',
     },
     {
-      title: 'Quora System Design Course',
+      title: 'Quora System Design',
       issuer: 'Scaler Topics',
       date: 'March 24, 2026',
-      link: 'https://scaler-topics-storage-prod.s3.us-west-2.amazonaws.com/public/topics/images/certificates/180030/thumbnail.png?response-content-disposition=inline%3B%20filename%3D%22certificates-180030-thumbnail.png%22%3B%20filename%2A%3DUTF-8%27%27certificates-180030-thumbnail.png&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIDNNIRGHAQUQRWYA%2F20260329%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260329T110158Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=9c58cc13ee2a25c7f8e7abc64f596e8b67e39a5165d34809e9e2b731184a062d',
+      category: 'DevOps & Systems',
+      link: 'https://verify.skilljar.com',
+      color: '#f472b6',
     },
   ];
+
+  const filteredCerts = activeFilter === 'All' 
+    ? certifications 
+    : certifications.filter(c => c.category === activeFilter);
 
   return (
     <>
       <section id="certifications" className="certifications" ref={ref}>
+        <div className="certs-bg-glow"></div>
         <div className="container">
           <motion.div
-            className="section-header"
+            className="section-header center"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <span className="section-tag">Achievements</span>
+            <span className="section-tag glow">Verified Achievements</span>
             <h2 className="section-title">
-              My <span className="gradient-text">Certifications</span>
+              Professional <span className="gradient-text shine">Credentials</span>
             </h2>
+            
+            <div className="certs-filter-tabs">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  className={`cert-filter-btn ${activeFilter === cat ? 'active' : ''}`}
+                  onClick={() => setActiveFilter(cat)}
+                >
+                  {cat}
+                  {activeFilter === cat && <motion.div layoutId="active-cert-pill" className="active-pill" />}
+                </button>
+              ))}
+            </div>
           </motion.div>
 
-          <div className="certifications-grid">
-            {certifications.map((cert, index) => (
-              <motion.div
-                key={cert.title}
-                className="cert-card"
-                initial={{ opacity: 0, y: 50 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -10, scale: 1.02 }}
-              >
-                <div className="cert-icon">
-                  <FiAward />
-                </div>
-                <div className="cert-content">
-                  <h3 className="cert-title">{cert.title}</h3>
-                  <p className="cert-issuer">{cert.issuer}</p>
-                  <div className="cert-footer">
-                    <span className="cert-date">{cert.date}</span>
-                    
-                    {cert.link !== '#' ? (
-                      <a
-                        href={cert.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="cert-link"
-                      >
-                        View Credential <FiExternalLink />
-                      </a>
-                    ) : (
-                      <button
-                        onClick={() => setSelectedImage(cert.image)}
-                        className="cert-link"
-                        style={{ background: 'none', border: 'none', cursor: 'pointer', outline: 'none' }}
-                      >
-                        View Certificate <FiImage />
-                      </button>
-                    )}
-                    
+          <div className="certifications-grid-v2">
+            <AnimatePresence mode="popLayout">
+              {filteredCerts.map((cert, index) => (
+                <motion.div
+                  key={cert.title}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  className="cert-card-v2"
+                  style={{ '--accent-color': cert.color }}
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="cert-status-badge">
+                    <FiCheckCircle /> Verified
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                  
+                  <div className="cert-main">
+                    <div className="cert-icon-box">
+                      <FiAward />
+                    </div>
+                    <div className="cert-info">
+                      <h3 className="cert-title">{cert.title}</h3>
+                      <p className="cert-issuer">{cert.issuer}</p>
+                    </div>
+                  </div>
+
+                  <div className="cert-footer-v2">
+                    <span className="cert-date">{cert.date}</span>
+                    <motion.a
+                      href={cert.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cert-action-link"
+                      whileHover={{ x: 3 }}
+                    >
+                      Credential <FiExternalLink />
+                    </motion.a>
+                  </div>
+
+                  {/* Aesthetic corner detail */}
+                  <div className="cert-corner"></div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
         </div>
       </section>
@@ -131,26 +165,21 @@ const Certifications = () => {
       <AnimatePresence>
         {selectedImage && (
           <motion.div
-            className="cert-modal-overlay"
+            className="cert-modal-overlay-v2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImage(null)}
           >
             <motion.div
-              className="cert-modal-content"
-              initial={{ scale: 0.8, opacity: 0, y: 50 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.8, opacity: 0, y: 50 }}
+              className="cert-modal-content-v2"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <button 
-                className="cert-modal-close" 
-                onClick={() => setSelectedImage(null)}
-              >
-                <FiX />
-              </button>
-              <img src={selectedImage} alt="Certificate Viewer" className="cert-modal-image" />
+              <button className="cert-modal-close-v2" onClick={() => setSelectedImage(null)}><FiX /></button>
+              <img src={selectedImage} alt="Certificate Viewer" className="cert-modal-image-v2" />
             </motion.div>
           </motion.div>
         )}
