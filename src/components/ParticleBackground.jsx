@@ -29,50 +29,53 @@ const ParticleBackground = () => {
     const COUNT = Math.min(Math.floor((window.innerWidth * window.innerHeight) / 9000), 140);
     const COLORS = ['#818cf8', '#c084fc', '#a855f7', '#38bdf8', '#6366f1'];
 
-    class Particle {
-      constructor() { this.reset(true); }
-      reset(initial = false) {
-        this.x = Math.random() * canvas.width;
-        this.y = initial ? Math.random() * canvas.height : -10;
-        this.r = Math.random() * 2.2 + 0.4;
-        this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
-        this.vx = (Math.random() - 0.5) * 0.4;
-        this.vy = Math.random() * 0.3 + 0.05;
-        this.alpha = Math.random() * 0.6 + 0.15;
-        this.pulseOffset = Math.random() * Math.PI * 2;
-      }
-      update(t) {
-        // Mouse repulsion
-        const dx = this.x - mouse.x;
-        const dy = this.y - (mouse.y);
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120) {
-          const force = (120 - dist) / 120;
-          this.x += dx / dist * force * 1.5;
-          this.y += dy / dist * force * 1.5;
+    const createParticle = () => {
+      const p = {
+        reset: (initial = false) => {
+          p.x = Math.random() * canvas.width;
+          p.y = initial ? Math.random() * canvas.height : -10;
+          p.r = Math.random() * 2.2 + 0.4;
+          p.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+          p.vx = (Math.random() - 0.5) * 0.4;
+          p.vy = Math.random() * 0.3 + 0.05;
+          p.alpha = Math.random() * 0.6 + 0.15;
+          p.pulseOffset = Math.random() * Math.PI * 2;
+        },
+        update: (t) => {
+          // Mouse repulsion
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            const force = (120 - dist) / 120;
+            p.x += dx / dist * force * 1.5;
+            p.y += dy / dist * force * 1.5;
+          }
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.y > canvas.height + 10) p.reset();
+          if (p.x < 0) p.x = canvas.width;
+          if (p.x > canvas.width) p.x = 0;
+          p.currentAlpha = p.alpha * (0.7 + 0.3 * Math.sin(t * 0.001 + p.pulseOffset));
+        },
+        draw: () => {
+          ctx.save();
+          ctx.globalAlpha = p.currentAlpha;
+          ctx.beginPath();
+          const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 3);
+          grd.addColorStop(0, p.color);
+          grd.addColorStop(1, 'transparent');
+          ctx.fillStyle = grd;
+          ctx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
         }
-        this.x += this.vx;
-        this.y += this.vy;
-        if (this.y > canvas.height + 10) this.reset();
-        if (this.x < 0) this.x = canvas.width;
-        if (this.x > canvas.width) this.x = 0;
-        this.currentAlpha = this.alpha * (0.7 + 0.3 * Math.sin(t * 0.001 + this.pulseOffset));
-      }
-      draw() {
-        ctx.save();
-        ctx.globalAlpha = this.currentAlpha;
-        ctx.beginPath();
-        const grd = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.r * 3);
-        grd.addColorStop(0, this.color);
-        grd.addColorStop(1, 'transparent');
-        ctx.fillStyle = grd;
-        ctx.arc(this.x, this.y, this.r * 3, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-      }
-    }
+      };
+      p.reset(true);
+      return p;
+    };
 
-    const particles = Array.from({ length: COUNT }, () => new Particle());
+    const particles = Array.from({ length: COUNT }, createParticle);
 
     const drawConnections = () => {
       const maxDist = 160;

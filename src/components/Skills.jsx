@@ -8,6 +8,7 @@ import {
   SiMysql, SiPostgresql, SiMongodb, SiSalesforce,
   SiSpringboot, SiNextdotjs, SiExpress
 } from 'react-icons/si';
+import SpotlightCard from './SpotlightCard';
 import './Skills.css';
 
 // ── Animated radial ring ─────────────────────────────────────────────────────
@@ -160,17 +161,17 @@ const Skills = () => {
           {skillCategories.map((cat, ci) => (
             <motion.div
               key={cat.title}
-              className="skill-category"
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: ci * 0.12 }}
               style={{ '--cat-color': cat.color }}
             >
-              <div className="category-header">
-                <span className="category-icon">{cat.icon}</span>
-                <h3>{cat.title}</h3>
-                <div className="cat-glow-bar" style={{ background: cat.color }} />
-              </div>
+              <SpotlightCard className="skill-category glass-panel pointer-events-auto">
+                <div className="category-header">
+                  <span className="category-icon">{cat.icon}</span>
+                  <h3>{cat.title}</h3>
+                  <div className="cat-glow-bar" style={{ background: cat.color }} />
+                </div>
 
               <div className="skills-ring-grid">
                 {cat.skills.map((skill, si) => (
@@ -187,6 +188,7 @@ const Skills = () => {
                   </motion.div>
                 ))}
               </div>
+              </SpotlightCard>
             </motion.div>
           ))}
         </div>

@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { FiBriefcase, FiCalendar, FiMapPin } from 'react-icons/fi';
+import SpotlightCard from './SpotlightCard';
 import './Experience.css';
 
 const Experience = () => {
@@ -63,7 +64,7 @@ const Experience = () => {
                 className="timeline-marker"
                 whileHover={{ scale: 1.2 }}
               />
-              <div className={`timeline-content ${exp.current ? 'current' : ''}`}>
+              <SpotlightCard className={`timeline-content glass-panel ${exp.current ? 'current' : ''}`}>
                 <div className="timeline-header">
                   <div>
                     <h3>{exp.title}</h3>
@@ -94,7 +95,7 @@ const Experience = () => {
                     <li key={i}>{item}</li>
                   ))}
                 </ul>
-              </div>
+              </SpotlightCard>
             </motion.div>
           ))}
         </div>

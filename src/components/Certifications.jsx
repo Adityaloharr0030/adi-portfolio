@@ -1,6 +1,7 @@
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { FiAward, FiExternalLink, FiImage, FiX, FiCheckCircle } from 'react-icons/fi';
+import MagneticButton from './MagneticButton';
 import './Certifications.css';
 
 const Certifications = () => {
@@ -122,7 +123,7 @@ const Certifications = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="cert-card-v2"
+                  className="cert-card-v2 glass-panel"
                   style={{ '--accent-color': cert.color }}
                   whileHover={{ y: -5 }}
                 >
@@ -142,15 +143,17 @@ const Certifications = () => {
 
                   <div className="cert-footer-v2">
                     <span className="cert-date">{cert.date}</span>
-                    <motion.a
-                      href={cert.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="cert-action-link"
-                      whileHover={{ x: 3 }}
-                    >
-                      Credential <FiExternalLink />
-                    </motion.a>
+                    <MagneticButton>
+                      <motion.a
+                        href={cert.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="cert-action-link"
+                        whileHover={{ x: 3, scale: 1.05 }}
+                      >
+                        Credential <FiExternalLink />
+                      </motion.a>
+                    </MagneticButton>
                   </div>
 
                   {/* Aesthetic corner detail */}

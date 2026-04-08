@@ -1,6 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import { FiUser, FiBook, FiAward, FiCpu, FiGlobe, FiZap } from 'react-icons/fi';
+import SpotlightCard from './SpotlightCard';
 import './About.css';
 
 // ── Animated counter hook ────────────────────────────────────────────────────
@@ -27,19 +28,19 @@ const StatCard = ({ icon: Icon, value, label, color, delay, inView }) => {
   const count = useCounter(value, inView);
   return (
     <motion.div
-      className="stat-card neon-card"
-      style={{ '--neon-color': color }}
       initial={{ opacity: 0, y: 30, scale: 0.9 }}
       animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{ duration: 0.6, delay }}
       whileHover={{ scale: 1.06, y: -6 }}
     >
+      <SpotlightCard className="stat-card neon-card glass-panel" style={{ '--neon-color': color }}>
       <div className="stat-icon-wrap" style={{ background: `${color}18`, borderColor: `${color}33` }}>
         <Icon style={{ color }} size={22} />
       </div>
       <span className="stat-value" style={{ color }}>{count}</span>
       <span className="stat-label">{label}</span>
       <div className="stat-glow" style={{ background: `radial-gradient(circle, ${color}20, transparent 70%)` }} />
+      </SpotlightCard>
     </motion.div>
   );
 };

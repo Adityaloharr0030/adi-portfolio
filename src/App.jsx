@@ -5,7 +5,8 @@ import Hero from './components/Hero';
 import CustomCursor from './components/CustomCursor';
 import ThemeToggle from './components/ThemeToggle';
 import Preloader from './components/Preloader';
-import ParticleBackground from './components/ParticleBackground';
+import WebGLBackground from './components/WebGLBackground';
+import AnimatedBackground from './components/AnimatedBackground';
 import './App.css';
 import './components/CustomCursor.css';
 
@@ -74,7 +75,8 @@ function App() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <ParticleBackground />
+        <AnimatedBackground />
+        <WebGLBackground />
         <ThemeToggle />
         <CustomCursor />
         <motion.div className="progress-bar" style={{ scaleX }} />

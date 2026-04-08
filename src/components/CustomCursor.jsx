@@ -5,20 +5,18 @@ import './CustomCursor.css';
 const CustomCursor = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const [isTouchDevice] = useState(() => 
+    typeof window !== 'undefined' ? ('ontouchstart' in window || navigator.maxTouchPoints > 0) : false
+  );
 
   // Smooth spring motion for the cursor
   const mouseX = useSpring(0, { stiffness: 500, damping: 28 });
   const mouseY = useSpring(0, { stiffness: 500, damping: 28 });
 
   useEffect(() => {
-    // Detect touch devices and disable custom cursor
-    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    setIsTouchDevice(isTouch);
-
-    // Also respect reduced motion preference
+    // Respect reduced motion preference
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (isTouch || prefersReducedMotion) return;
+    if (isTouchDevice || prefersReducedMotion) return;
 
     const handleMouseMove = (e) => {
       mouseX.set(e.clientX);
@@ -54,7 +52,7 @@ const CustomCursor = () => {
       window.removeEventListener('mouseleave', handleMouseLeave);
       window.removeEventListener('mouseenter', handleMouseEnter);
     };
-  }, [mouseX, mouseY, isVisible]);
+  }, [mouseX, mouseY, isVisible, isTouchDevice]);
 
   // Don't render on touch devices or reduced motion
   if (isTouchDevice) return null;

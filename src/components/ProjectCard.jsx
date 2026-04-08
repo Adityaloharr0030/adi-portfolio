@@ -1,6 +1,7 @@
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { FiExternalLink, FiGithub } from 'react-icons/fi';
+import MagneticButton from './MagneticButton';
 import './Projects.css';
 
 const ProjectCard = ({ project }) => {
@@ -45,7 +46,7 @@ const ProjectCard = ({ project }) => {
   return (
     <motion.div
       ref={cardRef}
-      className={`project-card-v2 ${project.featured ? 'featured' : ''}`}
+      className={`project-card-v2 glass-panel ${project.featured ? 'featured' : ''}`}
       style={{
         rotateX,
         rotateY,
@@ -56,6 +57,8 @@ const ProjectCard = ({ project }) => {
       onMouseLeave={handleMouseLeave}
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
     >
       {/* Dynamic Neon Glow Overlay */}
@@ -87,8 +90,9 @@ const ProjectCard = ({ project }) => {
           {project.tech.map((t, i) => (
             <motion.span 
               key={i} 
-              className="tech-item"
+              className="tech-item glass-panel"
               whileHover={{ y: -3, scale: 1.05 }}
+              style={{ background: 'rgba(255,255,255,0.03)' }}
             >
               {t.icon && <t.icon className="t-icon" />}
               {t.name}
@@ -106,24 +110,28 @@ const ProjectCard = ({ project }) => {
         </div>
 
         <div className="card-actions">
-          <motion.a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="action-btn"
-            whileHover={{ y: -2, backgroundColor: 'rgba(129, 140, 248, 0.1)' }}
-          >
-            <FiGithub /> Code
-          </motion.a>
-          <motion.a
-            href={project.demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="action-btn primary"
-            whileHover={{ y: -2, scale: 1.02 }}
-          >
-            <FiExternalLink /> Live Demo
-          </motion.a>
+          <MagneticButton>
+            <motion.a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="action-btn glass-panel"
+              whileHover={{ y: -2, backgroundColor: 'rgba(129, 140, 248, 0.1)' }}
+            >
+              <FiGithub /> Code
+            </motion.a>
+          </MagneticButton>
+          <MagneticButton>
+            <motion.a
+              href={project.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="action-btn primary"
+              whileHover={{ y: -2, scale: 1.02, boxShadow: '0 0 20px rgba(129, 140, 248, 0.4)' }}
+            >
+              <FiExternalLink /> Live Demo
+            </motion.a>
+          </MagneticButton>
         </div>
       </div>
     </motion.div>
