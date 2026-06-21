@@ -313,9 +313,24 @@
 }
 
 @media (max-width: 768px) {
-  .projects { padding: 4rem 1.5rem; }
-  .section-title h2 { font-size: 2.25rem; }
+  .projects { padding: 4rem 1.25rem; }
+  .section-title h2 { font-size: 2rem; }
   .projects-grid-v2 { grid-template-columns: 1fr; }
   /* Disable 3D tilt on mobile for performance and better UX */
-  .project-card-v2 { transform: none !important; }
+  .project-card-v2 { transform: none !important; padding: 1.75rem; }
+  .filter-wrapper { gap: 0.5rem; margin-bottom: 2.5rem; }
+  .filter-btn { padding: 0.6rem 1rem; font-size: 0.82rem; }
+  .project-name { font-size: 1.35rem; }
+  .project-desc { font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .card-actions { flex-direction: column; gap: 0.75rem; }
 }
+
+@media (max-width: 480px) {
+  .projects { padding: 3rem 1rem; }
+  .section-title h2 { font-size: 1.75rem; }
+  .project-card-v2 { padding: 1.25rem; border-radius: 16px; }
+  .project-icon-wrapper { width: 48px; height: 48px; font-size: 1.75rem; }
+  .project-metrics { grid-template-columns: repeat(3, 1fr); gap: 0.25rem; }
+  .m-val { font-size: 1rem; }
+}
+

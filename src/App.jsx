@@ -1,26 +1,13 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
-import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import CustomCursor from './components/CustomCursor';
-import ThemeToggle from './components/ThemeToggle';
+import { Routes, Route } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import Preloader from './components/Preloader';
-import WebGLBackground from './components/WebGLBackground';
-import AnimatedBackground from './components/AnimatedBackground';
 import './App.css';
-import './components/CustomCursor.css';
 
-// Lazy load components below the fold
-const About = lazy(() => import('./components/About'));
-const Skills = lazy(() => import('./components/Skills'));
-const Projects = lazy(() => import('./components/Projects'));
-const GitHubStats = lazy(() => import('./components/GitHubStats'));
-const CloudCodeExplorer = lazy(() => import('./components/CloudCodeExplorer'));
-const Certifications = lazy(() => import('./components/Certifications'));
-const Experience = lazy(() => import('./components/Experience'));
-const Contact = lazy(() => import('./components/Contact'));
-const Footer = lazy(() => import('./components/Footer'));
-const SystemMonitor = lazy(() => import('./components/SystemMonitor'));
+// Lazy load pages
+const LandingPage = lazy(() => import('./pages/LandingPage'));
+const ClassicPortfolio = lazy(() => import('./pages/ClassicPortfolio'));
+const GameMode = lazy(() => import('./game/GameCanvas'));
 
 // Loading fallback component
 const LoadingFallback = () => (
@@ -31,17 +18,9 @@ const LoadingFallback = () => (
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
 
   useEffect(() => {
-    // Synchronize the technical boot sequence with actual page readiness
     const handleLoad = () => {
-      // Ensure the 'wow' animation plays for at least 1.8s even on fast connections
       setTimeout(() => {
         setIsLoading(false);
       }, 1800);
@@ -51,7 +30,6 @@ function App() {
       handleLoad();
     } else {
       window.addEventListener('load', handleLoad);
-      // Safety timeout for slower connections to ensure the preloader doesn't hang
       const safetyTimer = setTimeout(() => {
         setIsLoading(false);
       }, 4500);
@@ -69,37 +47,15 @@ function App() {
         {isLoading && <Preloader key="preloader" />}
       </AnimatePresence>
 
-      <motion.div
-        className="app"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <AnimatedBackground />
-        <WebGLBackground />
-        <ThemeToggle />
-        <CustomCursor />
-        <motion.div className="progress-bar" style={{ scaleX }} />
-
-        <Navbar />
-        <main>
-          <Hero />
-          <Suspense fallback={<LoadingFallback />}>
-            <About />
-            <Skills />
-            <Projects />
-            <GitHubStats />
-            <CloudCodeExplorer />
-            <Certifications />
-            <Experience />
-            <Contact />
-          </Suspense>
-        </main>
+      {!isLoading && (
         <Suspense fallback={<LoadingFallback />}>
-          <Footer />
-          <SystemMonitor />
+          <Routes>
+            <Route path="/" element={<ClassicPortfolio />} />
+            <Route path="/classic" element={<ClassicPortfolio />} />
+            <Route path="/game" element={<GameMode />} />
+          </Routes>
         </Suspense>
-      </motion.div>
+      )}
     </>
   );
 }

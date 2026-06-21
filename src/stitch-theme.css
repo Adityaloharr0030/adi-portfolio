@@ -156,7 +156,7 @@ h1, h2, h3, h4, h5, h6,
    ========================================================================== */
 
 /* Universal Card & Surface treatment */
-.card, [class*="card"], article, aside, .surface {
+.card, article, aside, .surface {
   background-color: var(--bg-card) !important;
   border: 1px solid var(--border) !important;
   border-radius: var(--radius-md) !important;
@@ -170,7 +170,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* 4. MOTION - Hover states for cards */
-.card:hover, [class*="card"]:hover, a.surface:hover {
+.card:hover, a.surface:hover {
   box-shadow: var(--shadow-md) !important;
   border-color: var(--border-light) !important;
 }
@@ -183,7 +183,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* Navbars / Floating Headers with glassmorphism */
-header, nav, .navbar, [class*="nav"] {
+header, nav.navbar {
   background: var(--bg-card) !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
@@ -419,16 +419,17 @@ input:focus, textarea:focus, select:focus {
    ========================================================================== */
 
 @media (max-width: 768px) {
+  /* Prevent horizontal scrollbar on mobile from any rogue element */
+  html, body { overflow-x: hidden !important; }
+
   /* Fluidly scale down typography & shadows for smaller viewports */
-  .card, [class*="card"], article, aside, .surface, .skill-category, .stats-card-wrapper, .info-card, .contact-form, .timeline-content, .stat-card {
+  .card, article, aside, .surface, .skill-category, .stats-card-wrapper, .info-card, .contact-form, .timeline-content, .stat-card {
     border-radius: var(--radius-sm) !important;
-    padding: var(--space-2) !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
   }
   
   .code-window {
     border-radius: var(--radius-sm) !important;
-    padding: var(--space-1) !important;
   }
   
   .section-title {
@@ -436,12 +437,12 @@ input:focus, textarea:focus, select:focus {
   }
   
   /* Restrict hover lift height so taps on mobile don't unexpectedly jump out of bounds */
-  .card:hover, [class*="card"]:hover, .skill-category:hover, .stats-card-wrapper:hover, .info-card:hover, .timeline-content:hover, .stat-card:hover {
+  .card:hover, .skill-category:hover, .stats-card-wrapper:hover, .info-card:hover, .timeline-content:hover, .stat-card:hover {
     transform: translateY(-2px) !important;
   }
   
   .project-card:hover {
-    transform: translateY(-4px) !important; 
+    transform: translateY(-2px) !important; 
     box-shadow: 0 8px 20px rgba(129, 140, 248, 0.15) !important;
   }
 }

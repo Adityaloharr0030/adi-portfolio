@@ -226,6 +226,14 @@
 
 @media (max-width: 600px) {
   .preloader-content {
-    min-height: 300px;
+    min-height: 280px;
+    padding: 1.5rem;
   }
+  .system-logo-container .logo-text {
+    font-size: 1.6rem;
+  }
+  .system-logo-container { gap: 1rem; }
+  .log-line { font-size: 0.72rem; }
+  .preloader-header { padding-bottom: 0.75rem; margin-bottom: 1rem; }
 }
+

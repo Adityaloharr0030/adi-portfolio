@@ -259,8 +259,19 @@
 }
 
 @media (max-width: 900px) {
-  .contact-content { grid-template-columns: 1fr; gap: 3rem; }
-  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .contact { padding: 5rem 1.25rem; }
+  .contact-content { grid-template-columns: 1fr; gap: 2.5rem; margin-top: 3rem; }
+  .form-row { grid-template-columns: 1fr; gap: 1rem; }
   .contact-info-panel { order: 2; }
-  .contact-glass-form { order: 1; padding: 2rem; }
+  .contact-glass-form { order: 1; padding: 1.75rem; border-radius: 20px; }
 }
+
+@media (max-width: 480px) {
+  .contact { padding: 3rem 1rem; }
+  .contact-glass-form { padding: 1.25rem; border-radius: 16px; }
+  .social-cyber-grid { grid-template-columns: 1fr; }
+  .cyber-submit { padding: 1rem; border-radius: 12px; }
+  .info-card-primary { padding: 1.25rem; }
+  .input-wrapper input, .input-wrapper textarea { padding: 0.85rem 1rem; font-size: 0.9rem; }
+}
+

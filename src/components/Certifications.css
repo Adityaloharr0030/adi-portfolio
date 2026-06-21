@@ -195,7 +195,19 @@
 }
 
 @media (max-width: 768px) {
-  .certifications { padding: 4rem 1.5rem; }
+  .certifications { padding: 4rem 1.25rem; }
   .certifications-grid-v2 { grid-template-columns: 1fr; }
   .cert-title { font-size: 1.1rem; }
+  .cert-card-v2 { padding: 1.75rem; }
+  .certs-filter-tabs { gap: 0.5rem; margin: 2rem 0; }
+  .cert-filter-btn { padding: 0.5rem 1rem; font-size: 0.8rem; }
+  .cert-main { gap: 1rem; }
+  .cert-icon-box { width: 44px; height: 44px; font-size: 1.3rem; }
 }
+
+@media (max-width: 480px) {
+  .certifications { padding: 3rem 1rem; }
+  .cert-card-v2 { padding: 1.25rem; border-radius: 14px; }
+  .cert-footer-v2 { flex-direction: column; gap: 0.75rem; align-items: flex-start; }
+}
+

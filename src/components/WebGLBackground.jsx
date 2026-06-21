@@ -54,12 +54,18 @@ const ParticleRing = () => {
 
   // Generate random points in a ring
   const particlesPosition = useMemo(() => {
+    let seed = 42;
+    const rand = () => {
+      seed = (seed * 16807) % 2147483647;
+      return (seed - 1) / 2147483646;
+    };
+
     const positions = new Float32Array(4000 * 3);
     for (let i = 0; i < 4000; i++) {
-      const radius = 6 + Math.random() * 5;
-      const theta = Math.random() * 2 * Math.PI;
+      const radius = 6 + rand() * 5;
+      const theta = rand() * 2 * Math.PI;
       const x = radius * Math.cos(theta);
-      const y = (Math.random() - 0.5) * 4;
+      const y = (rand() - 0.5) * 4;
       const z = radius * Math.sin(theta);
       
       positions.set([x, y, z], i * 3);
@@ -99,8 +105,10 @@ const ParticleRing = () => {
 const WebGLBackground = () => {
   // Respect user accessibility parameters to prevent nausea for users with vestibular disorders
   const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Disable heavy 3D on mobile for performance — CSS aurora gradients provide the backdrop
+  const isMobile = window.innerWidth <= 768 || ('ontouchstart' in window && window.innerWidth <= 1024);
 
-  if (prefersReducedMotion) {
+  if (prefersReducedMotion || isMobile) {
     return null;
   }
 

@@ -23,9 +23,10 @@ body {
 }
 
 #root {
-  min-width: 100%;
+  width: 100%;
   min-height: 100vh;
   position: relative;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -168,7 +169,13 @@ body::before {
 /* ── Responsive ─────────────────────────────────────── */
 @media (max-width: 768px) {
   .section-title { font-size: 2rem; }
-  .container { padding: 0 1.5rem; }
+  .container { padding: 0 1.25rem; }
+}
+
+@media (max-width: 480px) {
+  .section-title { font-size: 1.65rem; }
+  .container { padding: 0 1rem; }
+  .section-header { margin-bottom: 2.5rem; }
 }
 
 /* ── Reduced Motion ─────────────────────────────────── */

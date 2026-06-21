@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowDown, FiCode, FiTerminal, FiZap } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 import './Hero.css';
 
 // ── Typewriter hook ──────────────────────────────────────────────────────────
@@ -193,6 +194,7 @@ const OrbCanvas = () => {
 
 // ── Hero Component ───────────────────────────────────────────────────────────
 const Hero = () => {
+  const navigate = useNavigate();
   const roles = ['Full-Stack Developer', 'Java Engineer', 'Salesforce Developer', 'Problem Solver'];
   const typed = useTypewriter(roles);
   // Matrix rain background logic removed in favor of CSS Perspective Grid
@@ -301,6 +303,9 @@ const Hero = () => {
               <span>View Projects</span>
               <span className="btn-glow" />
             </motion.a>
+
+
+
             <motion.a
               href="./resume.pdf"
               target="_blank"

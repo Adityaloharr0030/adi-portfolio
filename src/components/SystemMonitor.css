@@ -290,5 +290,18 @@
 @media (max-width: 600px) {
   .monitor-grid { grid-template-columns: 1fr; }
   .stats-dashboard { flex-direction: column; gap: 1rem; }
-  .system-monitor-window { border-radius: 0; border: none; }
+  .system-monitor-window { border-radius: 0; border: none; max-height: 90vh; overflow-y: auto; }
+  .window-body { padding: 1.25rem; }
+  .system-monitor-overlay { padding: 0; align-items: flex-end; }
 }
+
+@media (max-width: 768px) {
+  .system-monitor-toggle-wrap {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+  }
+}
+
