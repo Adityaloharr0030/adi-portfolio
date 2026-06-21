@@ -1,7 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import { FiUser, FiBook, FiAward, FiCpu, FiGlobe, FiZap } from 'react-icons/fi';
-import SpotlightCard from './SpotlightCard';
+import SpotlightCard from '../../../../Sections/Projects/SpotlightCard';
 import './About.css';
 
 // ── Animated counter hook ────────────────────────────────────────────────────

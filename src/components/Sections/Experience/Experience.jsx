@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { FiBriefcase, FiCalendar, FiMapPin } from 'react-icons/fi';
-import SpotlightCard from './SpotlightCard';
+import SpotlightCard from '../../../../Sections/Projects/SpotlightCard';
 import './Experience.css';
 
 const Experience = () => {

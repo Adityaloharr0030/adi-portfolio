@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import Logo from './Logo';
+import Logo from '../../../../UI/Logo/Logo';
 import './Preloader.css';
 
 const logs = [

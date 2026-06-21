@@ -1,7 +1,7 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import Preloader from './components/Preloader';
+import Preloader from './components/UI/Preloader/Preloader';
 import './App.css';
 
 // Lazy load pages

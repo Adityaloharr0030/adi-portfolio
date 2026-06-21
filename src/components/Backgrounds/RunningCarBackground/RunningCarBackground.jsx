@@ -9,17 +9,17 @@
 import { Suspense, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { AdaptiveDpr, AdaptiveEvents, Preload } from '@react-three/drei';
-import Environment from '../game/world/Environment';
-import RoadSystem from '../game/world/RoadSystem';
-import Buildings from '../game/world/Buildings';
-import Vehicle from '../game/vehicle/Vehicle';
-import ScrollVehicleController from '../game/vehicle/ScrollVehicleController';
-import ChaseCamera from '../game/camera/ChaseCamera';
-import AboutZone from '../game/zones/AboutZone';
-import ProjectsZone from '../game/zones/ProjectsZone';
-import SkillsZone from '../game/zones/SkillsZone';
-import CertificationsZone from '../game/zones/CertificationsZone';
-import ContactZone from '../game/zones/ContactZone';
+import Environment from '../../../game/world/Environment';
+import RoadSystem from '../../../game/world/RoadSystem';
+import Buildings from '../../../game/world/Buildings';
+import Vehicle from '../../../game/vehicle/Vehicle';
+import ScrollVehicleController from '../../../game/vehicle/ScrollVehicleController';
+import ChaseCamera from '../../../game/camera/ChaseCamera';
+import AboutZone from '../../../game/zones/AboutZone';
+import ProjectsZone from '../../../game/zones/ProjectsZone';
+import SkillsZone from '../../../game/zones/SkillsZone';
+import CertificationsZone from '../../../game/zones/CertificationsZone';
+import ContactZone from '../../../game/zones/ContactZone';
 import './WebGLBackground.css'; // Reuses fixed background styling
 
 const RunningCarBackground = () => {

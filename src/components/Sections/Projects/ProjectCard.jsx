@@ -1,7 +1,7 @@
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { FiExternalLink, FiGithub } from 'react-icons/fi';
-import MagneticButton from './MagneticButton';
+import MagneticButton from '../../../../UI/MagneticButton/MagneticButton';
 import './Projects.css';
 
 const ProjectCard = ({ project }) => {

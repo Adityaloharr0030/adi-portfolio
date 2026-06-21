@@ -3,8 +3,8 @@ import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { FiMail, FiUser, FiMessageSquare, FiSend, FiGithub, FiLinkedin, FiArrowRight } from 'react-icons/fi';
 import emailjs from '@emailjs/browser';
-import Toast from './Toast';
-import ContactOrb from './ContactOrb';
+import Toast from '../../../../UI/Toast/Toast';
+import ContactOrb from '../../../../Sections/Hero/ContactOrb';
 import './Contact.css';
 
 const Contact = () => {

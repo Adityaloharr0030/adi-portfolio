@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { FiHeart, FiCoffee, FiChevronUp } from 'react-icons/fi';
-import Logo from './Logo';
+import Logo from '../../../../UI/Logo/Logo';
 import './Footer.css';
 
 const Footer = () => {

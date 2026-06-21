@@ -1,25 +1,25 @@
 import { lazy, Suspense } from 'react';
 import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
-import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
-import CustomCursor from '../components/CustomCursor';
-import ThemeToggle from '../components/ThemeToggle';
-import RunningCarBackground from '../components/RunningCarBackground';
-import AnimatedBackground from '../components/AnimatedBackground';
+import Navbar from '../components/Layout/Navbar/Navbar';
+import Hero from '../components/Sections/Hero/Hero';
+import CustomCursor from '../components/UI/CustomCursor/CustomCursor';
+import ThemeToggle from '../components/UI/ThemeToggle/ThemeToggle';
+import RunningCarBackground from '../components/Backgrounds/RunningCarBackground/RunningCarBackground';
+import AnimatedBackground from '../components/Backgrounds/AnimatedBackground/AnimatedBackground';
 import '../App.css';
-import '../components/CustomCursor.css';
+import '../components/UI/CustomCursor/CustomCursor.css';
 
 // Lazy load components below the fold
-const About = lazy(() => import('../components/About'));
-const Skills = lazy(() => import('../components/Skills'));
-const Projects = lazy(() => import('../components/Projects'));
-const GitHubStats = lazy(() => import('../components/GitHubStats'));
-const CloudCodeExplorer = lazy(() => import('../components/CloudCodeExplorer'));
-const Certifications = lazy(() => import('../components/Certifications'));
-const Experience = lazy(() => import('../components/Experience'));
-const Contact = lazy(() => import('../components/Contact'));
-const Footer = lazy(() => import('../components/Footer'));
-const SystemMonitor = lazy(() => import('../components/SystemMonitor'));
+const About = lazy(() => import('../components/Sections/About/About'));
+const Skills = lazy(() => import('../components/Sections/Skills/Skills'));
+const Projects = lazy(() => import('../components/Sections/Projects/Projects'));
+const GitHubStats = lazy(() => import('../components/Sections/GitHubStats/GitHubStats'));
+const CloudCodeExplorer = lazy(() => import('../components/Sections/CloudCodeExplorer/CloudCodeExplorer'));
+const Certifications = lazy(() => import('../components/Sections/Certifications/Certifications'));
+const Experience = lazy(() => import('../components/Sections/Experience/Experience'));
+const Contact = lazy(() => import('../components/Sections/Contact/Contact'));
+const Footer = lazy(() => import('../components/Layout/Footer/Footer'));
+const SystemMonitor = lazy(() => import('../components/System/SystemMonitor/SystemMonitor'));
 
 const LoadingFallback = () => (
   <div className="loading-fallback">
