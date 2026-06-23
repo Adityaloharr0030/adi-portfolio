@@ -3,8 +3,8 @@
 ══════════════════════════════════════════════════════ */
 
 .github-stats {
-  padding: 10rem 2rem;
-  background: var(--bg-primary);
+  padding: 8rem 2rem;
+  background: transparent;
   position: relative;
   overflow: hidden;
 }

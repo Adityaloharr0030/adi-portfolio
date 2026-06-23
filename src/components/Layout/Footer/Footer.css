@@ -3,10 +3,11 @@
 ══════════════════════════════════════════════════════ */
 
 .footer {
-  padding: 4rem 2rem 6rem;
-  background: var(--bg-primary);
+  padding: 4rem 2rem 2rem;
+  background: transparent;
   position: relative;
-  border-top: 1px solid rgba(129, 140, 248, 0.05);
+  border-top: 1px solid rgba(129, 140, 248, 0.1);
+  overflow: hidden;
 }
 
 .footer-glow-line {
