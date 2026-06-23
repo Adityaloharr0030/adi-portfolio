@@ -42,12 +42,18 @@ const Billboard = ({ position, color }) => (
   </group>
 );
 
-/* ── Simple Building (single mesh, no windows) ────────────────────────────── */
+/* ── Cyberpunk Building (wireframe overlay, high perf) ───────────────────────── */
 const SimpleBuilding = ({ position, width, height, depth, color }) => (
   <group position={position}>
+    {/* Core dark glass structure */}
     <mesh position={[0, height / 2, 0]}>
       <boxGeometry args={[width, height, depth]} />
-      <meshStandardMaterial color="#080814" roughness={0.8} metalness={0.2} />
+      <meshBasicMaterial color="#05050a" />
+    </mesh>
+    {/* High-tech glowing edges (wireframe) */}
+    <mesh position={[0, height / 2, 0]}>
+      <boxGeometry args={[width + 0.05, height + 0.05, depth + 0.05]} />
+      <meshBasicMaterial color={color} wireframe transparent opacity={0.25} />
     </mesh>
     {/* Accent crown ring */}
     <mesh position={[0, height + 0.1, 0]}>

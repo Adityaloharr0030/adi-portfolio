@@ -9,7 +9,7 @@
   /* 2. COLOR SYSTEM - Material 3 / Stitch Style Tonal Palette Overrides */
   --bg-primary: #0d0f12 !important;    /* Deep tinted neutral */
   --bg-secondary: #14171c !important;       /* Elevated surface tone */
-  --bg-card: rgba(20, 23, 28, 0.7) !important; /* Higher elevation surface */
+  --bg-card: rgba(20, 23, 28, 0.4) !important; /* Higher elevation surface with frosted glass */
 
   --text-primary: #f8fafc !important; /* Crisp text */
   --text-secondary: #e2e8f0 !important;    /* Slightly softened text for surfaces */

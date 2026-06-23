@@ -116,17 +116,18 @@
 /* ── Project Card V2 ─────────────────────────────────── */
 .project-card-v2 {
   position: relative;
-  background: rgba(15, 17, 26, 0.85);
-  border: 1px solid rgba(129, 140, 248, 0.15);
+  background: rgba(15, 17, 26, 0.45);
+  border: 1px solid rgba(129, 140, 248, 0.25);
   border-radius: 24px;
   padding: 2.5rem;
   height: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 .project-card-v2.featured {
