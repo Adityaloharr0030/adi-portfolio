@@ -20,7 +20,7 @@ import ProjectsZone from '../../../game/zones/ProjectsZone';
 import SkillsZone from '../../../game/zones/SkillsZone';
 import CertificationsZone from '../../../game/zones/CertificationsZone';
 import ContactZone from '../../../game/zones/ContactZone';
-import './WebGLBackground.css'; // Reuses fixed background styling
+import '../WebGLBackground/WebGLBackground.css'; // Reuses fixed background styling
 
 const RunningCarBackground = () => {
   const vehicleRef = useRef({ position: [50, 0, 0], rotation: 0, speed: 0 });
