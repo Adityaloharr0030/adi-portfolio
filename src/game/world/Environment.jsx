@@ -2,7 +2,8 @@
 /**
  * Environment.jsx
  * ───────────────
- * Neon-cyber environment: gradient sky, volumetric fog, grid ground, ambient lighting.
+ * Lightweight neon-cyber environment: gradient sky, grid ground, ambient lighting.
+ * Optimized — removed heavy shadow maps, reduced light count and star particles.
  */
 import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
@@ -40,15 +41,11 @@ const NeonGrid = () => {
         float line = min(grid.x, grid.y);
         float gridLine = 1.0 - min(line, 1.0);
 
-        // Fade with distance from center
         float dist = length(vWorldPos.xz) / 120.0;
         float fade = 1.0 - smoothstep(0.3, 1.0, dist);
 
-        // Pulse animation
-        float pulse = sin(uTime * 0.5 + dist * 3.0) * 0.15 + 0.85;
-
         vec3 color = mix(uColor1, uColor2, sin(vWorldPos.x * 0.02 + uTime * 0.3) * 0.5 + 0.5);
-        float alpha = gridLine * fade * pulse * 0.35;
+        float alpha = gridLine * fade * 0.3;
 
         gl_FragColor = vec4(color, alpha);
       }
@@ -76,9 +73,9 @@ const NeonGrid = () => {
 
 /* ── Ground plane (solid dark) ────────────────────────────────────────────── */
 const Ground = () => (
-  <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.05, 0]} receiveShadow>
+  <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.05, 0]}>
     <planeGeometry args={[400, 400]} />
-    <meshStandardMaterial color="#080812" roughness={0.95} metalness={0.1} />
+    <meshBasicMaterial color="#080812" />
   </mesh>
 );
 
@@ -118,7 +115,7 @@ const SkyDome = () => {
 
   return (
     <mesh>
-      <sphereGeometry args={[200, 32, 32]} />
+      <sphereGeometry args={[200, 16, 16]} />
       <shaderMaterial {...skyShader} side={THREE.BackSide} depthWrite={false} />
     </mesh>
   );
@@ -127,21 +124,22 @@ const SkyDome = () => {
 /* ── Floating stars / particles ───────────────────────────────────────────── */
 const Stars = () => {
   const pointsRef = useRef();
+  const STAR_COUNT = 600;
+
   const positions = useMemo(() => {
-    // Pure seeded pseudo-random generator to satisfy react-hooks/purity
     let seed = 42;
     const rand = () => {
       seed = (seed * 16807) % 2147483647;
       return (seed - 1) / 2147483646;
     };
 
-    const pos = new Float32Array(2000 * 3);
-    for (let i = 0; i < 2000; i++) {
+    const pos = new Float32Array(STAR_COUNT * 3);
+    for (let i = 0; i < STAR_COUNT; i++) {
       const r = 80 + rand() * 120;
       const theta = rand() * Math.PI * 2;
       const phi = Math.acos(2 * rand() - 1);
       pos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
-      pos[i * 3 + 1] = Math.abs(r * Math.cos(phi)) + 5; // Keep above ground
+      pos[i * 3 + 1] = Math.abs(r * Math.cos(phi)) + 5;
       pos[i * 3 + 2] = r * Math.sin(phi) * Math.sin(theta);
     }
     return pos;
@@ -149,20 +147,20 @@ const Stars = () => {
 
   useFrame((state) => {
     if (pointsRef.current) {
-      pointsRef.current.rotation.y = state.clock.elapsedTime * 0.005;
+      pointsRef.current.rotation.y = state.clock.elapsedTime * 0.003;
     }
   });
 
   return (
     <points ref={pointsRef}>
       <bufferGeometry>
-        <bufferAttribute attach="attributes-position" count={2000} array={positions} itemSize={3} />
+        <bufferAttribute attach="attributes-position" count={STAR_COUNT} array={positions} itemSize={3} />
       </bufferGeometry>
       <pointsMaterial
         size={0.3}
         color="#c084fc"
         transparent
-        opacity={0.6}
+        opacity={0.5}
         sizeAttenuation
         blending={THREE.AdditiveBlending}
         depthWrite={false}
@@ -175,30 +173,13 @@ const Stars = () => {
 const Environment = () => {
   return (
     <>
-      {/* Lighting */}
-      <ambientLight intensity={0.5} color="#a5b4fc" />
-      <directionalLight
-        position={[30, 40, 20]}
-        intensity={1.0}
-        color="#818cf8"
-        castShadow
-        shadow-mapSize={[1024, 1024]}
-        shadow-camera-near={1}
-        shadow-camera-far={100}
-        shadow-camera-left={-60}
-        shadow-camera-right={60}
-        shadow-camera-top={60}
-        shadow-camera-bottom={-60}
-      />
-      <directionalLight position={[-20, 30, -30]} intensity={0.6} color="#c084fc" />
-      <pointLight position={[0, 15, 0]} intensity={1.0} color="#38bdf8" distance={100} />
-      <pointLight position={[50, 10, 0]} intensity={0.8} color="#818cf8" distance={60} />
-      <pointLight position={[-50, 10, 0]} intensity={0.8} color="#c084fc" distance={60} />
-      <pointLight position={[0, 10, 50]} intensity={0.8} color="#f472b6" distance={60} />
-      <pointLight position={[0, 10, -50]} intensity={0.8} color="#4ade80" distance={60} />
+      {/* Lighting — minimal set for performance */}
+      <ambientLight intensity={0.6} color="#a5b4fc" />
+      <directionalLight position={[30, 40, 20]} intensity={0.8} color="#818cf8" />
+      <directionalLight position={[-20, 30, -30]} intensity={0.4} color="#c084fc" />
 
-      {/* Fog — pushed farther back for better visibility */}
-      <fog attach="fog" args={['#050510', 80, 250]} />
+      {/* Fog */}
+      <fog attach="fog" args={['#050510', 60, 200]} />
 
       {/* World elements */}
       <SkyDome />

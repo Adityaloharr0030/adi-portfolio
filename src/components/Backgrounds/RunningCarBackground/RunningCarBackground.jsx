@@ -35,9 +35,9 @@ const RunningCarBackground = () => {
   return (
     <div className="webgl-bg-wrapper" aria-hidden="true">
       <Canvas
-        dpr={[1, 1.2]}
-        camera={{ position: [0, 8, 20], fov: 60, near: 0.1, far: 500 }}
-        shadows={false} // Disabled for optimal scroll-performance
+        dpr={[0.75, 1]}
+        camera={{ position: [0, 8, 20], fov: 60, near: 0.1, far: 300 }}
+        shadows={false}
         gl={{ antialias: false, alpha: false, powerPreference: 'high-performance' }}
         style={{ background: '#050510' }}
       >
