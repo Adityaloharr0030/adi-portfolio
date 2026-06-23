@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowDown, FiCode, FiTerminal, FiZap } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
+import { personalInfo, techStrip as techStripData } from '../../../data/portfolioData';
 import './Hero.css';
 
 // ── Typewriter hook ──────────────────────────────────────────────────────────
@@ -195,8 +196,7 @@ const OrbCanvas = () => {
 // ── Hero Component ───────────────────────────────────────────────────────────
 const Hero = () => {
   const navigate = useNavigate();
-  const roles = ['Full-Stack Developer', 'Java Engineer', 'Salesforce Developer', 'Problem Solver'];
-  const typed = useTypewriter(roles);
+  const typed = useTypewriter(personalInfo.roles);
   // Matrix rain background logic removed in favor of CSS Perspective Grid
 
   // Magnetic button effect
@@ -214,9 +214,9 @@ const Hero = () => {
   };
 
   const floatingCards = [
-    { icon: '⚛️', label: 'React Expert', cls: 'card-1' },
-    { icon: '☕', label: 'Java Core',    cls: 'card-2' },
-    { icon: '☁️', label: 'Salesforce',  cls: 'card-3' },
+    { icon: '📱', label: 'Flutter Dev', cls: 'card-1' },
+    { icon: '🤖', label: 'AI / Gemini', cls: 'card-2' },
+    { icon: '⚛️', label: 'React',      cls: 'card-3' },
     { icon: '🚀', label: 'Next.js',     cls: 'card-4' },
     { icon: '🟢', label: 'Node.js',     cls: 'card-5' },
   ];
@@ -252,7 +252,7 @@ const Hero = () => {
             transition={{ delay: 0.3 }}
           >
             <FiZap className="badge-zap" />
-            <span>Full-Stack | Java | Salesforce</span>
+            <span>{personalInfo.domains[0]}</span>
             <span className="badge-dot" />
           </motion.div>
 
@@ -282,9 +282,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            B.Tech Computer Engineering student (2027) delivering
-            production-grade applications across three domains:
-            Full-Stack Web, Java Engineering, and Salesforce CRM.
+            {personalInfo.tagline}
           </motion.p>
 
           <motion.div
@@ -326,7 +324,7 @@ const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.9 }}
           >
-            {['React', 'Node.js', 'Java', 'PostgreSQL', 'Docker', 'Salesforce'].map(t => (
+            {techStripData.map(t => (
               <span key={t} className="tech-chip">{t}</span>
             ))}
           </motion.div>
@@ -383,18 +381,18 @@ const Hero = () => {
                   {'  '}name: <span className="string">&quot;Aditya Lohar&quot;</span>,
                 </span>
                 <span className="line">
-                  {'  '}focus: [<span className="string">&quot;FullStack&quot;</span>,{' '}
-                  <span className="string">&quot;Java-Core&quot;</span>,{' '}
-                  <span className="string">&quot;Salesforce&quot;</span>],
+                  {'  '}focus: [<span className="string">&quot;Flutter&quot;</span>,{' '}
+                  <span className="string">&quot;Full-Stack&quot;</span>,{' '}
+                  <span className="string">&quot;AI/ML&quot;</span>],
                 </span>
                 <span className="line">
                   {'  '}stack: [<span className="string">&quot;React/Next&quot;</span>,{' '}
-                  <span className="string">&quot;Node.js&quot;</span>,{' '}
-                  <span className="string">&quot;Relational-DB&quot;</span>],
+                  <span className="string">&quot;Firebase&quot;</span>,{' '}
+                  <span className="string">&quot;Gemini API&quot;</span>],
                 </span>
                 <span className="line">
                   {'  '}passion:{' '}
-                  <span className="string">&quot;Production-Grade Apps&quot;</span>
+                  <span className="string">&quot;AI-Powered Mobile Apps&quot;</span>
                 </span>
                 <span className="line">{'};'}</span>
               </code>

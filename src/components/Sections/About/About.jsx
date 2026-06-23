@@ -50,12 +50,12 @@ const About = () => {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const stats = [
-    { icon: FiUser,   value: '2027',  label: 'B.Tech Expected',   color: '#818cf8' },
-    { icon: FiBook,   value: '10+',   label: 'Personal Projects',  color: '#c084fc' },
-    { icon: FiAward,  value: '12+',   label: 'Core Technologies',  color: '#38bdf8' },
-    { icon: FiCpu,    value: '3',     label: 'Active Domains',     color: '#f472b6' },
-    { icon: FiGlobe,  value: '5+',    label: 'Live Deployments',   color: '#4ade80' },
-    { icon: FiZap,    value: '100+',  label: 'Git Commits',        color: '#fbbf24' },
+    { icon: FiUser,   value: '2027',     label: 'B.Tech Expected',   color: '#818cf8' },
+    { icon: FiAward,  value: '800',      label: 'Meta Hackathon Rank', color: '#c084fc' },
+    { icon: FiCpu,    value: '11',       label: 'Features Shipped',   color: '#38bdf8' },
+    { icon: FiBook,   value: '3',        label: 'Active Domains',     color: '#f472b6' },
+    { icon: FiGlobe,  value: '5+',       label: 'Live Deployments',   color: '#4ade80' },
+    { icon: FiZap,    value: '100+',     label: 'Git Commits',        color: '#fbbf24' },
   ];
 
   return (
@@ -86,22 +86,20 @@ const About = () => {
           >
             {[
               <>
-                I am a <strong>B.Tech Computer Engineering student (2023-2027)</strong> delivering
-                production-grade applications across three domains:{' '}
-                <strong>Full-Stack Web Development</strong>,{' '}
-                <strong>Java Engineering</strong>, and{' '}
-                <strong>Salesforce CRM Administration</strong>.
+                I am a <strong>final-year B.Tech Computer Engineering student (DBATU, 2027)</strong> building
+                production software across{' '}
+                <strong>Flutter</strong>, <strong>full-stack web (React, Next.js, Node.js)</strong>, and{' '}
+                <strong>AI integration (Gemini API, Claude API)</strong>.
               </>,
               <>
-                I have a proven ability to architect, build, and ship end-to-end systems
-                independently — from <strong>RESTful APIs and SSR platforms</strong> to relational
-                database design. My focus is on delivering scalable, efficient, and maintainable
-                solutions.
+                I have shipped a full-CRUD REST API, an SSR streaming platform, and an
+                11-feature AI farming app currently competing at the{' '}
+                <strong>FAR AWAY 2026 International Hackathon</strong>.
               </>,
               <>
-                Currently expanding expertise in{' '}
-                <strong>Data Structures, Algorithms, and System Architecture</strong>, eager to
-                contribute real-world skills in a challenging internship environment.
+                Recently ranked in the <strong>Top 800 out of 31,000+ entrants</strong> at the
+                Meta PyTorch OpenEnv Hackathon. Passionate about engineering offline-first architectures,
+                integrating LLMs into mobile apps, and building scalable backends.
               </>,
             ].map((text, i) => (
               <motion.p
