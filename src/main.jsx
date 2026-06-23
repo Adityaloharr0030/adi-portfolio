@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import './stitch-theme.css'
 import App from './App.jsx'
-import ErrorBoundary from './components/ErrorBoundary.jsx'
+import ErrorBoundary from './components/UI/ErrorBoundary/ErrorBoundary.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

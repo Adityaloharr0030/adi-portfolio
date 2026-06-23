@@ -1,7 +1,7 @@
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { FiAward, FiExternalLink, FiImage, FiX, FiCheckCircle } from 'react-icons/fi';
-import MagneticButton from '../../../../UI/MagneticButton/MagneticButton';
+import MagneticButton from '../../UI/MagneticButton/MagneticButton';
 import './Certifications.css';
 
 const Certifications = () => {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FiMenu, FiX } from 'react-icons/fi';
-import Logo from '../../../../UI/Logo/Logo';
+import Logo from '../../UI/Logo/Logo';
 import './Navbar.css';
 
 const Navbar = () => {

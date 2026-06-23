@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { SiSpringboot, SiReact, SiPostgresql, SiApachekafka, SiRedis, SiDocker, SiMongodb, SiMysql, SiJavascript } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa';
-import ProjectCard from '../../../../Sections/Projects/ProjectCard';
+import ProjectCard from './ProjectCard';
 import './Projects.css';
 
 const Projects = () => {

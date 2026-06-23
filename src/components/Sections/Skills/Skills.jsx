@@ -8,7 +8,7 @@ import {
   SiMysql, SiPostgresql, SiMongodb, SiSalesforce,
   SiSpringboot, SiNextdotjs, SiExpress
 } from 'react-icons/si';
-import SpotlightCard from '../../../../Sections/Projects/SpotlightCard';
+import SpotlightCard from '../Projects/SpotlightCard';
 import './Skills.css';
 
 // ── Animated radial ring ─────────────────────────────────────────────────────

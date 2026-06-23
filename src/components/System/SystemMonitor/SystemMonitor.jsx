@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiActivity, FiCpu, FiHardDrive, FiZap, FiX, FiTerminal, FiGithub, FiLayers } from 'react-icons/fi';
-import Logo from '../../../../UI/Logo/Logo';
+import Logo from '../../UI/Logo/Logo';
 import './SystemMonitor.css';
 
 const SystemMonitor = () => {
