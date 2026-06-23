@@ -66,7 +66,7 @@ const Billboard = ({ position, label, color }) => {
   const signRef = useRef();
 
   useFrame((state) => {
-    if (signRef.current) {
+    if (signRef.current && signRef.current.material) {
       signRef.current.material.emissiveIntensity = 0.8 + Math.sin(state.clock.elapsedTime * 4) * 0.2;
     }
   });
