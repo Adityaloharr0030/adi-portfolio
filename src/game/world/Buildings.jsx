@@ -18,9 +18,8 @@ const StreetLight = ({ position, side }) => {
   const bulbRef = useRef();
 
   useFrame((state) => {
-    // Subtle flicker/glow animation on the streetlight bulb
     if (bulbRef.current) {
-      bulbRef.current.intensity = 1.2 + Math.sin(state.clock.elapsedTime * 6) * 0.08;
+      bulbRef.current.emissiveIntensity = 3.0 + Math.sin(state.clock.elapsedTime * 6) * 0.5;
     }
   });
 
@@ -44,19 +43,8 @@ const StreetLight = ({ position, side }) => {
       {/* Glowing Bulb */}
       <mesh position={[side * 0.8, 3.7, 0]}>
         <sphereGeometry args={[0.12, 8, 8]} />
-        <meshStandardMaterial color="#fff" emissive="#fbbf24" emissiveIntensity={3} />
+        <meshStandardMaterial ref={bulbRef} color="#fff" emissive="#fbbf24" emissiveIntensity={3} />
       </mesh>
-      {/* Spotlight casting light pool on road */}
-      <spotLight
-        ref={bulbRef}
-        position={[side * 0.8, 3.6, 0]}
-        target-position={[side * 0.5, 0, 0]}
-        angle={0.7}
-        penumbra={0.6}
-        intensity={1.5}
-        distance={10}
-        color="#ffeebb"
-      />
     </group>
   );
 };
@@ -93,8 +81,6 @@ const Billboard = ({ position, label, color }) => {
           emissiveIntensity={1}
         />
       </mesh>
-      {/* Spotlight illuminating the sign */}
-      <pointLight position={[0, 4.8, 0.5]} color={color} intensity={0.5} distance={4} />
     </group>
   );
 };
@@ -105,9 +91,8 @@ const HazardBeacon = ({ position }) => {
 
   useFrame((state) => {
     if (lightRef.current) {
-      // Periodic strobe blink (e.g. flashing every 1 second)
       const flash = Math.floor(state.clock.elapsedTime * 2) % 2 === 0;
-      lightRef.current.intensity = flash ? 3 : 0;
+      lightRef.current.emissiveIntensity = flash ? 3 : 0;
     }
   });
 
@@ -115,9 +100,8 @@ const HazardBeacon = ({ position }) => {
     <group position={position}>
       <mesh>
         <sphereGeometry args={[0.15, 8, 8]} />
-        <meshStandardMaterial color="#000" emissive="#ff0000" emissiveIntensity={2} />
+        <meshStandardMaterial ref={lightRef} color="#000" emissive="#ff0000" emissiveIntensity={2} />
       </mesh>
-      <pointLight ref={lightRef} color="#ff0000" intensity={3} distance={12} />
     </group>
   );
 };
