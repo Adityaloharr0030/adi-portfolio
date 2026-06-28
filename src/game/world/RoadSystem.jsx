@@ -15,12 +15,14 @@ const ROAD_LENGTH = 550;
 const ROAD_Z_CENTER = 175;
 
 /* ── Road surface mesh ────────────────────────────────────────────────────── */
-const RoadSurface = () => {
+const RoadSurface = ({ vehicleRef }) => {
   const roadRef = useRef();
+  const speedAccum = useRef(0);
 
   const roadShader = useMemo(() => ({
     uniforms: {
       uTime: { value: 0 },
+      uSpeed: { value: 0 },
       uLineColor: { value: new THREE.Color('#818cf8') },
       uEdgeColor: { value: new THREE.Color('#c084fc') },
     },
@@ -33,6 +35,7 @@ const RoadSurface = () => {
     `,
     fragmentShader: `
       uniform float uTime;
+      uniform float uSpeed;
       uniform vec3 uLineColor;
       uniform vec3 uEdgeColor;
       varying vec2 vUv;
@@ -42,7 +45,7 @@ const RoadSurface = () => {
 
         float centerDist = abs(vUv.x - 0.5);
         float centerLine = smoothstep(0.02, 0.01, centerDist);
-        float dash = step(0.5, fract(vUv.y * 70.0 + uTime * 0.8));
+        float dash = step(0.5, fract(vUv.y * 70.0 + uSpeed * 0.05));
         centerLine *= dash;
 
         float edgeL = smoothstep(0.05, 0.02, vUv.x);
@@ -66,7 +69,13 @@ const RoadSurface = () => {
 
   useFrame((state) => {
     if (roadRef.current) {
-      roadRef.current.material.uniforms.uTime.value = state.clock.elapsedTime;
+      const mat = roadRef.current.material;
+      mat.uniforms.uTime.value = state.clock.elapsedTime;
+      if (vehicleRef?.current) {
+        const spd = vehicleRef.current.speed || 0;
+        speedAccum.current += spd * 2;
+        mat.uniforms.uSpeed.value = speedAccum.current;
+      }
     }
   });
 
@@ -123,7 +132,7 @@ const ZoneGate = ({ position, color }) => (
 );
 
 /* ── Main RoadSystem ──────────────────────────────────────────────────────── */
-const RoadSystem = () => {
+const RoadSystem = ({ vehicleRef }) => {
   const gates = useMemo(() => {
     return Object.entries(zonePositions).map(([key, zone]) => ({
       key,
@@ -134,7 +143,7 @@ const RoadSystem = () => {
 
   return (
     <group>
-      <RoadSurface />
+      <RoadSurface vehicleRef={vehicleRef} />
       <GuardRails />
       {gates.map(({ key, ...gateProps }) => (
         <ZoneGate key={key} {...gateProps} />

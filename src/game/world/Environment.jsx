@@ -37,9 +37,10 @@ const NeonGrid = () => {
       varying vec3 vWorldPos;
 
       void main() {
-        vec2 grid = abs(fract(vWorldPos.xz * 0.1 - 0.5) - 0.5) / fwidth(vWorldPos.xz * 0.1);
-        float line = min(grid.x, grid.y);
-        float gridLine = 1.0 - min(line, 1.0);
+        vec2 gridCoord = mod(vWorldPos.xz, 10.0);
+        float lineX = 1.0 - smoothstep(0.0, 0.3, gridCoord.x) * smoothstep(10.0, 9.7, gridCoord.x);
+        float lineZ = 1.0 - smoothstep(0.0, 0.3, gridCoord.y) * smoothstep(10.0, 9.7, gridCoord.y);
+        float gridLine = max(lineX, lineZ);
 
         float dist = length(vWorldPos.xz) / 120.0;
         float fade = 1.0 - smoothstep(0.3, 1.0, dist);

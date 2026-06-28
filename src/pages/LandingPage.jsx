@@ -14,7 +14,7 @@ const ParticleField = () => {
     const ctx = canvas.getContext('2d');
     let animId;
     const particles = [];
-    const PARTICLE_COUNT = 120;
+    const PARTICLE_COUNT = 60;
 
     const resize = () => {
       canvas.width = window.innerWidth;

@@ -10,8 +10,8 @@ import { Text } from '@react-three/drei';
 import { zonePositions, personalInfo } from '../../data/portfolioData';
 
 const zone = zonePositions.contact;
-const cx = Math.cos(zone.angle) * zone.radius;
-const cz = Math.sin(zone.angle) * zone.radius;
+const cx = zone.x;
+const cz = zone.z;
 
 const ContactZone = () => {
   const orbRef = useRef();
@@ -31,8 +31,6 @@ const ContactZone = () => {
 
   return (
     <group position={[cx, 0, cz]}>
-      <pointLight position={[0, 8, 0]} color={zone.color} intensity={4} distance={25} />
-
       {/* Floating contact orb */}
       <group ref={orbRef} position={[0, 4, 0]}>
         <mesh>
@@ -59,7 +57,6 @@ const ContactZone = () => {
           />
         </mesh>
 
-        <pointLight color={zone.color} intensity={2} distance={8} />
       </group>
 
       {/* Orbiting ring */}

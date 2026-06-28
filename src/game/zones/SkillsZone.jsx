@@ -68,8 +68,6 @@ const SkillPillar = ({ name, level, color, position }) => {
         {`${level}%`}
       </Text>
 
-      {/* Base glow */}
-      <pointLight position={[0, 0.5, 0]} color={color} intensity={0.5} distance={3} />
     </group>
   );
 };
@@ -92,7 +90,6 @@ const SkillsZone = () => {
 
   return (
     <group position={[cx, 0, cz]}>
-      <pointLight position={[0, 10, 0]} color={zone.color} intensity={3} distance={25} />
 
       {/* Category labels */}
       {skillCategories.map((cat, i) => (

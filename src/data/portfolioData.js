@@ -252,6 +252,29 @@ export const experiences = [
   },
 ];
 
+// ── Hackathon Achievements ───────────────────────────────────────────────────
+export const hackathons = [
+  {
+    title: 'Meta PyTorch OpenEnv Hackathon',
+    result: 'Top 800 / 31,000+',
+    location: 'Campus Finale, Bengaluru',
+    team: ['Pruthviraj Phuse', 'Sameer Shah'],
+    teamName: 'AI_Vengers',
+    color: '#f59e0b',
+    icon: '🏆',
+  },
+  {
+    title: 'FAR AWAY International Hackathon 2026',
+    result: 'Round 1 Qualifier',
+    location: 'Zuup / Zylon Labs (Online)',
+    team: ['Pruthviraj Phuse'],
+    teamName: 'AI_Vengers',
+    project: 'Krushi Mitra',
+    color: '#4ade80',
+    icon: '🌾',
+  },
+];
+
 // ── Game Mode: Zone Positions on the Track ───────────────────────────────────
 // Each zone is positioned along a straight Z-axis highway (x, z coordinates)
 export const zonePositions = {

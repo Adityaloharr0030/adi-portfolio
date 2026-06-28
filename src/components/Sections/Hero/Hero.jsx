@@ -317,6 +317,29 @@ const Hero = () => {
             </motion.a>
           </motion.div>
 
+          {/* Hackathon badges */}
+          <motion.div
+            className="hero-hackathon-badges"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8 }}
+          >
+            <div className="hack-badge meta">
+              <span className="hack-icon">🏆</span>
+              <div className="hack-text">
+                <span className="hack-rank">Top 800 / 31K</span>
+                <span className="hack-name">Meta PyTorch Hackathon</span>
+              </div>
+            </div>
+            <div className="hack-badge faraway">
+              <span className="hack-icon">🌾</span>
+              <div className="hack-text">
+                <span className="hack-rank">Round 1 Qualifier</span>
+                <span className="hack-name">FAR AWAY Intl. 2026</span>
+              </div>
+            </div>
+          </motion.div>
+
           {/* Tech strip */}
           <motion.div
             className="hero-tech-strip"

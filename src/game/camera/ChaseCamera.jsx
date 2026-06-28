@@ -9,7 +9,6 @@ import { useRef, useEffect } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
-const TRACK_RADIUS = 50;
 const CAMERA_OFFSET = new THREE.Vector3(0, 6, -14);
 const CAMERA_OFFSET_BOOST = new THREE.Vector3(0, 7, -18);
 const LOOK_AHEAD = new THREE.Vector3(0, 2, 8);
@@ -23,8 +22,8 @@ const ChaseCamera = ({ target }) => {
 
   // Initialize camera position behind the car immediately
   useEffect(() => {
-    // Car starts at [TRACK_RADIUS, 0, 0] facing tangent to circle
-    const startPos = new THREE.Vector3(TRACK_RADIUS, 0, 0);
+    // Car starts at origin on the straight Z-axis highway
+    const startPos = new THREE.Vector3(0, 0, 0);
     const startRotation = 0;
 
     const rotatedOffset = CAMERA_OFFSET.clone().applyAxisAngle(

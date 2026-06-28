@@ -23,7 +23,7 @@ import ContactZone from '../../../game/zones/ContactZone';
 import '../WebGLBackground/WebGLBackground.css'; // Reuses fixed background styling
 
 const RunningCarBackground = () => {
-  const vehicleRef = useRef({ position: [50, 0, 0], rotation: 0, speed: 0 });
+  const vehicleRef = useRef({ position: [0, 0, 0], rotation: 0, speed: 0 });
   const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   // Disable heavy 3D scene on mobile for performance
   const isMobile = window.innerWidth <= 768 || ('ontouchstart' in window && window.innerWidth <= 1024);
@@ -45,7 +45,7 @@ const RunningCarBackground = () => {
         <AdaptiveEvents />
         <Suspense fallback={null}>
           <Environment />
-          <RoadSystem />
+          <RoadSystem vehicleRef={vehicleRef} />
           <Buildings />
           <ScrollVehicleController ref={vehicleRef}>
             <Vehicle vehicleRef={vehicleRef} />

@@ -26,8 +26,7 @@ const AboutZone = () => {
 
   return (
     <group ref={groupRef} position={[cx, 0, cz]}>
-      {/* Zone light beacon */}
-      <pointLight position={[0, 8, 0]} color={zone.color} intensity={3} distance={25} />
+      {/* Floating holographic card */}
 
       {/* Floating holographic card */}
       <group ref={floatRef} position={[0, 4, 0]}>

@@ -105,8 +105,6 @@ const ProjectScreen = ({ project, index, total }) => {
 const ProjectsZone = () => {
   return (
     <group position={[cx, 0, cz]}>
-      <pointLight position={[0, 8, 0]} color={zone.color} intensity={3} distance={25} />
-
       {/* Project screens arranged in an arc */}
       {projects.map((project, i) => (
         <ProjectScreen

@@ -94,7 +94,6 @@ const CertCard = ({ cert, index, total }) => {
 const CertificationsZone = () => {
   return (
     <group position={[cx, 0, cz]}>
-      <pointLight position={[0, 8, 0]} color={zone.color} intensity={3} distance={25} />
 
       {certifications.map((cert, i) => (
         <CertCard key={cert.title} cert={cert} index={i} total={certifications.length} />

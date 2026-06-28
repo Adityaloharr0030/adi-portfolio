@@ -145,6 +145,78 @@
 
 .stat-card:hover .stat-glow { opacity: 1; }
 
+/* ── Hackathon section ───────────────────────────────── */
+.hackathon-section {
+  grid-column: 1 / -1;
+  margin-top: 2rem;
+}
+
+.hackathon-section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: var(--font-display, 'Syne', sans-serif);
+}
+
+.hackathon-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.hackathon-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-left: 3px solid var(--hack-color, #818cf8);
+  transition: all 0.35s ease;
+  cursor: default;
+}
+
+.hackathon-card:hover {
+  border-color: var(--hack-color, #818cf8);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--hack-color, #818cf8) 20%, transparent),
+              0 8px 24px rgba(0,0,0,0.25);
+}
+
+.hackathon-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.hackathon-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.hackathon-result {
+  font-size: 1.1rem;
+  font-weight: 800;
+  font-family: var(--font-display, 'Syne', sans-serif);
+  line-height: 1.2;
+}
+
+.hackathon-title {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.hackathon-meta {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
 /* ── Responsive ──────────────────────────────────────── */
 @media (max-width: 900px) {
   .about-content { grid-template-columns: 1fr; gap: 3rem; }

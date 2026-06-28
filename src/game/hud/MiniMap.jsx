@@ -1,14 +1,16 @@
 /**
  * MiniMap.jsx
  * ───────────
- * Small top-right minimap showing track layout and car position.
+ * Small top-right minimap showing straight-road layout and car position.
+ * Rewritten for Z-axis highway (no circular track).
  */
 import { useEffect, useRef } from 'react';
 import { zonePositions } from '../../data/portfolioData';
 
-const MAP_SIZE = 140;
-const TRACK_RADIUS = 50;
-const SCALE = MAP_SIZE / (TRACK_RADIUS * 2.8);
+const MAP_W = 50;
+const MAP_H = 160;
+const ROAD_Z_MAX = 320; // must match ScrollVehicleController's max Z
+const PADDING = 12;
 
 const MiniMap = ({ vehicleRef, visitedZones }) => {
   const canvasRef = useRef(null);
@@ -18,54 +20,63 @@ const MiniMap = ({ vehicleRef, visitedZones }) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    canvas.width = MAP_SIZE;
-    canvas.height = MAP_SIZE;
-    const center = MAP_SIZE / 2;
+    canvas.width = MAP_W;
+    canvas.height = MAP_H;
+
+    const zToY = (z) => PADDING + ((ROAD_Z_MAX - z) / ROAD_Z_MAX) * (MAP_H - PADDING * 2);
+    const centerX = MAP_W / 2;
 
     const draw = () => {
-      ctx.clearRect(0, 0, MAP_SIZE, MAP_SIZE);
+      ctx.clearRect(0, 0, MAP_W, MAP_H);
 
       // Background
       ctx.fillStyle = 'rgba(5, 5, 16, 0.85)';
-      ctx.fillRect(0, 0, MAP_SIZE, MAP_SIZE);
+      ctx.fillRect(0, 0, MAP_W, MAP_H);
 
-      // Track circle
+      // Road line (vertical center)
       ctx.beginPath();
-      ctx.arc(center, center, TRACK_RADIUS * SCALE, 0, Math.PI * 2);
-      ctx.strokeStyle = 'rgba(129, 140, 248, 0.3)';
-      ctx.lineWidth = 3;
+      ctx.moveTo(centerX, PADDING);
+      ctx.lineTo(centerX, MAP_H - PADDING);
+      ctx.strokeStyle = 'rgba(129, 140, 248, 0.25)';
+      ctx.lineWidth = 6;
       ctx.stroke();
+
+      // Dashed center line
+      ctx.setLineDash([4, 4]);
+      ctx.beginPath();
+      ctx.moveTo(centerX, PADDING);
+      ctx.lineTo(centerX, MAP_H - PADDING);
+      ctx.strokeStyle = 'rgba(129, 140, 248, 0.12)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      ctx.setLineDash([]);
 
       // Zone markers
       for (const [name, zone] of Object.entries(zonePositions)) {
-        const x = center + Math.cos(zone.angle) * zone.radius * SCALE;
-        const y = center + Math.sin(zone.angle) * zone.radius * SCALE;
+        const y = zToY(zone.z);
 
+        // Zone dot
         ctx.beginPath();
-        ctx.arc(x, y, 5, 0, Math.PI * 2);
+        ctx.arc(centerX, y, 4, 0, Math.PI * 2);
         ctx.fillStyle = visitedZones.has(name) ? zone.color : 'rgba(255,255,255,0.15)';
         ctx.fill();
 
         // Zone label
         ctx.font = '7px Orbitron, monospace';
         ctx.fillStyle = 'rgba(255,255,255,0.5)';
-        ctx.textAlign = 'center';
-        ctx.fillText(zone.label.substring(0, 4).toUpperCase(), x, y + 12);
+        ctx.textAlign = 'right';
+        ctx.fillText(zone.label.substring(0, 4).toUpperCase(), centerX - 8, y + 3);
       }
 
       // Car position
       if (vehicleRef?.current) {
-        const [vx, , vz] = vehicleRef.current.position;
-        const mx = center + vx * SCALE;
-        const my = center + vz * SCALE;
-        const rot = vehicleRef.current.rotation || 0;
+        const [, , vz] = vehicleRef.current.position;
+        const carY = zToY(vz);
 
-        // Car dot
         ctx.save();
-        ctx.translate(mx, my);
-        ctx.rotate(rot);
+        ctx.translate(centerX, carY);
 
-        // Car triangle indicator
+        // Car triangle (pointing up = forward)
         ctx.beginPath();
         ctx.moveTo(0, -4);
         ctx.lineTo(-3, 3);
@@ -86,7 +97,7 @@ const MiniMap = ({ vehicleRef, visitedZones }) => {
       // Border
       ctx.strokeStyle = 'rgba(129, 140, 248, 0.2)';
       ctx.lineWidth = 1;
-      ctx.strokeRect(0, 0, MAP_SIZE, MAP_SIZE);
+      ctx.strokeRect(0, 0, MAP_W, MAP_H);
 
       animRef.current = requestAnimationFrame(draw);
     };
@@ -96,7 +107,7 @@ const MiniMap = ({ vehicleRef, visitedZones }) => {
   }, [vehicleRef, visitedZones]);
 
   return (
-    <div className="minimap">
+    <div className="minimap" style={{ width: MAP_W, height: MAP_H }}>
       <canvas ref={canvasRef} />
       <div className="minimap-label">MAP</div>
     </div>

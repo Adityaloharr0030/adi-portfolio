@@ -53,7 +53,7 @@ const GameScene = ({
   return (
     <>
       <Environment />
-      <RoadSystem />
+      <RoadSystem vehicleRef={vehicleRef} />
       <Buildings />
       <VehicleController
         ref={vehicleRef}

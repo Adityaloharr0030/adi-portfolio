@@ -2,6 +2,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import { FiUser, FiBook, FiAward, FiCpu, FiGlobe, FiZap } from 'react-icons/fi';
 import SpotlightCard from '../Projects/SpotlightCard';
+import { hackathons } from '../../../data/portfolioData';
 import './About.css';
 
 // ── Animated counter hook ────────────────────────────────────────────────────
@@ -127,6 +128,40 @@ const About = () => {
               <StatCard key={stat.label} {...stat} delay={0.4 + i * 0.08} inView={isInView} />
             ))}
           </div>
+          {/* ── Hackathon achievements ────────────────────────── */}
+          {hackathons.length > 0 && (
+            <motion.div
+              className="hackathon-section"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              <h3 className="hackathon-section-title">Hackathon Achievements</h3>
+              <div className="hackathon-cards">
+                {hackathons.map((h, i) => (
+                  <motion.div
+                    key={h.title}
+                    className="hackathon-card"
+                    initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                    animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+                    transition={{ duration: 0.5, delay: 0.9 + i * 0.12 }}
+                    whileHover={{ y: -6, scale: 1.02 }}
+                    style={{ '--hack-color': h.color }}
+                  >
+                    <span className="hackathon-icon">{h.icon}</span>
+                    <div className="hackathon-info">
+                      <span className="hackathon-result" style={{ color: h.color }}>{h.result}</span>
+                      <span className="hackathon-title">{h.title}</span>
+                      <span className="hackathon-meta">
+                        {h.teamName && `Team: ${h.teamName}`}
+                        {h.location && ` · ${h.location}`}
+                      </span>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
         </div>
       </div>
     </section>

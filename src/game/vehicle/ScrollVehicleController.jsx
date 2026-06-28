@@ -32,7 +32,7 @@ const ScrollVehicleController = forwardRef(({ children }, ref) => {
     // Smoothly interpolate the vehicle's Z coordinate towards the target Z
     const prevZ = s.position.z;
     const clampedDelta = Math.min(delta, 0.1);
-    s.position.z += (targetZ - s.position.z) * (1 - Math.exp(-8 * clampedDelta)); // smooth framerate-independent lerp
+    s.position.z += (targetZ - s.position.z) * (1 - Math.exp(-3 * clampedDelta)); // smooth framerate-independent lerp
     s.position.x = 0;
     s.position.y = 0;
 

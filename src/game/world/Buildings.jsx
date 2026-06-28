@@ -7,6 +7,7 @@
  */
 import { useMemo } from 'react';
 import * as THREE from 'three';
+import { techStrip } from '../../data/portfolioData';
 
 const BUILDING_COUNT = 30;
 
@@ -99,7 +100,7 @@ const Buildings = () => {
     }
 
     // 3. Billboards
-    const billboardLabels = ['ADITYA', 'FLUTTER', 'REACT', 'AI/ML'];
+    const billboardLabels = techStrip.slice(0, 4);
     for (let i = 0; i < billboardLabels.length; i++) {
       const z = -40 + i * 100;
       const isLeft = i % 2 === 0;

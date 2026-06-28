@@ -40,10 +40,17 @@ const Vehicle = ({ vehicleRef }) => {
   const headlightRRef = useRef();
 
   useFrame((state) => {
-    // Subtle underglow pulse
+    const spd = vehicleRef?.current?.speed || 0;
+
+    // Underglow pulse — intensifies with speed
     if (bodyGlowRef.current) {
-      bodyGlowRef.current.intensity = 1.5 + Math.sin(state.clock.elapsedTime * 3) * 0.5;
+      bodyGlowRef.current.intensity = 1.5 + Math.sin(state.clock.elapsedTime * 3) * 0.5 + spd * 2;
     }
+
+    // Headlight angle widens at speed (motion blur illusion)
+    const headAngle = 0.4 + Math.min(spd * 0.3, 0.45);
+    if (headlightLRef.current) headlightLRef.current.angle = headAngle;
+    if (headlightRRef.current) headlightRRef.current.angle = headAngle;
   });
 
   return (
