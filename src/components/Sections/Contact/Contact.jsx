@@ -38,7 +38,7 @@ const Contact = () => {
       };
 
       await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_nm1ac7a',
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_ic6ne49',
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_i7p22qv',
         templateParams,
         {
