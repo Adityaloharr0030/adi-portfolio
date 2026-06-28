@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
-import { SiSpringboot, SiReact, SiPostgresql, SiApachekafka, SiRedis, SiDocker, SiMongodb, SiMysql, SiJavascript } from 'react-icons/si';
-import { FaJava } from 'react-icons/fa';
+import { projects as portfolioProjects, projectCategories } from '../../../data/portfolioData';
 import ProjectCard from './ProjectCard';
 import './Projects.css';
 
@@ -10,85 +9,14 @@ const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
-  const categories = ['All', 'Fullstack', 'Backend', 'Core Java'];
-
-  const projects = [
-    {
-      icon: '🎞️',
-      category: 'Fullstack',
-      title: 'CrazyXani',
-      description: 'High-performance SSR anime platform with real-time streaming and global search. Integrated with AniList API for dynamic metadata.',
-      tech: [
-        { name: 'Next.js', icon: SiReact },
-        { name: 'MongoDB', icon: SiMongodb },
-        { name: 'Node.js', icon: null },
-      ],
-      stats: { load: '2ms', auth: 'JWT', mode: 'Dark' },
-      github: 'https://github.com/Adityaloharr0030/CrazyXani',
-      demo: 'https://crazyxani.vercel.app/',
-      featured: true,
-    },
-    {
-      icon: '🏛️',
-      category: 'Backend',
-      title: 'Voting System API',
-      description: 'Distributed voting architecture with transactional integrity and anti-fraud logic. Designed for high concurrency.',
-      tech: [
-        { name: 'SpringBoot', icon: SiSpringboot },
-        { name: 'PostgreSQL', icon: SiPostgresql },
-        { name: 'Docker', icon: SiDocker },
-      ],
-      stats: { scale: 'High', tx: 'ACID', ops: 'REST' },
-      github: 'https://github.com/Adityaloharr0030/Voting-system',
-      demo: '#',
-      featured: true,
-    },
-    {
-      icon: '📊',
-      category: 'Backend',
-      title: 'Inventory Engine',
-      description: 'Professional inventory control system featuring role-based access and automated reporting pipelines.',
-      tech: [
-        { name: 'Node.js', icon: null },
-        { name: 'MySQL', icon: SiMysql },
-        { name: 'Express', icon: null },
-      ],
-      stats: { schema: '3NF', secure: 'JWT', build: 'Vite' },
-      github: 'https://github.com/Adityaloharr0030/Inventory-management-system',
-      demo: '#',
-      featured: false,
-    },
-    {
-      icon: '🏦',
-      category: 'Core Java',
-      title: 'Bank Management',
-      description: 'Enterprise-grade banking simulator implementing advanced OOP concepts, custom exceptions, and secure IO streams.',
-      tech: [
-        { name: 'Java', icon: FaJava },
-        { name: 'OOP', icon: null },
-        { name: 'IO Streams', icon: null },
-      ],
-      stats: { logic: 'Solid', core: 'J2E', data: 'Map' },
-      github: 'https://github.com/Adityaloharr0030/Bank-management-system',
-      demo: '#',
-      featured: true,
-    },
-     {
-      icon: '🛡️',
-      category: 'Fullstack',
-      title: 'System Intelligence Dashboard',
-      description: 'A dedicated technical hub for monitoring system health, cloud instances, and neural network telemetry datasets.',
-      tech: [
-        { name: 'React', icon: SiReact },
-        { name: 'Framer Motion', icon: null },
-        { name: 'Canvas API', icon: null },
-      ],
-      stats: { animate: '60fps', ui: 'Cyber', perf: 'A+' },
-      github: 'https://github.com/Adityaloharr0030/',
-      demo: '#',
-      featured: false,
-    },
-  ];
+  // Map portfolioData projects to the format ProjectCard expects
+  // (tech as { name, icon } objects)
+  const projects = portfolioProjects.map((p) => ({
+    ...p,
+    tech: p.tech.map((t) =>
+      typeof t === 'string' ? { name: t, icon: null } : t
+    ),
+  }));
 
   const filteredProjects = activeCategory === 'All' 
     ? projects 
@@ -109,11 +37,11 @@ const Projects = () => {
             Engineering <span className="gradient-text shine">Solutions</span>
           </h2>
           <p className="section-subtitle">
-            A showcase of distributed systems, full-stack wonders, and architectural excellence.
+            A showcase of AI-powered apps, full-stack platforms, and production-grade engineering.
           </p>
 
           <div className="filter-wrapper">
-            {categories.map((cat) => (
+            {projectCategories.map((cat) => (
               <motion.button
                 key={cat}
                 className={`filter-btn ${activeCategory === cat ? 'active' : ''}`}
@@ -136,7 +64,7 @@ const Projects = () => {
         >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
-              <ProjectCard key={project.title} project={project} />
+              <ProjectCard key={project.id || project.title} project={project} />
             ))}
           </AnimatePresence>
         </motion.div>

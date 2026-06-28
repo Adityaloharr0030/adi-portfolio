@@ -10,8 +10,8 @@ export const personalInfo = {
   name: 'Aditya Lohar',
   firstName: 'ADITYA',
   tagline: 'Final-year B.Tech Computer Engineering student (2027) building production software across Flutter, full-stack web, and AI integration.',
-  roles: ['Software Engineering Intern', 'Full-Stack Developer', 'Flutter Developer', 'AI/ML Integration'],
-  domains: ['Full-Stack | Flutter | AI/ML'],
+  roles: ['Flutter & Full-Stack Developer', 'AI-Integrated Apps', 'Software Engineering Intern', 'Flutter Developer'],
+  domains: ['Flutter & Full-Stack | AI-Integrated Apps'],
   email: 'adityalohar00030@gmail.com',
   resumePath: './resume.pdf',
   social: {
@@ -48,9 +48,21 @@ export const projects = [
     icon: '🌾',
     category: 'Mobile & AI',
     title: 'Krushi Mitra — AI-Powered Farmer App',
-    description: '11-feature production app with AI Crop Doctor (Gemini Vision), trilingual chatbot, and live mandi prices. Built with an offline-first architecture (Firestore + SQLite) and a 5-key Gemini load balancer.',
-    tech: ['Flutter', 'Firebase', 'SQLite', 'Gemini API', 'Claude API'],
-    stats: { scale: 'High', ai: 'Gemini', offline: 'Yes' },
+    description: 'Production Flutter app with 11 features: AI Crop Doctor (Gemini Vision API for real-time disease detection), trilingual chatbot (Hindi/Marathi/English), live mandi price aggregation, weather dashboard, soil health tracker, and government scheme navigator. Built with offline-first architecture (Firestore + SQLite sync), a 5-key Gemini API load balancer for zero-downtime inference, and Riverpod state management. Currently competing at the FAR AWAY 2026 International Hackathon.',
+    tech: ['Flutter', 'Firebase', 'SQLite', 'Gemini API', 'Riverpod'],
+    stats: { features: '11', ai: 'Gemini Vision', offline: 'Yes' },
+    github: 'https://github.com/Adityaloharr0030',
+    demo: '#',
+    featured: true,
+  },
+  {
+    id: 'internship-agent',
+    icon: '🤖',
+    category: 'AI & Automation',
+    title: 'Internship Automation Agent',
+    description: 'Autonomous bot that automates internship applications end-to-end: Claude API for intelligent form-filling and cover letter generation, Playwright for headless browser automation across job portals, and GitHub Actions for scheduled daily CI/CD runs. Handles login, search, apply, and tracking workflows without human intervention.',
+    tech: ['Claude API', 'Playwright', 'GitHub Actions', 'Node.js'],
+    stats: { ai: 'Claude', auto: 'CI/CD', browser: 'Headless' },
     github: 'https://github.com/Adityaloharr0030',
     demo: '#',
     featured: true,
@@ -85,7 +97,7 @@ export const projects = [
     category: 'Fullstack',
     title: 'Portfolio Website — Interactive 3D Showcase',
     description: 'Built an interactive portfolio with WebGL 3D scenes (Three.js) and GSAP ScrollTrigger animations; deployed on Vercel.',
-    tech: ['React', 'Vite', 'Three.js', 'TypeScript', 'Tailwind CSS'],
+    tech: ['React', 'Vite', 'Three.js', 'Framer Motion', 'Three.js Fiber'],
     stats: { animate: '60fps', ui: '3D WebGL', perf: 'A+' },
     github: 'https://github.com/Adityaloharr0030',
     demo: '#',
@@ -93,7 +105,7 @@ export const projects = [
   },
 ];
 
-export const projectCategories = ['All', 'Fullstack', 'Mobile & AI', 'Backend'];
+export const projectCategories = ['All', 'Fullstack', 'Mobile & AI', 'AI & Automation', 'Backend'];
 
 // ── Skills ───────────────────────────────────────────────────────────────────
 export const skillCategories = [

@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://voting-system-self-tau.vercel.app/sitemap.xml
+Sitemap: https://adi-portfolio-beta-coral.vercel.app/sitemap.xml
