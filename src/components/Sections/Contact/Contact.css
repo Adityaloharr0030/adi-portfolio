@@ -13,7 +13,7 @@
   position: absolute;
   inset: 0;
   background-image: 
-    radial-gradient(circle at 2px 2px, rgba(129, 140, 248, 0.05) 1px, transparent 0);
+    radial-gradient(circle at 2px 2px, rgba(244, 167, 195, 0.05) 1px, transparent 0);
   background-size: 32px 32px;
   z-index: 0;
   opacity: 0.5;
@@ -43,8 +43,8 @@
 }
 
 .info-card-primary {
-  background: rgba(15, 17, 26, 0.6);
-  border: 1px solid rgba(129, 140, 248, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(244, 167, 195, 0.15);
   padding: 2rem;
   border-radius: 24px;
   backdrop-filter: blur(20px);
@@ -57,14 +57,14 @@
   position: absolute;
   top: 0; right: 0;
   width: 100px; height: 100px;
-  background: radial-gradient(circle at top right, rgba(129, 140, 248, 0.1), transparent 70%);
+  background: radial-gradient(circle at top right, rgba(244, 167, 195, 0.1), transparent 70%);
 }
 
 .card-top {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  color: #818cf8;
+  color: #f4a7c3;
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -88,7 +88,7 @@
   word-break: break-all;
 }
 
-.email-link:hover { color: #818cf8; text-shadow: 0 0 10px rgba(129, 140, 248, 0.3); }
+.email-link:hover { color: #f4a7c3; text-shadow: 0 0 10px rgba(244, 167, 195, 0.3); }
 
 /* Cyber Card Grid */
 .social-cyber-grid {
@@ -98,8 +98,8 @@
 }
 
 .cyber-card {
-  background: rgba(15, 17, 26, 0.6);
-  border: 1px solid rgba(129, 140, 248, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(244, 167, 195, 0.1);
   padding: 1.5rem;
   border-radius: 20px;
   text-decoration: none;
@@ -112,7 +112,7 @@
 
 .cyber-card:hover {
   border-color: var(--hover-color);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(129, 140, 248, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(244, 167, 195, 0.05);
 }
 
 .cyber-card-content {
@@ -143,8 +143,8 @@
 
 /* ── Contact Form ────────────────────────────────────── */
 .contact-glass-form {
-  background: rgba(15, 17, 26, 0.4);
-  border: 1px solid rgba(129, 140, 248, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(244, 167, 195, 0.1);
   padding: 3rem;
   border-radius: 32px;
   backdrop-filter: blur(40px);
@@ -174,7 +174,7 @@
   font-weight: 600;
 }
 
-.form-group-cyber label svg { color: #818cf8; }
+.form-group-cyber label svg { color: #f4a7c3; }
 
 .input-wrapper {
   position: relative;
@@ -183,8 +183,8 @@
 .input-wrapper input,
 .input-wrapper textarea {
   width: 100%;
-  background: rgba(10, 12, 22, 0.6);
-  border: 1px solid rgba(129, 140, 248, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(244, 167, 195, 0.1);
   border-radius: 12px;
   padding: 1rem 1.25rem;
   color: #fff;
@@ -199,16 +199,16 @@
   position: absolute;
   bottom: 0; left: 0;
   width: 0; height: 2px;
-  background: linear-gradient(90deg, #6366f1, #a855f7);
+  background: linear-gradient(90deg, #f4a7c3, #c8a2c8);
   transition: width 0.4s ease;
   z-index: 5;
 }
 
 .input-wrapper input:focus,
 .input-wrapper textarea:focus {
-  border-color: rgba(129, 140, 248, 0.3);
-  background: rgba(10, 12, 22, 0.8);
-  box-shadow: 0 0 20px rgba(129, 140, 248, 0.05);
+  border-color: rgba(244, 167, 195, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 0 20px rgba(244, 167, 195, 0.05);
 }
 
 .input-wrapper input:focus + .input-highlight,
@@ -219,7 +219,7 @@
 /* Cyber Submit Button */
 .cyber-submit {
   width: 100%;
-  background: linear-gradient(135deg, #6366f1, #a855f7);
+  background: linear-gradient(135deg, #f4a7c3, #c8a2c8);
   border: none;
   border-radius: 16px;
   padding: 1.25rem;
@@ -229,7 +229,7 @@
   position: relative;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 10px 30px rgba(244, 167, 195, 0.3);
 }
 
 .cyber-submit.success { background: #10b981; box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3); }

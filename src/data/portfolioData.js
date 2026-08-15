@@ -164,6 +164,43 @@ export const skillCategories = [
 
 // ── Certifications ───────────────────────────────────────────────────────────
 export const certifications = [
+  // ── Google Cloud ────────────────────────────────────────────────────────────
+  {
+    title: 'Engineer AI Agents with Agent Development Kit (ADK)',
+    issuer: 'Google Cloud',
+    date: 'July 2026',
+    category: 'Cloud & DevOps',
+    link: 'https://www.credly.com/badges/2e21b6c8-af50-48ee-81bd-3a2ae0ac126f/linked_in?t=thopm8',
+    color: '#4285F4',
+  },
+  // ── AWS ─────────────────────────────────────────────────────────────────────
+  {
+    title: 'AWS SBG Core Team Member',
+    issuer: 'AWS Community',
+    date: 'August 2026',
+    category: 'Cloud & DevOps',
+    link: 'https://www.credly.com/badges/47ee28c7-431a-4891-83a4-3da3e68d6763/linked_in?t=tjm3ny',
+    color: '#FF9900',
+  },
+  // ── Oracle ───────────────────────────────────────────────────────────────────
+  {
+    title: 'Oracle Java Foundations',
+    issuer: 'Oracle',
+    date: 'August 2026',
+    category: 'Core CS & Java',
+    link: 'https://mylearn.oracle.com/ou/learning-path/oracle-java-foundations-training-and-assessment/152239',
+    color: '#F80000',
+  },
+  // ── Salesforce ───────────────────────────────────────────────────────────────
+  {
+    title: 'Salesforce Training & Certification',
+    issuer: 'Intellipaat',
+    date: 'April 2026',
+    category: 'Cloud & DevOps',
+    link: 'https://lnkd.in/gTeGhqxw',
+    color: '#00A1E0',
+  },
+  // ── Anthropic ────────────────────────────────────────────────────────────────
   {
     title: 'AI Fluency: Framework & Foundations',
     issuer: 'Anthropic',
@@ -189,6 +226,15 @@ export const certifications = [
     color: '#c084fc',
   },
   {
+    title: 'AI Course',
+    issuer: 'Intellipaat',
+    date: 'March 23, 2026',
+    category: 'AI & Claude',
+    link: 'https://intellipaat.com/academy/certificate-link/?Yz0xODI3JnU9MzM1NjM5JmV4dD0x',
+    color: '#38bdf8',
+  },
+  // ── DevOps & Systems ─────────────────────────────────────────────────────────
+  {
     title: 'System Design',
     issuer: 'Scaler',
     date: 'March 24, 2026',
@@ -198,12 +244,13 @@ export const certifications = [
   },
   {
     title: 'DevOps Certification',
-    issuer: 'IntelliPaat',
+    issuer: 'Intellipaat',
     date: 'March 22, 2026',
     category: 'DevOps & Systems',
     link: 'https://intellipaat.com/academy/certificate-link/?Yz0xNjU1JnU9MzM1NjM5JmV4dD0x',
     color: '#38bdf8',
   },
+  // ── Cyber Security ───────────────────────────────────────────────────────────
   {
     title: 'Intro to Cyber Security',
     issuer: 'Simplilearn',
@@ -212,17 +259,18 @@ export const certifications = [
     link: 'https://www.linkedin.com/posts/aditya-lohar-3037b32b9_excited-to-share-that-ive-successfully-completed-share-7438245657305325568-cf5-',
     color: '#818cf8',
   },
+  // ── Professional ─────────────────────────────────────────────────────────────
   {
-    title: 'AI Course',
-    issuer: 'IntelliPaat',
-    date: 'March 23, 2026',
-    category: 'AI & Claude',
-    link: 'https://intellipaat.com/academy/certificate-link/?Yz0xODI3JnU9MzM1NjM5JmV4dD0x',
-    color: '#38bdf8',
+    title: 'Entrepreneurship Awareness Programme',
+    issuer: 'Ministry of MSME, Govt. of India',
+    date: 'February 2026',
+    category: 'Professional',
+    link: 'https://www.linkedin.com/in/aditya-lohar-3037b32b9/recent-activity/all/',
+    color: '#4ade80',
   },
 ];
 
-export const certCategories = ['All', 'AI & Claude', 'Cyber Security', 'DevOps & Systems'];
+export const certCategories = ['All', 'AI & Claude', 'Cloud & DevOps', 'Core CS & Java', 'Cyber Security', 'DevOps & Systems', 'Professional'];
 
 // ── Experience ───────────────────────────────────────────────────────────────
 export const experiences = [
@@ -272,6 +320,36 @@ export const hackathons = [
     project: 'Krushi Mitra',
     color: '#4ade80',
     icon: '🌾',
+  },
+  {
+    title: 'HACKHAZARDS 2026',
+    result: 'Participant',
+    location: 'NAMESPACE (Online)',
+    team: [],
+    teamName: '',
+    link: 'https://lnkd.in/d5Hk4m3g',
+    color: '#818cf8',
+    icon: '⚡',
+  },
+  {
+    title: 'TenzorX National AI Hackathon 2026',
+    result: 'Participant',
+    location: 'Poonawalla Fincorp × Unstop (Online)',
+    team: [],
+    teamName: '',
+    link: 'https://lnkd.in/daDfb-uU',
+    color: '#38bdf8',
+    icon: '🤖',
+  },
+  {
+    title: 'QuizOff 2026 — India\'s Biggest AI Quiz',
+    result: 'Participant — 5,25,000+ students',
+    location: 'CampusCrew × Unstop (Online)',
+    team: [],
+    teamName: '',
+    link: 'https://lnkd.in/dHrmerNt',
+    color: '#f472b6',
+    icon: '🧠',
   },
 ];
 

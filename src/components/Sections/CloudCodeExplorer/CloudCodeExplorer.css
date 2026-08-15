@@ -80,11 +80,11 @@
 }
 
 .console-row:hover {
-  background: rgba(129, 140, 248, 0.05);
+  background: rgba(244, 167, 195, 0.05);
 }
 
 .console-row.selected {
-  background: rgba(129, 140, 248, 0.08);
+  background: rgba(244, 167, 195, 0.09);
 }
 
 .row-main {
@@ -139,8 +139,8 @@
 }
 
 .status-pip.prowling {
-  background: #a855f7;
-  box-shadow: 0 0 10px #a855f7;
+  background: #c8a2c8;
+  box-shadow: 0 0 10px #c8a2c8;
 }
 
 .row-arrow {
@@ -181,7 +181,7 @@
   border-left: 3px solid var(--primary);
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: #c4b5fd;
+  color: #f9c4d8;
 }
 
 .instance-logs p {

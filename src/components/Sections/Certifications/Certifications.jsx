@@ -2,6 +2,7 @@ import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { FiAward, FiExternalLink, FiImage, FiX, FiCheckCircle } from 'react-icons/fi';
 import MagneticButton from '../../UI/MagneticButton/MagneticButton';
+import { certifications, certCategories } from '../../../data/portfolioData';
 import './Certifications.css';
 
 const Certifications = () => {
@@ -10,74 +11,7 @@ const Certifications = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [activeFilter, setActiveFilter] = useState('All');
 
-  const categories = ['All', 'AI & Claude', 'Cyber Security', 'Salesforce & CRM', 'DevOps & Systems'];
-
-  const certifications = [
-    {
-      title: 'Free Salesforce Training and Certification',
-      issuer: 'IntelliPaat',
-      date: 'April 4, 2026',
-      category: 'Salesforce & CRM',
-      link: 'https://intellipaat.com/academy/certificate-link/?Yz0yMjg3JnU9MzM1NjM5JmV4dD0x',
-      color: '#00a1e0',
-    },
-    {
-      title: 'Introduction to Cyber Security',
-      issuer: 'Simplilearn SkillUp',
-      date: 'March 13, 2026',
-      category: 'Cyber Security',
-      link: 'https://www.linkedin.com/posts/aditya-lohar-3037b32b9_excited-to-share-that-ive-successfully-completed-share-7438245657305325568-cf5-',
-      color: '#818cf8',
-    },
-    {
-      title: 'Claude Code in Action',
-      issuer: 'Anthropic',
-      date: 'March 23, 2026',
-      category: 'AI & Claude',
-      link: 'https://verify.skilljar.com/c/dg5r8pnsfng7',
-      color: '#c084fc',
-    },
-    {
-      title: 'Claude 101',
-      issuer: 'Anthropic',
-      date: 'March 2026',
-      category: 'AI & Claude',
-      link: 'http://verify.skilljar.com/c/3gc8kxck8h74',
-      color: '#c084fc',
-    },
-    {
-      title: 'AI Fluency: Foundations',
-      issuer: 'Anthropic',
-      date: 'March 2026',
-      category: 'AI & Claude',
-      link: 'http://verify.skilljar.com/c/5n9y9eoh5atx',
-      color: '#c084fc',
-    },
-    {
-      title: 'DevOps Course Certification',
-      issuer: 'IntelliPaat',
-      date: 'March 22, 2026',
-      category: 'DevOps & Systems',
-      link: 'https://intellipaat.com/academy/certificate-link/?Yz0xNjU1JnU9MzM1NjM5JmV4dD0x',
-      color: '#38bdf8',
-    },
-    {
-      title: 'Artificial Intelligence (AI)',
-      issuer: 'IntelliPaat',
-      date: 'March 23, 2026',
-      category: 'AI & Claude',
-      link: 'https://intellipaat.com/academy/certificate-link/?Yz0xODI3JnU9MzM1NjM5JmV4dD0x',
-      color: '#38bdf8',
-    },
-    {
-      title: 'Quora System Design',
-      issuer: 'Scaler Topics',
-      date: 'March 24, 2026',
-      category: 'DevOps & Systems',
-      link: 'https://verify.skilljar.com',
-      color: '#f472b6',
-    },
-  ];
+  const categories = certCategories;
 
   const filteredCerts = activeFilter === 'All' 
     ? certifications 

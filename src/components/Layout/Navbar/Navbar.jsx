@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FiMenu, FiX } from 'react-icons/fi';
+import { FiMenu, FiX, FiGithub, FiLinkedin, FiDownload } from 'react-icons/fi';
 import Logo from '../../UI/Logo/Logo';
 import './Navbar.css';
 
@@ -18,7 +18,6 @@ const Navbar = () => {
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Certifications', href: '#certifications' },
     { name: 'Experience', href: '#experience' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -42,19 +41,33 @@ const Navbar = () => {
           <span className="logo-text">ADITYA</span>
         </motion.a>
 
-        <div className={`nav-links ${isOpen ? 'active' : ''}`}>
-          {navLinks.map((link, index) => (
-            <motion.a
-              key={link.name}
-              href={link.href}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              onClick={() => setIsOpen(false)}
-            >
-              {link.name}
-            </motion.a>
-          ))}
+        <div className={`nav-links-wrapper ${isOpen ? 'active' : ''}`}>
+          <div className="nav-links">
+            {navLinks.map((link, index) => (
+              <motion.a
+                key={link.name}
+                href={link.href}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                onClick={() => setIsOpen(false)}
+              >
+                {link.name}
+              </motion.a>
+            ))}
+          </div>
+          
+          <div className="nav-actions">
+            <a href="https://github.com/Adityaloharr0030" target="_blank" rel="noreferrer" className="social-icon">
+              <FiGithub />
+            </a>
+            <a href="https://www.linkedin.com/in/aditya-lohar-3037b32b9/" target="_blank" rel="noreferrer" className="social-icon">
+              <FiLinkedin />
+            </a>
+            <a href="/resume.pdf" target="_blank" rel="noreferrer" className="btn-resume">
+              <FiDownload /> Resume
+            </a>
+          </div>
         </div>
 
         <motion.button

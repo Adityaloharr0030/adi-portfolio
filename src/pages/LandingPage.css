@@ -12,7 +12,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #050510;
+  background: #f7edf3;
   overflow: hidden;
   z-index: 9999;
   font-family: 'Inter', sans-serif;
@@ -32,8 +32,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(129, 140, 248, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(129, 140, 248, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(244, 167, 195, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 167, 195, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black, transparent);
   z-index: 1;
@@ -51,7 +51,7 @@
   position: absolute;
   width: 40px;
   height: 40px;
-  border-color: rgba(129, 140, 248, 0.25);
+  border-color: rgba(244, 167, 195, 0.25);
   border-style: solid;
   border-width: 0;
 }
@@ -91,7 +91,7 @@
   font-size: 0.72rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(129, 140, 248, 0.6);
+  color: rgba(244, 167, 195, 0.6);
   font-family: 'Orbitron', monospace;
 }
 
@@ -136,12 +136,12 @@
   gap: 8px;
   padding: 6px 18px;
   border-radius: 100px;
-  background: rgba(129, 140, 248, 0.08);
-  border: 1px solid rgba(129, 140, 248, 0.2);
+  background: rgba(244, 167, 195, 0.08);
+  border: 1px solid rgba(244, 167, 195, 0.2);
   font-size: 0.7rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #818cf8;
+  color: #f4a7c3;
   font-family: 'Orbitron', monospace;
   margin-bottom: 28px;
 }
@@ -170,13 +170,13 @@
   font-family: 'Orbitron', monospace;
   font-size: clamp(3rem, 8vw, 5.5rem);
   font-weight: 900;
-  background: linear-gradient(135deg, #818cf8 0%, #c084fc 40%, #38bdf8 70%, #f472b6 100%);
+  background: linear-gradient(135deg, #f4a7c3 0%, #e8b4d4 40%, #e8b4d4 70%, #f472b6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   line-height: 1.1;
   position: relative;
-  filter: drop-shadow(0 0 30px rgba(129, 140, 248, 0.3));
+  filter: drop-shadow(0 0 30px rgba(244, 167, 195, 0.3));
 }
 
 /* Glow effect behind name */
@@ -184,7 +184,7 @@
   content: attr(data-text);
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #818cf8, #c084fc, #38bdf8);
+  background: linear-gradient(135deg, #f4a7c3, #e8b4d4, #e8b4d4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -200,7 +200,7 @@
   gap: 8px;
   font-family: 'Orbitron', monospace;
   font-size: 1rem;
-  color: #c084fc;
+  color: #e8b4d4;
   margin-bottom: 12px;
   min-height: 28px;
 }
@@ -212,7 +212,7 @@
 
 .tw-cursor {
   animation: cursorBlink 1s step-end infinite;
-  color: #818cf8;
+  color: #f4a7c3;
 }
 
 @keyframes cursorBlink {
@@ -253,7 +253,7 @@
   content: '';
   width: 1px;
   height: 30px;
-  background: linear-gradient(to bottom, transparent, rgba(129, 140, 248, 0.2), transparent);
+  background: linear-gradient(to bottom, transparent, rgba(244, 167, 195, 0.2), transparent);
 }
 
 /* Card base */
@@ -266,7 +266,7 @@
   padding: 32px 24px 28px;
   border-radius: 20px;
   background: rgba(13, 17, 23, 0.6);
-  border: 1px solid rgba(129, 140, 248, 0.1);
+  border: 1px solid rgba(244, 167, 195, 0.1);
   backdrop-filter: blur(20px);
   cursor: pointer;
   position: relative;
@@ -280,25 +280,25 @@
 
 .mode-card:hover,
 .mode-card:focus-visible {
-  border-color: rgba(129, 140, 248, 0.3);
+  border-color: rgba(244, 167, 195, 0.3);
 }
 
 .mode-card.game-mode:hover,
 .mode-card.game-mode:focus-visible {
-  border-color: rgba(129, 140, 248, 0.5);
+  border-color: rgba(244, 167, 195, 0.5);
   box-shadow:
-    0 0 40px rgba(129, 140, 248, 0.1),
-    0 20px 60px rgba(129, 140, 248, 0.05),
-    inset 0 1px 0 rgba(129, 140, 248, 0.1);
+    0 0 40px rgba(244, 167, 195, 0.1),
+    0 20px 60px rgba(244, 167, 195, 0.05),
+    inset 0 1px 0 rgba(244, 167, 195, 0.1);
 }
 
 .mode-card.classic-mode:hover,
 .mode-card.classic-mode:focus-visible {
-  border-color: rgba(56, 189, 248, 0.5);
+  border-color: rgba(232, 180, 212, 0.5);
   box-shadow:
-    0 0 40px rgba(56, 189, 248, 0.1),
-    0 20px 60px rgba(56, 189, 248, 0.05),
-    inset 0 1px 0 rgba(56, 189, 248, 0.1);
+    0 0 40px rgba(232, 180, 212, 0.1),
+    0 20px 60px rgba(232, 180, 212, 0.05),
+    inset 0 1px 0 rgba(232, 180, 212, 0.1);
 }
 
 .mode-card.disabled {
@@ -326,12 +326,12 @@
   position: absolute;
   inset: -8px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(129, 140, 248, 0.2), transparent 70%);
+  background: radial-gradient(circle, rgba(244, 167, 195, 0.2), transparent 70%);
   animation: glowPulse 3s ease-in-out infinite;
 }
 
 .mode-icon-glow.classic-glow {
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.2), transparent 70%);
+  background: radial-gradient(circle, rgba(232, 180, 212, 0.2), transparent 70%);
 }
 
 @keyframes glowPulse {
@@ -388,7 +388,7 @@
   top: 50%;
   transform: translateY(-50%);
   opacity: 0;
-  color: #818cf8;
+  color: #f4a7c3;
   transition: opacity 0.3s, transform 0.3s;
 }
 
@@ -435,9 +435,9 @@
   display: inline-block;
   padding: 2px 8px;
   border-radius: 4px;
-  background: rgba(129, 140, 248, 0.1);
-  border: 1px solid rgba(129, 140, 248, 0.2);
-  color: #818cf8;
+  background: rgba(244, 167, 195, 0.1);
+  border: 1px solid rgba(244, 167, 195, 0.2);
+  color: #f4a7c3;
   font-family: 'Orbitron', monospace;
   font-size: 0.72rem;
   margin: 0 3px;
@@ -473,7 +473,7 @@
   .mode-divider::after {
     width: 40px;
     height: 1px;
-    background: linear-gradient(to right, transparent, rgba(129, 140, 248, 0.2), transparent);
+    background: linear-gradient(to right, transparent, rgba(244, 167, 195, 0.2), transparent);
   }
 
   .mode-card {

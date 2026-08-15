@@ -2,166 +2,71 @@
 /**
  * Environment.jsx
  * ───────────────
- * Lightweight neon-cyber environment: gradient sky, grid ground, ambient lighting.
- * Optimized — removed heavy shadow maps, reduced light count and star particles.
+ * 🌸 Sakura Environment — simplified since real photo handles sky/ground.
+ * Only adds falling petal particles and warm lighting on top of the photo.
  */
 import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-/* ── Neon Grid Ground ─────────────────────────────────────────────────────── */
-const NeonGrid = () => {
-  const gridRef = useRef();
-
-  const gridShader = useMemo(() => ({
-    uniforms: {
-      uTime: { value: 0 },
-      uColor1: { value: new THREE.Color('#818cf8') },
-      uColor2: { value: new THREE.Color('#c084fc') },
-    },
-    vertexShader: `
-      varying vec2 vUv;
-      varying vec3 vWorldPos;
-      void main() {
-        vUv = uv;
-        vec4 worldPos = modelMatrix * vec4(position, 1.0);
-        vWorldPos = worldPos.xyz;
-        gl_Position = projectionMatrix * viewMatrix * worldPos;
-      }
-    `,
-    fragmentShader: `
-      uniform float uTime;
-      uniform vec3 uColor1;
-      uniform vec3 uColor2;
-      varying vec2 vUv;
-      varying vec3 vWorldPos;
-
-      void main() {
-        vec2 gridCoord = mod(vWorldPos.xz, 10.0);
-        float lineX = 1.0 - smoothstep(0.0, 0.3, gridCoord.x) * smoothstep(10.0, 9.7, gridCoord.x);
-        float lineZ = 1.0 - smoothstep(0.0, 0.3, gridCoord.y) * smoothstep(10.0, 9.7, gridCoord.y);
-        float gridLine = max(lineX, lineZ);
-
-        float dist = length(vWorldPos.xz) / 120.0;
-        float fade = 1.0 - smoothstep(0.3, 1.0, dist);
-
-        vec3 color = mix(uColor1, uColor2, sin(vWorldPos.x * 0.02 + uTime * 0.3) * 0.5 + 0.5);
-        float alpha = gridLine * fade * 0.3;
-
-        gl_FragColor = vec4(color, alpha);
-      }
-    `,
-  }), []);
-
-  useFrame((state) => {
-    if (gridRef.current) {
-      gridRef.current.material.uniforms.uTime.value = state.clock.elapsedTime;
-    }
-  });
-
-  return (
-    <mesh ref={gridRef} rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.01, 0]}>
-      <planeGeometry args={[300, 300, 1, 1]} />
-      <shaderMaterial
-        {...gridShader}
-        transparent
-        side={THREE.DoubleSide}
-        depthWrite={false}
-      />
-    </mesh>
-  );
-};
-
-/* ── Ground plane (solid dark) ────────────────────────────────────────────── */
-const Ground = () => (
-  <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.05, 0]}>
-    <planeGeometry args={[400, 400]} />
-    <meshBasicMaterial color="#080812" />
-  </mesh>
-);
-
-/* ── Sky dome with gradient ───────────────────────────────────────────────── */
-const SkyDome = () => {
-  const skyShader = useMemo(() => ({
-    uniforms: {
-      uTopColor: { value: new THREE.Color('#050510') },
-      uBottomColor: { value: new THREE.Color('#0a0a20') },
-      uHorizonColor: { value: new THREE.Color('#0d0d2b') },
-    },
-    vertexShader: `
-      varying vec3 vWorldPosition;
-      void main() {
-        vec4 worldPos = modelMatrix * vec4(position, 1.0);
-        vWorldPosition = worldPos.xyz;
-        gl_Position = projectionMatrix * viewMatrix * worldPos;
-      }
-    `,
-    fragmentShader: `
-      uniform vec3 uTopColor;
-      uniform vec3 uBottomColor;
-      uniform vec3 uHorizonColor;
-      varying vec3 vWorldPosition;
-      void main() {
-        float h = normalize(vWorldPosition).y;
-        vec3 color;
-        if (h > 0.0) {
-          color = mix(uHorizonColor, uTopColor, pow(h, 0.6));
-        } else {
-          color = mix(uHorizonColor, uBottomColor, pow(-h, 0.4));
-        }
-        gl_FragColor = vec4(color, 1.0);
-      }
-    `,
-  }), []);
-
-  return (
-    <mesh>
-      <sphereGeometry args={[200, 16, 16]} />
-      <shaderMaterial {...skyShader} side={THREE.BackSide} depthWrite={false} />
-    </mesh>
-  );
-};
-
-/* ── Floating stars / particles ───────────────────────────────────────────── */
-const Stars = () => {
+/* ── Falling Sakura Petals (3D particles over the photo) ──────────────────── */
+const SakuraPetals = () => {
   const pointsRef = useRef();
-  const STAR_COUNT = 600;
+  const PETAL_COUNT = 350;
 
-  const positions = useMemo(() => {
-    let seed = 42;
+  const { positions, offsets } = useMemo(() => {
+    let seed = 77;
     const rand = () => {
       seed = (seed * 16807) % 2147483647;
       return (seed - 1) / 2147483646;
     };
 
-    const pos = new Float32Array(STAR_COUNT * 3);
-    for (let i = 0; i < STAR_COUNT; i++) {
-      const r = 80 + rand() * 120;
-      const theta = rand() * Math.PI * 2;
-      const phi = Math.acos(2 * rand() - 1);
-      pos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
-      pos[i * 3 + 1] = Math.abs(r * Math.cos(phi)) + 5;
-      pos[i * 3 + 2] = r * Math.sin(phi) * Math.sin(theta);
+    const pos = new Float32Array(PETAL_COUNT * 3);
+    const off = new Float32Array(PETAL_COUNT);
+
+    for (let i = 0; i < PETAL_COUNT; i++) {
+      pos[i * 3]     = (rand() - 0.5) * 140;
+      pos[i * 3 + 1] = rand() * 35 + 2;
+      pos[i * 3 + 2] = (rand() - 0.5) * 380;
+      off[i]         = rand() * Math.PI * 2;
     }
-    return pos;
+    return { positions: pos, offsets: off };
   }, []);
 
+  const posArray = useRef(new Float32Array(positions));
+
   useFrame((state) => {
-    if (pointsRef.current) {
-      pointsRef.current.rotation.y = state.clock.elapsedTime * 0.003;
+    if (!pointsRef.current) return;
+    const t = state.clock.elapsedTime;
+    const pos = posArray.current;
+    for (let i = 0; i < PETAL_COUNT; i++) {
+      const o = offsets[i];
+      pos[i * 3]     += Math.sin(t * 0.3 + o) * 0.009;
+      pos[i * 3 + 1] -= 0.038;
+      pos[i * 3 + 2] += Math.cos(t * 0.2 + o) * 0.006;
+      if (pos[i * 3 + 1] < -1) {
+        pos[i * 3 + 1] = 35 + Math.random() * 10;
+        pos[i * 3]     = (Math.random() - 0.5) * 140;
+      }
     }
+    pointsRef.current.geometry.attributes.position.needsUpdate = true;
   });
 
   return (
     <points ref={pointsRef}>
       <bufferGeometry>
-        <bufferAttribute attach="attributes-position" count={STAR_COUNT} array={positions} itemSize={3} />
+        <bufferAttribute
+          attach="attributes-position"
+          count={PETAL_COUNT}
+          array={posArray.current}
+          itemSize={3}
+        />
       </bufferGeometry>
       <pointsMaterial
         size={0.3}
-        color="#c084fc"
+        color="#f9c4d8"
         transparent
-        opacity={0.5}
+        opacity={0.9}
         sizeAttenuation
         blending={THREE.AdditiveBlending}
         depthWrite={false}
@@ -170,23 +75,29 @@ const Stars = () => {
   );
 };
 
+/* ── Transparent ground plane (road sits on this) ─────────────────────────── */
+const Ground = () => (
+  <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.05, 0]}>
+    <planeGeometry args={[400, 400]} />
+    <meshBasicMaterial color="#1a0d10" transparent opacity={0.7} />
+  </mesh>
+);
+
 /* ── Main Environment Component ───────────────────────────────────────────── */
 const Environment = () => {
   return (
     <>
-      {/* Lighting — minimal set for performance */}
-      <ambientLight intensity={0.6} color="#a5b4fc" />
-      <directionalLight position={[30, 40, 20]} intensity={0.8} color="#818cf8" />
-      <directionalLight position={[-20, 30, -30]} intensity={0.4} color="#c084fc" />
+      {/* Warm sakura-tinted lighting */}
+      <ambientLight intensity={0.8} color="#f9c4d8" />
+      <directionalLight position={[-40, 60, -100]} intensity={1.2} color="#ffe4f0" />
+      <directionalLight position={[30, 20, 30]}  intensity={0.4} color="#c8a2c8" />
 
-      {/* Fog */}
-      <fog attach="fog" args={['#050510', 60, 200]} />
+      {/* Subtle depth fog matching photo atmosphere */}
+      <fog attach="fog" args={['#3d1a2a', 40, 160]} />
 
-      {/* World elements */}
-      <SkyDome />
+      {/* Minimal ground + 3D petals */}
       <Ground />
-      <NeonGrid />
-      <Stars />
+      <SakuraPetals />
     </>
   );
 };

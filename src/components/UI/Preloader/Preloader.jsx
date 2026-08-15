@@ -35,9 +35,13 @@ const Preloader = () => {
   return (
     <motion.div 
       className="preloader"
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      exit={{ opacity: 0, scale: 0.98 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
     >
+      {/* Falling petals in background */}
+      {Array.from({length: 8}).map((_,i) => (
+        <div key={i} className="preloader-petal" />
+      ))}
       <div className="preloader-content">
         <div className="preloader-matrix"></div>
         <div className="preloader-scanning"></div>

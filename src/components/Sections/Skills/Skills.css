@@ -82,7 +82,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 20% 20%, var(--cat-color, #818cf8) 0%, transparent 60%);
+  background: radial-gradient(circle at 20% 20%, var(--cat-color, #f4a7c3) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
@@ -92,7 +92,7 @@
 
 .skill-category:hover {
   border-color: var(--cat-color, rgba(129,140,248,0.3));
-  box-shadow: 0 0 40px rgba(0,0,0,0.3), 0 0 20px color-mix(in srgb, var(--cat-color, #818cf8) 20%, transparent);
+  box-shadow: 0 0 40px rgba(0,0,0,0.3), 0 0 20px color-mix(in srgb, var(--cat-color, #f4a7c3) 20%, transparent);
   transform: translateY(-4px);
 }
 

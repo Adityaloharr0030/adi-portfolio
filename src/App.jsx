@@ -2,6 +2,7 @@ import { useState, useEffect, lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Preloader from './components/UI/Preloader/Preloader';
+import AnimatedBackground from './components/Backgrounds/AnimatedBackground/AnimatedBackground';
 import './App.css';
 
 // Lazy load pages
@@ -43,19 +44,22 @@ function App() {
 
   return (
     <>
+      {/* Background plays instantly during loading */}
+      <AnimatedBackground />
+
       <AnimatePresence mode="wait">
         {isLoading && <Preloader key="preloader" />}
       </AnimatePresence>
 
-      {!isLoading && (
-        <Suspense fallback={<LoadingFallback />}>
+      <Suspense fallback={<LoadingFallback />}>
+        {!isLoading && (
           <Routes>
             <Route path="/" element={<ClassicPortfolio />} />
             <Route path="/classic" element={<ClassicPortfolio />} />
             <Route path="/game" element={<GameMode />} />
           </Routes>
-        </Suspense>
-      )}
+        )}
+      </Suspense>
     </>
   );
 }

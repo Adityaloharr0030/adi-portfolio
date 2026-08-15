@@ -29,17 +29,26 @@ const RunningCarBackground = () => {
   const isMobile = window.innerWidth <= 768 || ('ontouchstart' in window && window.innerWidth <= 1024);
 
   if (prefersReducedMotion || isMobile) {
-    return <div className="webgl-bg-solid" style={{ background: '#050510', position: 'fixed', inset: 0, zIndex: -1 }} />;
+    return <div className="webgl-bg-solid" style={{ background: '#fdf6f9', position: 'fixed', inset: 0, zIndex: -1 }} />;
   }
 
   return (
-    <div className="webgl-bg-wrapper" aria-hidden="true">
+    <div
+      className="webgl-bg-wrapper"
+      aria-hidden="true"
+      style={{
+        backgroundImage: 'url(/sakura-bg.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        filter: 'brightness(0.82) saturate(1.15)',
+      }}
+    >
       <Canvas
         dpr={[0.75, 1]}
         camera={{ position: [0, 8, 20], fov: 60, near: 0.1, far: 300 }}
         shadows={false}
-        gl={{ antialias: false, alpha: false, powerPreference: 'high-performance' }}
-        style={{ background: '#050510' }}
+        gl={{ antialias: false, alpha: true, powerPreference: 'high-performance' }}
+        style={{ background: 'transparent' }}    
       >
         <AdaptiveDpr pixelated />
         <AdaptiveEvents />

@@ -16,7 +16,7 @@
   transform: translate(-50%, -50%);
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(129, 140, 248, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(244, 167, 195, 0.08) 0%, transparent 70%);
   filter: blur(120px);
   z-index: 0;
   pointer-events: none;
@@ -35,8 +35,8 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.5rem 1rem;
-  background: rgba(129, 140, 248, 0.05);
-  border: 1px solid rgba(129, 140, 248, 0.15);
+  background: rgba(244, 167, 195, 0.05);
+  border: 1px solid rgba(244, 167, 195, 0.15);
   border-radius: 50px;
   margin-bottom: 2rem;
   font-family: 'JetBrains Mono', monospace;
@@ -48,9 +48,9 @@
 .dot.pulsing.blue {
   width: 8px;
   height: 8px;
-  background: #38bdf8;
+  background: #e8b4d4;
   border-radius: 50%;
-  box-shadow: 0 0 10px #38bdf8;
+  box-shadow: 0 0 10px #e8b4d4;
   animation: pulse-light 1.5s infinite;
 }
 
@@ -69,7 +69,7 @@
 
 .cyber-stat-card {
   background: rgba(15, 17, 26, 0.75);
-  border: 1px solid rgba(129, 140, 248, 0.2);
+  border: 1px solid rgba(244, 167, 195, 0.2);
   border-radius: 20px;
   padding: 1.75rem;
   position: relative;
@@ -82,14 +82,14 @@
 }
 
 .cyber-stat-card:hover {
-  border-color: rgba(129, 140, 248, 0.5);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(129, 140, 248, 0.05);
+  border-color: rgba(244, 167, 195, 0.5);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(244, 167, 195, 0.05);
 }
 
 .card-scanlines-v2 {
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(0deg, transparent 0% 50%, rgba(129, 140, 248, 0.02) 50% 100%);
+  background: repeating-linear-gradient(0deg, transparent 0% 50%, rgba(244, 167, 195, 0.02) 50% 100%);
   background-size: 100% 4px;
   pointer-events: none;
   z-index: 10;
@@ -117,13 +117,13 @@
 .sc-icon-wrap {
   width: 38px;
   height: 38px;
-  background: rgba(129, 140, 248, 0.1);
-  border: 1px solid rgba(129, 140, 248, 0.2);
+  background: rgba(244, 167, 195, 0.1);
+  border: 1px solid rgba(244, 167, 195, 0.2);
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #818cf8;
+  color: #f4a7c3;
   font-size: 1.15rem;
 }
 
@@ -156,14 +156,14 @@
 .stat-card-img img {
   max-width: 100%;
   height: auto;
-  filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.1));
+  filter: drop-shadow(0 0 10px rgba(244, 167, 195, 0.1));
 }
 
 /* Stat Card Footer */
 .stat-card-footer {
   margin-top: 1.5rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(129, 140, 248, 0.08);
+  border-top: 1px solid rgba(244, 167, 195, 0.08);
   display: flex;
   justify-content: space-between;
   font-family: 'JetBrains Mono', monospace;
@@ -181,8 +181,8 @@
 }
 
 .full-profile-btn {
-  background: rgba(15, 17, 26, 0.8);
-  border: 1px solid rgba(129, 140, 248, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(244, 167, 195, 0.3);
   padding: 1.25rem 2.5rem;
   border-radius: 16px;
   color: #fff;
@@ -199,12 +199,12 @@
 }
 
 .full-profile-btn:hover {
-  border-color: #818cf8;
-  background: rgba(129, 140, 248, 0.1);
-  box-shadow: 0 10px 40px rgba(129, 140, 248, 0.2);
+  border-color: #f4a7c3;
+  background: rgba(244, 167, 195, 0.1);
+  box-shadow: 0 10px 40px rgba(244, 167, 195, 0.2);
 }
 
-.full-profile-btn svg { font-size: 1.2rem; color: #818cf8; }
+.full-profile-btn svg { font-size: 1.2rem; color: #f4a7c3; }
 .blink { animation: blink-soft 1s infinite; }
 
 @keyframes blink-soft { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }

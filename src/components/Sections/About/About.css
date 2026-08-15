@@ -47,7 +47,7 @@
 .about-accent-line {
   width: 80px;
   height: 3px;
-  background: linear-gradient(90deg, #818cf8, #c084fc, #38bdf8);
+  background: linear-gradient(90deg, #f4a7c3, #e8b4d4, #e8b4d4);
   border-radius: 2px;
   margin-top: 1rem;
   transform-origin: left;
@@ -84,7 +84,7 @@
   position: absolute;
   inset: -1px;
   border-radius: 17px;
-  background: linear-gradient(135deg, var(--neon-color, #818cf8), transparent 60%);
+  background: linear-gradient(135deg, var(--neon-color, #f4a7c3), transparent 60%);
   opacity: 0;
   transition: opacity 0.35s ease;
   pointer-events: none;
@@ -94,8 +94,8 @@
 .stat-card.neon-card:hover::before { opacity: 0.25; }
 
 .stat-card.neon-card:hover {
-  border-color: var(--neon-color, #818cf8);
-  box-shadow: 0 0 30px color-mix(in srgb, var(--neon-color, #818cf8) 25%, transparent),
+  border-color: var(--neon-color, #f4a7c3);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--neon-color, #f4a7c3) 25%, transparent),
               0 12px 30px rgba(0,0,0,0.3);
   transform: translateY(-6px) scale(1.04);
 }
@@ -114,7 +114,7 @@
 }
 
 .stat-card:hover .stat-icon-wrap {
-  box-shadow: 0 0 16px var(--neon-color, #818cf8);
+  box-shadow: 0 0 16px var(--neon-color, #f4a7c3);
 }
 
 .stat-value {
@@ -176,14 +176,14 @@
   backdrop-filter: blur(12px);
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-left: 3px solid var(--hack-color, #818cf8);
+  border-left: 3px solid var(--hack-color, #f4a7c3);
   transition: all 0.35s ease;
   cursor: default;
 }
 
 .hackathon-card:hover {
-  border-color: var(--hack-color, #818cf8);
-  box-shadow: 0 0 24px color-mix(in srgb, var(--hack-color, #818cf8) 20%, transparent),
+  border-color: var(--hack-color, #f4a7c3);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--hack-color, #f4a7c3) 20%, transparent),
               0 8px 24px rgba(0,0,0,0.25);
 }
 

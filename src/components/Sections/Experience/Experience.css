@@ -18,7 +18,7 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(180deg, #6366f1, #8b5cf6, #1e293b);
+  background: linear-gradient(180deg, #f4a7c3, #c8a2c8, rgba(36, 18, 28, 0.3));
 }
 
 .timeline-item {
@@ -37,28 +37,28 @@
   top: 0;
   width: 16px;
   height: 16px;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  background: linear-gradient(135deg, #f4a7c3, #c8a2c8);
   border-radius: 50%;
-  border: 3px solid #0a0a14;
-  box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+  border: 3px solid #fdf6f9;
+  box-shadow: 0 0 20px rgba(244, 167, 195, 0.55);
 }
 
 .timeline-content {
-  background: rgba(30, 30, 46, 0.5);
-  border: 1px solid #1e293b;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(244, 167, 195, 0.1);
   border-radius: 16px;
   padding: 1.75rem;
   transition: all 0.3s ease;
 }
 
 .timeline-content:hover {
-  border-color: rgba(99, 102, 241, 0.3);
-  box-shadow: 0 10px 40px rgba(99, 102, 241, 0.1);
+  border-color: rgba(244, 167, 195, 0.3);
+  box-shadow: 0 10px 40px rgba(244, 167, 195, 0.1);
 }
 
 .timeline-content.current {
-  border-color: rgba(99, 102, 241, 0.5);
-  background: rgba(30, 30, 46, 0.8);
+  border-color: rgba(244, 167, 195, 0.45);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .timeline-header {
@@ -73,18 +73,18 @@
 .timeline-header h3 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #f1f5f9;
+  color: #1c0d15;
   margin-bottom: 0.25rem;
 }
 
 .timeline-header .company {
-  color: #6366f1;
+  color: #f4a7c3;
   font-weight: 500;
 }
 
 .current-badge {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  color: #fff;
+  background: linear-gradient(135deg, #f4a7c3, #c8a2c8);
+  color: #1c0d15;
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
   font-size: 0.75rem;
@@ -102,12 +102,12 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #64748b;
+  color: #a08899;
   font-size: 0.85rem;
 }
 
 .meta-item svg {
-  color: #6366f1;
+  color: #f4a7c3;
 }
 
 .timeline-details {
@@ -117,7 +117,7 @@
 }
 
 .timeline-details li {
-  color: #94a3b8;
+  color: #d4b8c7;
   font-size: 0.95rem;
   line-height: 1.8;
   margin-bottom: 0.5rem;
@@ -126,10 +126,11 @@
 }
 
 .timeline-details li::before {
-  content: '▹';
+  content: '🌸';
   position: absolute;
   left: 0;
-  color: #6366f1;
+  font-size: 0.65rem;
+  top: 0.3rem;
 }
 
 @media (max-width: 768px) {

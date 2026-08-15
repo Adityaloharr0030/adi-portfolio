@@ -81,11 +81,11 @@
   width: 100%;
   max-width: 600px;
   background: rgba(10, 12, 22, 0.95);
-  border: 1px solid rgba(129, 140, 248, 0.25);
+  border: 1px solid rgba(244, 167, 195, 0.25);
   border-radius: 12px;
   box-shadow: 
     0 40px 100px rgba(0, 0, 0, 0.8),
-    0 0 50px rgba(99, 102, 241, 0.1);
+    0 0 50px rgba(244, 167, 195, 0.1);
   overflow: hidden;
   position: relative;
   font-family: 'JetBrains Mono', monospace;
@@ -98,7 +98,7 @@
   background: repeating-linear-gradient(
     0deg,
     transparent 0%,
-    rgba(129, 140, 248, 0.03) 50%,
+    rgba(244, 167, 195, 0.03) 50%,
     transparent 100%
   );
   background-size: 100% 4px;
@@ -109,8 +109,8 @@
 
 /* Chrome / Title Bar */
 .window-chrome {
-  background: rgba(129, 140, 248, 0.08);
-  border-bottom: 1px solid rgba(129, 140, 248, 0.15);
+  background: rgba(244, 167, 195, 0.08);
+  border-bottom: 1px solid rgba(244, 167, 195, 0.15);
   padding: 0.75rem 1.25rem;
   display: flex;
   justify-content: space-between;
@@ -128,7 +128,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(129, 140, 248, 0.4);
+  background: rgba(244, 167, 195, 0.4);
 }
 
 .window-title {
@@ -168,8 +168,8 @@
   align-items: center;
   gap: 1rem;
   padding: 1.25rem;
-  background: rgba(129, 140, 248, 0.04);
-  border: 1px solid rgba(129, 140, 248, 0.1);
+  background: rgba(244, 167, 195, 0.04);
+  border: 1px solid rgba(244, 167, 195, 0.1);
   border-radius: 12px;
 }
 
@@ -177,10 +177,10 @@
 .sc-label { font-size: 0.6rem; color: #475569; letter-spacing: 0.1em; }
 .sc-val { font-size: 1rem; font-weight: 800; }
 .sc-val.green { color: #22c55e; }
-.sc-val.blue { color: #38bdf8; }
+.sc-val.blue { color: #e8b4d4; }
 
-.icon-pulse { color: #818cf8; font-size: 1.5rem; animation: pulse-glow 2s infinite; }
-.icon-spin { color: #38bdf8; font-size: 1.5rem; animation: spin-slow 10s linear infinite; }
+.icon-pulse { color: #f4a7c3; font-size: 1.5rem; animation: pulse-glow 2s infinite; }
+.icon-spin { color: #e8b4d4; font-size: 1.5rem; animation: spin-slow 10s linear infinite; }
 
 @keyframes spin-slow { to { transform: rotate(360deg); } }
 
@@ -194,7 +194,7 @@
 
 .panel {
   background: rgba(15, 17, 26, 0.5);
-  border: 1px solid rgba(129, 140, 248, 0.08);
+  border: 1px solid rgba(244, 167, 195, 0.08);
   border-radius: 12px;
   padding: 1.25rem;
 }
@@ -206,17 +206,17 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  border-bottom: 1px solid rgba(129, 140, 248, 0.05);
+  border-bottom: 1px solid rgba(244, 167, 195, 0.05);
   padding-bottom: 0.5rem;
 }
 
 /* Metric Rows (CPU/MEM) */
 .metric-row { margin-bottom: 1rem; }
 .mr-info { display: flex; justify-content: space-between; font-size: 0.75rem; color: #94a3b8; margin-bottom: 0.4rem; }
-.mr-bar { width: 100%; height: 4px; background: rgba(129, 140, 248, 0.05); border-radius: 2px; overflow: hidden; }
-.mr-fill { height: 100%; background: #6366f1; box-shadow: 0 0 10px rgba(99, 102, 241, 0.4); }
+.mr-bar { width: 100%; height: 4px; background: rgba(244, 167, 195, 0.05); border-radius: 2px; overflow: hidden; }
+.mr-fill { height: 100%; background: #f4a7c3; box-shadow: 0 0 10px rgba(244, 167, 195, 0.4); }
 .mr-fill.purple { background: #8b5cf6; }
-.mr-fill.blue { background: #38bdf8; }
+.mr-fill.blue { background: #e8b4d4; }
 
 /* Language Chart */
 .lang-chart {
@@ -237,7 +237,7 @@
 .lb-track {
   width: 12px;
   height: 80px;
-  background: rgba(129, 140, 248, 0.05);
+  background: rgba(244, 167, 195, 0.05);
   border-radius: 6px;
   position: relative;
   overflow: hidden;
@@ -252,13 +252,13 @@
 /* Terminal Log */
 .terminal-log {
   background: rgba(5, 5, 10, 0.8);
-  border: 1px solid rgba(129, 140, 248, 0.15);
+  border: 1px solid rgba(244, 167, 195, 0.15);
   border-radius: 10px;
   padding: 1.25rem;
   margin-bottom: 1.5rem;
 }
 
-.term-header { font-size: 0.65rem; color: #475569; margin-bottom: 0.75rem; border-bottom: 1px solid rgba(129, 140, 248, 0.05); }
+.term-header { font-size: 0.65rem; color: #475569; margin-bottom: 0.75rem; border-bottom: 1px solid rgba(244, 167, 195, 0.05); }
 
 .log-lines {
   height: 120px;
@@ -267,15 +267,15 @@
 }
 
 .log-t { margin-bottom: 0.4rem; color: #64748b; }
-.log-t.blue { color: #38bdf8; }
+.log-t.blue { color: #e8b4d4; }
 .log-t.green { color: #22c55e; }
-.log-t.purple { color: #818cf8; }
+.log-t.purple { color: #f4a7c3; }
 
 /* Window Footer */
 .window-footer {
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid rgba(129, 140, 248, 0.1);
+  border-top: 1px solid rgba(244, 167, 195, 0.1);
   padding-top: 1rem;
 }
 

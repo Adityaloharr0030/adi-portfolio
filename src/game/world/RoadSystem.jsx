@@ -23,8 +23,8 @@ const RoadSurface = ({ vehicleRef }) => {
     uniforms: {
       uTime: { value: 0 },
       uSpeed: { value: 0 },
-      uLineColor: { value: new THREE.Color('#818cf8') },
-      uEdgeColor: { value: new THREE.Color('#c084fc') },
+      uLineColor: { value: new THREE.Color('#f4a7c3') },
+      uEdgeColor: { value: new THREE.Color('#c8a2c8') },
     },
     vertexShader: `
       varying vec2 vUv;
@@ -41,7 +41,7 @@ const RoadSurface = ({ vehicleRef }) => {
       varying vec2 vUv;
 
       void main() {
-        vec3 roadColor = vec3(0.06, 0.06, 0.12);
+        vec3 roadColor = vec3(0.10, 0.06, 0.08); // dark earth path
 
         float centerDist = abs(vUv.x - 0.5);
         float centerLine = smoothstep(0.02, 0.01, centerDist);
@@ -94,8 +94,8 @@ const GuardRails = () => {
     const halfW = ROAD_WIDTH / 2 + 0.4;
 
     for (let z = -100; z <= 450; z += 14) {
-      arr.push({ key: `l-${z}`, position: [-halfW, 0.4, z], color: '#818cf8' });
-      arr.push({ key: `r-${z}`, position: [halfW, 0.4, z], color: '#c084fc' });
+      arr.push({ key: `l-${z}`, position: [-halfW, 0.4, z], color: '#5a3a45' });
+      arr.push({ key: `r-${z}`, position: [halfW, 0.4, z], color: '#5a3a45' });
     }
 
     return arr;
@@ -116,17 +116,24 @@ const GuardRails = () => {
 /* ── Zone Gate Arches (no pointLights) ────────────────────────────────────── */
 const ZoneGate = ({ position, color }) => (
   <group position={position}>
+    {/* Torii-gate style pillars — dark wood with sakura emissive */}
     <mesh position={[-4, 2.5, 0]}>
-      <boxGeometry args={[0.4, 5, 0.4]} />
-      <meshStandardMaterial color="#0d0d1a" emissive={color} emissiveIntensity={0.4} />
+      <cylinderGeometry args={[0.18, 0.22, 5, 6]} />
+      <meshStandardMaterial color="#2d1208" emissive={color} emissiveIntensity={0.35} />
     </mesh>
     <mesh position={[4, 2.5, 0]}>
-      <boxGeometry args={[0.4, 5, 0.4]} />
-      <meshStandardMaterial color="#0d0d1a" emissive={color} emissiveIntensity={0.4} />
+      <cylinderGeometry args={[0.18, 0.22, 5, 6]} />
+      <meshStandardMaterial color="#2d1208" emissive={color} emissiveIntensity={0.35} />
     </mesh>
-    <mesh position={[0, 5.2, 0]}>
-      <boxGeometry args={[8.8, 0.3, 0.3]} />
-      <meshStandardMaterial color="#0d0d1a" emissive={color} emissiveIntensity={0.6} />
+    {/* Crossbeam */}
+    <mesh position={[0, 5.5, 0]}>
+      <boxGeometry args={[9.5, 0.35, 0.35]} />
+      <meshStandardMaterial color="#2d1208" emissive={color} emissiveIntensity={0.5} />
+    </mesh>
+    {/* Second crossbeam (torii style) */}
+    <mesh position={[0, 4.8, 0]}>
+      <boxGeometry args={[8.4, 0.22, 0.22]} />
+      <meshStandardMaterial color="#3d1a10" emissive={color} emissiveIntensity={0.3} />
     </mesh>
   </group>
 );

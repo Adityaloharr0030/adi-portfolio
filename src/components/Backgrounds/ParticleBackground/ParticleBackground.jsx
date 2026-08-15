@@ -27,7 +27,7 @@ const ParticleBackground = () => {
     window.addEventListener('mousemove', onMouseMove);
 
     const COUNT = Math.min(Math.floor((window.innerWidth * window.innerHeight) / 9000), 140);
-    const COLORS = ['#818cf8', '#c084fc', '#a855f7', '#38bdf8', '#6366f1'];
+    const COLORS = ['#f4a7c3', '#e8879c', '#c8a2c8', '#f9c4d8', '#e8b4d4'];
 
     const createParticle = () => {
       const p = {
