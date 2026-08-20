@@ -8,12 +8,12 @@
 }
 
 /* ── Video fills screen, high quality ────────────────── */
-.hero-video-iframe {
+.hero-video {
   position: absolute;
-  top: 50%; left: 50%;
-  width: 100vw; height: 56.25vw; /* 16:9 Aspect Ratio */
-  min-height: 100vh; min-width: 177.77vh; /* 16:9 Aspect Ratio */
-  transform: translate(-50%, -50%) scale(1.05); /* Slight scale to hide edges/YouTube logo */
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
   z-index: 0;
   pointer-events: none; /* Crucial for performance and blocking interaction */
   border: none;

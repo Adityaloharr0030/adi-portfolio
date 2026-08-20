@@ -30,8 +30,11 @@ const Contact = () => {
 
     try {
       const templateParams = {
+        from_name: formState.name,
         name: formState.name,
+        from_email: formState.email,
         email: formState.email,
+        reply_to: formState.email,
         subject: 'New Portfolio Inquiry',
         message: formState.message,
         time: new Date().toLocaleString(),
@@ -41,9 +44,7 @@ const Contact = () => {
         import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_ic6ne49',
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_i7p22qv',
         templateParams,
-        {
-          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'W8KOq0jMBBAXrjVBM'
-        }
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'W8KOq0jMBBAXrjVBM'
       );
 
       setSubmitted(true);
