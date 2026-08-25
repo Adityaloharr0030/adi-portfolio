@@ -1,6 +1,17 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
+Disallow: /api/
+
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
 
 # Sitemap
 Sitemap: https://adi-portfolio-beta-coral.vercel.app/sitemap.xml
