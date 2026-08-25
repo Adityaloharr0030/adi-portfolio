@@ -222,3 +222,225 @@
   .sc-title { font-size: 0.75rem; }
 }
 
+/* ══════════════════════════════════════════════════════
+   REAL DATA COMPONENTS
+══════════════════════════════════════════════════════ */
+
+/* ── Stat Items Grid ── */
+.gh-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  flex: 1;
+  position: relative;
+  z-index: 5;
+}
+
+.gh-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.gh-stat-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(244, 167, 195, 0.25);
+}
+
+.gh-stat-icon {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.gh-stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.gh-stat-value {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.gh-stat-label {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ── Stat Card Body ── */
+.stat-card-body {
+  flex: 1;
+  position: relative;
+  z-index: 5;
+  padding: 0.5rem 0;
+}
+
+/* ── Language Bar ── */
+.gh-lang-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.gh-lang-bar {
+  display: flex;
+  height: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.gh-lang-segment {
+  height: 100%;
+  transition: all 0.3s ease;
+  min-width: 3px;
+}
+
+.gh-lang-segment:first-child { border-radius: 10px 0 0 10px; }
+.gh-lang-segment:last-child { border-radius: 0 10px 10px 0; }
+
+.gh-lang-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.gh-lang-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+}
+
+.gh-lang-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.gh-lang-name {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+}
+
+.gh-lang-pct {
+  color: rgba(255, 255, 255, 0.45);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+}
+
+/* ── Top Repos ── */
+.gh-top-repos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.gh-repo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 0.85rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.gh-repo-item:hover {
+  background: rgba(244, 167, 195, 0.08);
+  border-color: rgba(244, 167, 195, 0.3);
+  transform: translateX(4px);
+}
+
+.gh-repo-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+
+.gh-repo-icon {
+  color: #f4a7c3;
+  font-size: 0.9rem;
+}
+
+.gh-repo-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.gh-repo-lang {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.gh-repo-stars {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #fbbf24;
+}
+
+/* ── Loading ── */
+.gh-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 4rem 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+}
+
+.gh-loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 2px solid rgba(244, 167, 195, 0.15);
+  border-top-color: #f4a7c3;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Yellow pulsing dot (for loading) ── */
+.dot.pulsing.yellow {
+  width: 8px;
+  height: 8px;
+  background: #fbbf24;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #fbbf24;
+  animation: pulse-light 1s infinite;
+}
+
+@media (max-width: 768px) {
+  .gh-stats-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .gh-repo-item { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+  .gh-lang-legend { gap: 0.4rem 0.75rem; }
+}
+
+@media (max-width: 480px) {
+  .gh-stats-grid { grid-template-columns: 1fr; }
+}

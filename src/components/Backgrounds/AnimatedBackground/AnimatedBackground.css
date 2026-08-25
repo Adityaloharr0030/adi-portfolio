@@ -7,6 +7,23 @@
   background: #060310;
 }
 
+/* ── Static fallback background (loads instantly) ──── */
+.hero-static-bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(100, 60, 150, 0.25) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 30% 70%, rgba(249, 168, 212, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 50% 20%, rgba(56, 30, 100, 0.3) 0%, transparent 65%),
+    linear-gradient(180deg, #0a0520 0%, #120830 40%, #0d0620 100%);
+  z-index: 0;
+  transition: opacity 1.5s ease;
+}
+
+.hero-static-bg.fade-out {
+  opacity: 0;
+}
+
 /* ── Video fills screen, high quality ────────────────── */
 .hero-video {
   position: absolute;
@@ -15,11 +32,17 @@
   height: 100vh;
   object-fit: cover;
   z-index: 0;
-  pointer-events: none; /* Crucial for performance and blocking interaction */
+  pointer-events: none;
   border: none;
+  opacity: 0;
+  transition: opacity 1.5s ease;
   -webkit-transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
   will-change: transform;
+}
+
+.hero-video.visible {
+  opacity: 1;
 }
 
 /* ── Subtle left tint for text contrast ─────────────── */
@@ -27,10 +50,10 @@
   position: absolute; inset: 0; z-index: 1;
   background: linear-gradient(
     100deg,
-    rgba(4, 2, 15, 0.45) 0%,
-    rgba(4, 2, 15, 0.18) 40%,
-    rgba(4, 2, 15, 0.04) 70%,
-    transparent 100%
+    rgba(4, 2, 15, 0.65) 0%,
+    rgba(4, 2, 15, 0.40) 40%,
+    rgba(4, 2, 15, 0.20) 70%,
+    rgba(4, 2, 15, 0.10) 100%
   );
   pointer-events: none;
 }
@@ -40,9 +63,23 @@
   position: absolute;
   bottom: 0; left: 0;
   width: 100%; height: 12%;
-  background: linear-gradient(to top, rgba(4,2,15,0.35) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(4,2,15,0.5) 0%, transparent 100%);
   z-index: 2;
   pointer-events: none;
 }
 
+/* ── Mobile: stronger overlay for readability ─────── */
+@media (max-width: 768px) {
+  .hero-overlay-text {
+    background: linear-gradient(
+      180deg,
+      rgba(4, 2, 15, 0.55) 0%,
+      rgba(4, 2, 15, 0.40) 50%,
+      rgba(4, 2, 15, 0.55) 100%
+    );
+  }
 
+  .hero-overlay-bottom {
+    height: 15%;
+  }
+}

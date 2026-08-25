@@ -7,11 +7,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  /* ── BACKGROUNDS — ultra transparent, video always shows ── */
+  /* ── BACKGROUNDS — semi-transparent, video shows with readable content ── */
   --bg-primary:    rgba(4, 2, 15, 0.0)  !important;   /* fully transparent */
-  --bg-secondary:  rgba(10, 5, 25, 0.12) !important;
-  --bg-card:       rgba(255, 255, 255, 0.055) !important;
-  --bg-card-hover: rgba(255, 255, 255, 0.09)  !important;
+  --bg-secondary:  rgba(10, 5, 25, 0.35) !important;
+  --bg-card:       rgba(8, 4, 20, 0.55) !important;
+  --bg-card-hover: rgba(12, 6, 28, 0.65) !important;
 
   /* ── SAKURA COLOR PALETTE ── */
   --primary:       #c084fc !important;   /* soft violet */
@@ -21,10 +21,10 @@
   --accent-warm:   #fda4af !important;   /* rose */
   --gold:          #fbbf24 !important;
 
-  /* ── TEXT — high contrast whites ── */
-  --text-primary:   rgba(255, 255, 255, 0.95) !important;
-  --text-secondary: rgba(255, 255, 255, 0.78) !important;
-  --text-muted:     rgba(255, 255, 255, 0.55) !important;
+  /* ── TEXT — full contrast whites with text-shadow ── */
+  --text-primary:   rgba(255, 255, 255, 1.0) !important;
+  --text-secondary: rgba(255, 255, 255, 0.92) !important;
+  --text-muted:     rgba(255, 255, 255, 0.72) !important;
 
   /* ── BORDERS — glass edges ── */
   --border:       rgba(255, 255, 255, 0.10) !important;
@@ -32,10 +32,10 @@
   --border-pink:  rgba(249, 168, 212, 0.20) !important;
 
   /* ── GLASS EFFECT ── */
-  --glass-bg:     rgba(255, 255, 255, 0.055);
-  --glass-blur:   blur(16px) saturate(1.6) brightness(1.05);
-  --glass-border: 1px solid rgba(255, 255, 255, 0.12);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(249, 168, 212, 0.08);
+  --glass-bg:     rgba(8, 4, 20, 0.55);
+  --glass-blur:   blur(20px) saturate(1.8) brightness(1.05);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.18);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(249, 168, 212, 0.12);
 
   /* ── SPACING ── */
   --space-1: 8px;  --space-2: 16px; --space-3: 24px;
@@ -83,7 +83,8 @@ h1, h2, h3, h4, h5, h6,
   font-family: var(--font-display) !important;
   font-weight: 700;
   letter-spacing: -0.025em;
-  color: var(--text-primary) !important;
+  color: #ffffff !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.4) !important;
 }
 
 /* ==========================================================================
@@ -106,8 +107,8 @@ h1, h2, h3, h4, h5, h6,
 
 .card:hover, article:hover, [class*="-card"]:hover {
   background: var(--bg-card-hover) !important;
-  border-color: rgba(249, 168, 212, 0.22) !important;
-  box-shadow: 0 16px 48px rgba(0,0,0,0.22), 0 0 20px rgba(249,168,212,0.12) !important;
+  border-color: rgba(249, 168, 212, 0.30) !important;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.35), 0 0 20px rgba(249,168,212,0.15) !important;
   transform: translateY(-2px);
 }
 
